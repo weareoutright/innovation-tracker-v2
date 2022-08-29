@@ -1,0 +1,35 @@
+@font-face {
+  font-family: 'Basier Circle';
+  font-weight: 400;
+  src: url('../fonts/basiercircle-regular-webfont.woff2') format('woff2');
+}
+@font-face {
+  font-family: 'Basier Circle';
+  font-weight: 600;
+  src: url('../fonts/basiercircle-semibold-webfont.woff2') format('woff2');
+}
+@font-face {
+  font-family: 'Basier Circle';
+  font-weight: 900;
+  src: url('../fonts/basiercircle-bold-webfont.woff2') format('woff2');
+}
+
+$typeBase: 16px;
+$fontBase: "Basier Circle", "Arial", sans-serif;
+
+@function em($px, $base: 16) {
+  @return math.div($px,$base) * 1em;
+}
+
+@mixin typeDefault {
+  color: $dark;
+  font-family: $fontBase;
+  font-size: $typeBase;
+  font-weight: normal;
+  line-height: 1.2em;
+  text-transform: none;
+}
+
+@mixin typeContrast {
+  color: $light;
+}

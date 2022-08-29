@@ -1,0 +1,7 @@
+.app-footer {
+  @extend %component-contrast;
+  height:em(158);
+  flex:none;
+  width:100%;
+  background:transparent linear-gradient(50deg, $blueDark 0%, $purple 100%) 0% 0% no-repeat padding-box;
+}

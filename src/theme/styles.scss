@@ -1,0 +1,10 @@
+@use "sass:math";
+
+@import "variables";
+@import "typography";
+
+@import "base";
+
+@import "component/component";
+@import "component/header";
+@import "component/footer";

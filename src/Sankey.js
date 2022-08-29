@@ -8,7 +8,7 @@ import {sankey as d3sankey,
 import React, { useEffect, useRef, useState } from "react";
 
 const size = {
-  width: 700,
+  width: 1060,
   height: 600
 };
 
@@ -52,6 +52,8 @@ const Rect = ({ index, x0, x1, y0, y1, name, value, length, colors }) => {
 
 const Link = ({ data, width, length, colors }) => {
   const link = d3sankeyLinkHorizontal();
+
+  console.log(colors);
 
   return (
     <>

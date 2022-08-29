@@ -1,9 +1,17 @@
 import React, { useState, useEffect } from "react";
 import ReactDOM from "react-dom";
-import Sankey from "./Sankey";
-import * as Papa from 'papaparse';
 
-import "./styles.css";
+import * as Papa from 'papaparse';
+import { DndProvider } from 'react-dnd';
+import { HTML5Backend } from 'react-dnd-html5-backend';
+
+import Header from "./Header";
+import Sankey from "./Sankey";
+import Footer from "./Footer";
+import NodeGenerator from "./NodeGenerator";
+
+
+import "./theme/styles.scss";
 
 function App() {
   const [data, setData] = useState(null);
@@ -17,7 +25,8 @@ function App() {
             header: true,
             skipEmptyLines: true,
             complete: (parsed) => {
-              setData(parsed.data);
+              const graph = NodeGenerator(parsed.data,"agency","sector");
+              setData(graph);
             },
           })
         })
@@ -26,7 +35,9 @@ function App() {
 
   return (
     <div className="App">
+      <Header />
       <Sankey data={data} />
+      <Footer />
     </div>
   );
 }
