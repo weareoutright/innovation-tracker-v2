@@ -1,3 +1,10 @@
+import * as d3 from "d3";
+import {sankey as d3sankey, 
+  sankeyCenter as d3sankeyCenter, 
+  sankeyLeft as d3sankeyLeft, 
+  sankeyRight as d3sankeyRight, 
+  sankeyJustify as d3sankeyJustify, 
+  sankeyLinkHorizontal as d3sankeyLinkHorizontal } from "d3-sankey";
 import React, { useEffect, useRef, useState } from "react";
 
 const size = {
@@ -44,7 +51,7 @@ const Rect = ({ index, x0, x1, y0, y1, name, value, length, colors }) => {
 };
 
 const Link = ({ data, width, length, colors }) => {
-  const link = d3.sankeyLinkHorizontal();
+  const link = d3sankeyLinkHorizontal();
 
   return (
     <>
@@ -76,9 +83,8 @@ const Sankey = props => {
   const offset = useRef(null);
 
   const colors = props.edit ? d3.interpolateWarm : d3.interpolateCool;
-  const sankey = d3
-    .sankey()
-    .nodeAlign(d3.sankeyJustify)
+  const sankey = d3sankey()
+    .nodeAlign(d3sankeyJustify)
     .nodeWidth(10)
     .nodePadding(10)
     .extent([[0, 0], [size.width, size.height]]);
