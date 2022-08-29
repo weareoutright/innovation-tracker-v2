@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import ReactDOM from "react-dom";
 import Sankey from "./Sankey";
+import * as Papa from 'papaparse';
 
 import "./styles.css";
 
@@ -9,17 +10,23 @@ function App() {
   const [editMode, setEditMode] = useState(false);
 
   useEffect(() => {
-    fetch("https://raw.githubusercontent.com/ozlongblack/d3/master/energy.json")
-      .then(res => res.json())
-      .then(data => setData(data));
+    fetch("/data/master.csv")
+      .then(res => res.text()
+        .then(txt => {
+          Papa.parse(txt, {
+            header: true,
+            skipEmptyLines: true,
+            complete: (parsed) => {
+              setData(parsed.data);
+            },
+          })
+        })
+      )
   }, []);
 
   return (
     <div className="App">
-      <div>
-        <button onClick={() => setEditMode(!editMode)}>Edit Mode</button>
-      </div>
-      <Sankey data={data} edit={editMode} />
+      <Sankey data={data} />
     </div>
   );
 }

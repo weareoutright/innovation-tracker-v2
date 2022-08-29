@@ -82,7 +82,7 @@ const Sankey = props => {
   const graph = useRef(null);
   const offset = useRef(null);
 
-  const colors = props.edit ? d3.interpolateWarm : d3.interpolateCool;
+  const colors = d3.interpolateWarm;
   const sankey = d3sankey()
     .nodeAlign(d3sankeyJustify)
     .nodeWidth(10)
