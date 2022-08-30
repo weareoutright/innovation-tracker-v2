@@ -1,0 +1,68 @@
+.component-wells {
+  position:absolute;
+  top:0;
+  left:0;
+  width:100%;
+  height:100%;
+  .wells__wrapper,.wells__wells {
+    height:100%;
+  }
+  .wells__wrapper {
+    width:181.1%;
+  }
+  .wells__wells {
+    display:flex;
+    justify-content:space-between;
+  }
+  .wells__well {
+    height:100%;
+    width:em(200);
+    border:2px dashed $grayLight;
+    &.wells__well-active {
+      border-color:transparent;
+    }
+    &.wells__well-hover {
+      border-color:darken($grayLight,10%);
+    }
+  }
+}
+
+.component-well-headers {
+  @extend %container;
+  .well__headers {
+    display:flex;
+    justify-content:space-between;
+    align-items: center;
+    width:181.1%;
+  }
+  .well__header {
+    width:em(200);
+    text-align:center;
+    position:relative;
+    &.well__header-active {
+      &:before,&:after {
+        content:"";
+        border-color:$light;
+        border-style:solid;
+        position:absolute;
+        bottom:.8em;
+        width:em(43);
+        height:em(24);
+      }
+      &:before {
+        border-width:1px 0 0 1px;
+        left:0;
+      }
+      &:after {
+        border-width:1px 1px 0 0;
+        right:0;
+      }
+    }
+    h2 {
+      @include typeHeaderWell;
+      max-width: em(140,20);
+      margin: 0 auto;
+      text-align: center;
+    }
+  }
+}

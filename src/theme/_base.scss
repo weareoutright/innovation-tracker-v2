@@ -20,3 +20,20 @@ body {
   justify-content: space-between;
   align-items: center;
 }
+
+%container {
+  width:100%;
+  max-width:em(1060);
+  margin-left:auto;
+  margin-right:auto;
+  position:relative;
+}
+
+.app-main {
+  @extend %container;
+  &,svg,.component-wells {
+    height:em(600);
+  
+  }
+}
+

@@ -33,3 +33,35 @@ $fontBase: "Basier Circle", "Arial", sans-serif;
 @mixin typeContrast {
   color: $light;
 }
+
+@mixin typeHeader {
+  @include typeDefault;
+}
+
+@mixin typeHeaderWell {
+  @include typeHeader;
+  @include typeContrast;
+  font-size: em(20);
+  font-weight: 600;
+  text-transform:uppercase;
+  em {
+    display:block;
+    font-size: em(15,20);
+    font-style:normal;
+  }
+}
+
+@mixin typeFilter {
+  @include typeHeader;
+  @include typeContrast;
+  font-size: em(17);
+  font-weight:600;
+}
+
+@mixin typeFilterPre {
+  @include typeHeader;
+  @include typeContrast;
+  font-size: em(15);
+  text-transform:uppercase;
+  font-weight:600;
+}

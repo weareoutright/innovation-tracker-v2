@@ -2,6 +2,8 @@
   @extend %component-contrast;
   height:em(100);
   flex:none;
+  display: flex;
+  align-items: center;
   width:100%;
   background:transparent linear-gradient(50deg, $blueDark 0%, $purple 100%) 0% 0% no-repeat padding-box;
 }

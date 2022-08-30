@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import ReactDOM from "react-dom";
 
 import * as Papa from 'papaparse';
@@ -8,14 +8,18 @@ import { HTML5Backend } from 'react-dnd-html5-backend';
 import Header from "./Header";
 import Sankey from "./Sankey";
 import Footer from "./Footer";
-import NodeGenerator from "./NodeGenerator";
+import DroppableWells from "./DroppableWells";
+import GraphGenerator from "./GraphGenerator";
 
+import { ActiveProvider } from './context/ActiveContext'
+import { GraphProvider } from './context/GraphContext'
 
 import "./theme/styles.scss";
 
 function App() {
   const [data, setData] = useState(null);
-  const [editMode, setEditMode] = useState(false);
+  const [graph, setGraph] = useState({});
+  const [active, setActive] = useState([null,null,null]);
 
   useEffect(() => {
     fetch("/data/master.csv")
@@ -25,8 +29,7 @@ function App() {
             header: true,
             skipEmptyLines: true,
             complete: (parsed) => {
-              const graph = NodeGenerator(parsed.data,"agency","sector");
-              setData(graph);
+              setData(parsed.data);
             },
           })
         })
@@ -34,11 +37,21 @@ function App() {
   }, []);
 
   return (
-    <div className="App">
-      <Header />
-      <Sankey data={data} />
-      <Footer />
-    </div>
+    <ActiveProvider value={{active, setActive}}>
+      <GraphProvider value={{graph, setGraph}}>
+        <div className="App">
+          {data !== null && <GraphGenerator data={data} />}
+          <Header />
+          <DndProvider backend={HTML5Backend}>
+            <main className="app-main">
+              <DroppableWells />
+              <Sankey />
+            </main>
+            <Footer />
+          </DndProvider>
+        </div>
+      </GraphProvider>
+    </ActiveProvider>
   );
 }
 

@@ -1,0 +1,33 @@
+.component-filters {
+  width:100%;
+  .filters__wrapper {
+    @extend %container;
+  }
+  .filters__filters {
+    display:flex;
+    list-style:none;
+    align-items:center;
+    justify-content:center;
+    &:before {
+      @include typeFilterPre;
+      margin-right:em(20,15);
+      content:"Filters:";
+    }
+  }
+  .filters__filter {
+    @include typeFilter;
+    margin-right:em(7,17);
+    border:1px solid $light;
+    border-radius:em(37,17);
+    padding:em(8,17) em(12,17);
+    cursor:grab;
+    transition:all .33s ease;
+    &:hover,&:active {
+      background:$light;
+      color:$blueDark;
+    }
+    &:active {
+      cursor:grabbing;
+    }
+  }
+}
