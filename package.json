@@ -1,6 +1,7 @@
 {
   "name": "react-d3-sankey-chart",
   "version": "1.0.0",
+  "homepage": "https://weareoutright.github.io/innovation-tracker",
   "description": "",
   "keywords": [
     "sankey",
@@ -23,6 +24,8 @@
     "react-spring": "8.0.18"
   },
   "scripts": {
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d build",
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test --env=jsdom",
@@ -35,6 +38,7 @@
     "not op_mini all"
   ],
   "devDependencies": {
+    "gh-pages": "^4.0.0",
     "sass": "^1.54.5",
     "sass-loader": "^13.0.2"
   }
