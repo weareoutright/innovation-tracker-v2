@@ -1,0 +1,16 @@
+{
+  "files": {
+    "main.css": "/innovation-tracker/static/css/main.f1439d84.css",
+    "main.js": "/innovation-tracker/static/js/main.b636d311.js",
+    "static/media/basiercircle-semibold-webfont.woff2": "/innovation-tracker/static/media/basiercircle-semibold-webfont.3e0a360ea3aff49dbe73.woff2",
+    "static/media/basiercircle-regular-webfont.woff2": "/innovation-tracker/static/media/basiercircle-regular-webfont.75ed1573a0428232374b.woff2",
+    "static/media/basiercircle-bold-webfont.woff2": "/innovation-tracker/static/media/basiercircle-bold-webfont.81100782b3e156f91107.woff2",
+    "index.html": "/innovation-tracker/index.html",
+    "main.f1439d84.css.map": "/innovation-tracker/static/css/main.f1439d84.css.map",
+    "main.b636d311.js.map": "/innovation-tracker/static/js/main.b636d311.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.f1439d84.css",
+    "static/js/main.b636d311.js"
+  ]
+}
