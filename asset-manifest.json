@@ -1,16 +1,16 @@
 {
   "files": {
-    "main.css": "/innovation-tracker-v2/static/css/main.beab424a.css",
-    "main.js": "/innovation-tracker-v2/static/js/main.b636d311.js",
+    "main.css": "/innovation-tracker-v2/static/css/main.7817e56b.css",
+    "main.js": "/innovation-tracker-v2/static/js/main.f54b6516.js",
     "static/media/basiercircle-semibold-webfont.woff2": "/innovation-tracker-v2/static/media/basiercircle-semibold-webfont.3e0a360ea3aff49dbe73.woff2",
     "static/media/basiercircle-regular-webfont.woff2": "/innovation-tracker-v2/static/media/basiercircle-regular-webfont.75ed1573a0428232374b.woff2",
     "static/media/basiercircle-bold-webfont.woff2": "/innovation-tracker-v2/static/media/basiercircle-bold-webfont.81100782b3e156f91107.woff2",
     "index.html": "/innovation-tracker-v2/index.html",
-    "main.beab424a.css.map": "/innovation-tracker-v2/static/css/main.beab424a.css.map",
-    "main.b636d311.js.map": "/innovation-tracker-v2/static/js/main.b636d311.js.map"
+    "main.7817e56b.css.map": "/innovation-tracker-v2/static/css/main.7817e56b.css.map",
+    "main.f54b6516.js.map": "/innovation-tracker-v2/static/js/main.f54b6516.js.map"
   },
   "entrypoints": [
-    "static/css/main.beab424a.css",
-    "static/js/main.b636d311.js"
+    "static/css/main.7817e56b.css",
+    "static/js/main.f54b6516.js"
   ]
 }
