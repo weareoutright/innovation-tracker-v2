@@ -1,14 +1,14 @@
 .data-year {
     border: 1px solid $light;
-    border-radius: 1.5rem;
+    border-radius: $borderRadius;
     font-family: $font;
     color: $light;
     background-color: transparent;
-    font-size: 1.125rem;
+    font-size: .95rem;
     font-style: normal;
     font-weight: 900;
     display: inline-flex;
-    padding: 0.5rem 2.5rem 0.5rem 2rem;
+    padding: 0.45rem 2rem 0.45rem 1.25rem;
     align-items: center;
     gap: 0.5rem;
     appearance: none;
