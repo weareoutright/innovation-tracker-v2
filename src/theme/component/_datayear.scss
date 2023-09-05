@@ -1,0 +1,32 @@
+.data-year {
+    border: 1px solid $light;
+    border-radius: 1.5rem;
+    font-family: $font;
+    color: $light;
+    background-color: transparent;
+    font-size: 1.125rem;
+    font-style: normal;
+    font-weight: 900;
+    display: inline-flex;
+    padding: 0.5rem 2.5rem 0.5rem 2rem;
+    align-items: center;
+    gap: 0.5rem;
+    appearance: none;
+
+    background-image:
+        linear-gradient(45deg, transparent 50%, $light 50%),
+        linear-gradient(135deg, $light 50%, transparent 50%);
+
+    background-position:
+        calc(100% - 20px) calc(1em),
+        calc(100% - 15px) calc(1em),
+        calc(100% - 15px);
+
+    background-position-y: center;
+        
+    background-size:
+        5px 5px,
+        5px 5px;
+
+    background-repeat: no-repeat;
+  }
