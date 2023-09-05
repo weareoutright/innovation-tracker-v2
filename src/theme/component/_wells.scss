@@ -1,14 +1,25 @@
 .component-wells {
   position:absolute;
   top:0;
+  bottom:5px;
   left:0;
   width:100%;
-  height:100%;
+  height:auto;
+  pointer-events:none;
+  z-index:1;
+  transition:left .5s ease-in-out;
+  .tutorial-active:not(.has_active-1):not(.has_active-2) & {
+    left:calc(50% - #{em(200)});
+
+  }
+  .drop-hover & {
+    z-index:2;
+  }
   .wells__wrapper,.wells__wells {
     height:100%;
   }
   .wells__wrapper {
-    width:181.1%;
+    width:100%;
   }
   .wells__wells {
     display:flex;
@@ -18,22 +29,82 @@
     height:100%;
     width:em(200);
     border:2px dashed $grayLight;
+    pointer-events:all;
+    transition:all .2s ease-out;
+    svg {
+      color:$grayLight;
+      height:2em;
+      width:2em;
+      position:absolute;
+      left:-1em;
+      top:calc(50% - .5em);
+      line-height:1em;
+      z-index:2;
+      background:#fff;
+      cursor:pointer;
+      &:hover {
+        color:darken($grayLight,10%);
+      }
+    }
+    &.wells__well-0 {
+    }
+    &.wells__well-available {
+      ~ .wells__well {
+        opacity:.2;
+        pointer-events:none;
+        &.wells__well-available {
+          opacity:1;
+          pointer-events:all;
+        }
+      }
+    }
     &.wells__well-active {
       border-color:transparent;
+      z-index:-1;
+      position:relative;
+      svg {
+        opacity:0;
+        pointer-events:none;
+      }
     }
     &.wells__well-hover {
-      border-color:darken($grayLight,10%);
+      opacity:.2;
+      &.wells__well-available {
+        border-color:darken($grayLight,10%);
+        opacity:1;
+      }
+    }
+    @media screen and (max-width: $breakpoint-md) {
+      width:em(175);
+    }
+  }
+  .wells-chart-budget {
+    position:absolute;
+    right:calc(100%);
+    left:auto;
+    top:50%;
+    bottom:auto;
+    height:auto;
+    width:em(350);
+    transform:translate(11%,-50%);
+    @media screen and (max-width:$breakpoint-md) {
+      width:28vh;
     }
   }
 }
 
 .component-well-headers {
   @extend %container;
+  .tutorial-active & {
+    h3 {
+      pointer-events:none;
+    }
+  }
   .well__headers {
     display:flex;
     justify-content:space-between;
     align-items: center;
-    width:181.1%;
+    width:100%;
   }
   .well__header {
     width:em(200);
@@ -44,25 +115,78 @@
         content:"";
         border-color:$light;
         border-style:solid;
+        border-width:0;
         position:absolute;
-        bottom:.8em;
+        top:.7em;
         width:em(43);
         height:em(24);
       }
       &:before {
-        border-width:1px 0 0 1px;
         left:0;
       }
       &:after {
-        border-width:1px 1px 0 0;
         right:0;
       }
+      &:nth-child(1) {
+        &:after {
+          //border-width:1px 0 0 0;
+        }
+      }
+      &:nth-child(3) {
+        &:before {
+          //border-width:1px 0 0 0;
+        }
+      }
     }
-    h2 {
-      @include typeHeaderWell;
-      max-width: em(140,20);
-      margin: 0 auto;
-      text-align: center;
+    &.well__header-main {
+      flex:auto;
+      h2 {
+        max-width:none;
+      }
+      &:before,&:after {
+        //border-width:1px 0 0 0;
+        width:em(80);
+      }
+    }
+  }
+  h2,h3 {
+    margin: 0 auto;
+    text-align: center;
+    em {
+      display:block;
+    }
+  }
+  h2 {
+    @include typeHeaderWell;
+    padding:0 1em;
+    margin-top:-.1em;
+  }
+  h3 {
+    @include typeHeaderWellSecondary;
+    display:inline-block;
+    span {
+      border-radius:2em;
+      border:1px solid $light;
+      padding:.33em .5em;
+      white-space:nowrap;
+      display:block;
+      margin-bottom:.5em;
+      display:inline-flex;
+      justify-content:center;
+      gap:.25em;
+      align-items:center;
+      align-content:center;
+      cursor:pointer;
+      &:hover {
+        background:rgba($light,.5);
+      }
+      svg {
+        height:18px;
+        width:18px;
+        path {
+          fill:$light;
+        }
+      }
     }
   }
 }

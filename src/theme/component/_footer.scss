@@ -1,9 +1,61 @@
 .app-footer {
   @extend %component-contrast;
-  height:em(158);
+  height:em(100);
+  padding-top:em(30);
+  padding-bottom:em(30);
   flex:none;
   display: flex;
   align-items: center;
   width:100%;
   background:transparent linear-gradient(50deg, $blueDark 0%, $purple 100%) 0% 0% no-repeat padding-box;
+  .footer__wrapper {
+    padding:0 em(78);
+    display:flex;
+    justify-content:center;
+    width:100%;
+    > * {
+      margin-left:em(85);
+      &:first-child {
+        margin-left:0;
+      }
+    }
+  }
+  @media screen and (max-width:$breakpoint-xl) {
+    .footer__wrapper {
+      > * {
+        margin-left:em(40);
+        display:block;
+      }
+    }
+  }
+  @media screen and (max-width:$breakpoint-lg) {
+    .footer__wrapper {
+      max-width:75%;
+    }
+  }
+  @media screen and (max-width:$breakpoint-md) {
+    height:40vh;
+    .footer__wrapper {
+      flex-direction:column;
+      max-width:100%;
+      > * {
+        margin-left:0;
+        margin-bottom:2em;
+        &:last-child {
+          margin-bottom:0;
+        }
+      }
+      > .component-stickies {
+        display:none;
+      }
+    }
+  }
+  @media screen and (max-width:$breakpoint-sm) {
+
+  }
+  @media screen and (max-width: 600px) {
+    .footer__wrapper {
+      padding:0 30px;
+    }
+  }
 }

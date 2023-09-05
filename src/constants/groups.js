@@ -14,7 +14,8 @@ export const mappedGroups = {
     "transportation",  
     "industry",
     "agriculture", 
-    "buildings"
+    "buildings",
+    "forestry"
   ],
   "solution": [
     "efficiency", 

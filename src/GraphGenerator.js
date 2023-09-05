@@ -3,19 +3,88 @@ import isEqual from "lodash/isEqual"
 
 import ActiveContext from './context/ActiveContext'
 import GraphContext from './context/GraphContext'
+import SelectedContext from './context/SelectedContext'
+import AgencyLevelContext from './context/AgencyLevelContext'
 
 import {mappedGroups as cols} from './constants/groups';
 
+const agencyHierarchy = [
+  'agency',
+  'administration',
+  'suboffice',
+  'program'
+];
+
 const GraphGenerator = ({data}) => {
 
+  const {agencyLevel, setAgencyLevel} = useContext(AgencyLevelContext);
+  const {selected, setSelected} = useContext(SelectedContext);
   const {active, setActive} = useContext(ActiveContext);
   const {graph, setGraph} = useContext(GraphContext);
 
+  const simpleFilterSelected = (links,nodes) => {
+    let newLinks = links.map(l => {
+      const source = nodes[l.source];
+      const target = nodes[l.target];
+      //if (!target.fixedValue) target.fixedValue = 0; 
+      //target.fixedValue += l.value;
+      if ((!selected[source.well] || source.selected) && (!selected[target.well] || target.selected)) {
+        l.selected = true;
+        target.selected = true;
+      } else {
+        l.selected = false;
+      }
+      return l;
+    });
+    links = links.filter(l => l.source !== -1 && l.target !== -1);
+    nodes.forEach((n,i) => n.originalIndex = i);
+    return [newLinks,nodes];
+  }
 
+  const maybeFilterSelected = (links,nodes,remove) => {
+    let newLinks = links.map(l => {
+      const source = nodes[l.source];
+      const target = nodes[l.target];
+      //if (!target.fixedValue) target.fixedValue = 0; 
+      //target.fixedValue += l.value;
+      if ((!selected[source.well] || source.selected) && (!selected[target.well] || target.selected)) {
+        l.selected = true;
+      } else {
+        l.selected = false;
+      }
+      return l;
+    })
+    let newNodes = nodes.filter((n,i) => {
+      if (!selected[n.well] || n.selected) {
+        n.originalIndex = i;
+        return true;
+      }
+    })
+    if (newNodes.length !== nodes.length) {
+      newLinks.forEach(l => {
+        l.source = newNodes.findIndex(n => n.originalIndex === l.source);
+        l.target = newNodes.findIndex(n => n.originalIndex === l.target);
+      })
+      newLinks = newLinks.filter(l => l.source !== -1 && l.target !== -1);
+    }
+    return [newLinks,newNodes];
+    //return [links,nodes];
+  }
 
-  const getNodes = (type) => {
+  const getNodeAgencyHierarchy = (node) => {
+    let nodeHierarchy = [];
+    const datum = data.find(d => d[agencyHierarchy[agencyLevel]].trim() === node.name);
+    if (datum) {
+      for (let level = 0;level < agencyLevel;level++) {
+        nodeHierarchy[level] = datum[agencyHierarchy[level]].trim();
+      }
+    }
+    return nodeHierarchy;
+  }
+
+  const getNodes = (type,index) => {
     let nodes = [];
-    let col = cols[type];
+    let col = type === 'agency' ? agencyHierarchy[agencyLevel] : cols[type];
     if (type === 'agency') {
       nodes = [
         ...new Set(
@@ -25,96 +94,109 @@ const GraphGenerator = ({data}) => {
     } else {
       nodes = col;
     }
-    return nodes.filter(n => n !== null);
+    nodes = nodes.filter(n => n !== null && n.value !== 0).map(n => {
+      const name = n.trim();
+      let node = {type:type,name:name,selected:selected[index] === name,well:index};
+      if (type === 'agency') {
+        node.agencyHierarchy = getNodeAgencyHierarchy(node);
+        if (node.agencyHierarchy.indexOf(selected[index]) !== -1) node.selected = true;
+      }
+      return node;
+    });
+    return nodes;
   }
 
-  const getDatumValue = (datum,primary,secondary=null) => {
-    let valid = datum.include === 'Y' && datum.fy === '2021';
+  const getDatumValidityForColumn = (datum,column) => {
+    let valid = datum.fy === '2021';
     if (valid) {
-      const agency = datum.agency.trim();
-      let source_col,target_col;
-      switch (active[0]) {
+      const agency = datum[agencyHierarchy[agencyLevel]].trim();
+      switch (column.type) {
         case 'agency':
-          valid = primary === agency;
-          source_col = 'program_appr';
+        case 'administration':
+          return {
+            valid: column.name === agency,
+            target: 'mitigation'
+          }
         break;
         default:
-          valid = parseInt(datum[primary]);
-          source_col = primary;
+          return {
+            valid: parseInt(datum[column.name]) != 0,
+            target: column.name
+          }
         break;
       }
+    }
+    return {
+      valid:valid,
+      target: column.name
+    }
+  }
+
+  const getDatumValue = (datum,primary,secondary,tertiary=null) => {
+    let primaryValidity = getDatumValidityForColumn(datum,primary);
+    let secondaryValidity = getDatumValidityForColumn(datum,secondary);
+    if (primaryValidity.valid && secondaryValidity.valid) {
+      //For the most part, rows are distributed based on the mitigation funds since other types of funding are not tracked in this module
+      //However, a few rows have adaptation, etc. spending applied - thus the mitigation total may or may not be 100% of the assigned funding across other breakdowns
+      //TODO: Update to correctly calculate adaptation and science funding
+      let total = parseInt(datum.mitigation);
+      let source_val, target_val, filter_val;
+      if (tertiary) {
+        const tertiaryValidity = getDatumValidityForColumn(datum,tertiary);
+        if (!tertiaryValidity.valid) return null;
+        source_val = parseInt(datum[secondaryValidity.target].replace(",",""));
+        target_val = parseInt(datum[tertiaryValidity.target].replace(",",""));
+        filter_val = parseInt(datum[primaryValidity.target].replace(",",""));
+      } else {
+        source_val = parseInt(datum[primaryValidity.target].replace(",",""));
+        target_val = parseInt(datum[secondaryValidity.target].replace(",",""));
+        filter_val = total;
+      }
+      const valid = total && source_val && target_val;
       if (valid) {
-        switch (active[1]) {
-          case null:
-            valid = valid;
-            target_col = source_col;
-          break;
-          case 'agency':
-            valid = secondary === agency;
-            target_col = 'program_appr';
-          break;
-          default:
-            valid = parseInt(datum[secondary]);
-            target_col = secondary;
-          break;
-        }
-        if (valid) {
-          const total = parseInt(datum.program_appr.replace(",",""));
-          const source_val = parseInt(datum[source_col].replace(",",""));
-          const target_val = parseInt(datum[target_col].replace(",",""));
-
-          valid = total && source_val && target_val;
-
-          if (valid) {
-            return (source_val / total) * target_val;
-          }
-        }
-
+        return (source_val / total) * (filter_val / total) * target_val;
       }
     }
     return null;
   }
 
-  const getLinks = (data,primary,secondary=null) => {
+  const getLinks = (data,primary,secondary,tertiary=false) => {
     let links = [];
-    if (secondary) {
-      primary.forEach(p => {
-        secondary.forEach(s => {
-          let link = {
-            source:localGraph.nodes.indexOf(p),
-            target:localGraph.nodes.indexOf(s),
-            value:0
-          };
-          if (link.source !== -1 && link.target !== -1) {
-            data.forEach(datum => {
-              const value = getDatumValue(datum,p,s);
+    primary.forEach((p,pIndex) => {
+      secondary.forEach((s,sIndex) => {
+        sIndex += primary.length;
+        if (tertiary) {
+          tertiary.forEach((t,tIndex) => {
+            tIndex += primary.length + secondary.length;
+            let link = {
+              source:sIndex,
+              target:tIndex,
+              value:0
+            };
+            data.forEach((datum,d) => {
+              const value = getDatumValue(datum,p,s,t);
               if (value) link.value += value;
             })
-            if (link.value) {
-              links.push(link);
-            }
-          }
-        })
-      })
-    } else {
-      primary.forEach(p => {
-        let link = {
-          source:localGraph.nodes.indexOf(p),
-          value:0
-        };
-        if (link.source !== -1) {
-          data.forEach(datum => {
-            const value = getDatumValue(datum,p);
+            if (link.value) links.push(link);
+          })
+        } else {
+          let link = {
+            source:pIndex,
+            target:sIndex,
+            value:0
+          };
+          data.forEach((datum,d) => {
+            const value = getDatumValue(datum,p,s);
             if (value) link.value += value;
           })
-          if (link.value) {
-            links.push(link);
-          }
+          if (link.value) links.push(link);
         }
       })
-    }
+    })
     return links;
   }
+
+  const graphIsValid = graph => (graph.nodes && graph.nodes.length && graph.links && graph.links.length) ? true : false;
 
   let localGraph = {
     nodes: [],
@@ -123,29 +205,45 @@ const GraphGenerator = ({data}) => {
 
   if (active[0]) {
 
-    const primaryNodes = getNodes(active[0]);
+    const primaryNodes = getNodes(active[0],0);
+    const secondaryNodes = getNodes(active[1] ? active[1] : active[0],1);
 
-    if (active[1] && active[1] !== active[0]) {
-      const secondaryNodes = getNodes(active[1]);
-      localGraph.nodes = primaryNodes.concat(secondaryNodes);
-      localGraph.links = getLinks(data,primaryNodes,secondaryNodes);
-    } else {
-      localGraph.nodes = primaryNodes;
-      localGraph.links = getLinks(data,primaryNodes);
-      //Append new copy of nodes so we can do self links
-      localGraph.links.forEach(l => {
-        l.target = l.source + localGraph.nodes.length
-      })
-      localGraph.nodes = localGraph.nodes.concat(primaryNodes);
-    }
+    localGraph.nodes = primaryNodes.concat(secondaryNodes);
+    localGraph.links = getLinks(data,primaryNodes,secondaryNodes);
 
+  } else if (active[1]) {
+
+    const primaryNodes = getNodes(active[1],0);
+    const secondaryNodes = getNodes(active[1],1);
+
+    localGraph.nodes = primaryNodes.concat(secondaryNodes);
+    localGraph.links = getLinks(data,primaryNodes,secondaryNodes);
   }
 
   useEffect(() => {
-    if (!graph || !graph.nodes || !isEqual(localGraph.nodes,graph.nodes.map(n => n.name))) {
-      localGraph.nodes = localGraph.nodes.map(n => {
-        return {'name':n};
-      });
+
+    localGraph.trueTotal = localGraph.links.reduce((a,b) => a + b.value,0);
+    localGraph.agencyTotals = localGraph.links.reduce((a,b) => {
+      const source = localGraph.nodes[b.source];
+      const target = localGraph.nodes[b.target];
+      const agencyNode = source.type == "agency" ? source : (target.type == "agency" ? target : null);
+      if (agencyNode && agencyNode.agencyHierarchy.length) {
+        const agency = agencyNode.agencyHierarchy[0];
+        a[agency] = (a[agency] ? a[agency] : 0) + b.value;
+      }
+      return a;
+    },{});
+    localGraph.raw = Object.assign({}, localGraph);
+    localGraph.raw.links = localGraph.raw.links.map(l => { return {...l}});
+    localGraph.raw.nodes = localGraph.raw.nodes.map(n => { return {...n}});
+    [localGraph.raw.links, localGraph.raw.nodes] = simpleFilterSelected(localGraph.raw.links,localGraph.raw.nodes);
+    localGraph.raw.valid = graphIsValid(localGraph.raw);
+
+    [localGraph.links, localGraph.nodes] = maybeFilterSelected(localGraph.links,localGraph.nodes);
+    localGraph.total = localGraph.links.reduce((a,b) => a + b.value,0);
+    localGraph.valid = graphIsValid(localGraph);
+
+    if (!graph || !graph.nodes || !isEqual(localGraph.nodes.map(n => n.name),graph.nodes.map(n => n.name))) {
       setGraph(localGraph);
     }
   })

@@ -1,6 +1,6 @@
 import React from 'react'
 const ActiveContext = React.createContext({
-  active: [null,null,null],
+  active: [null,null],
   setActive: () => {}
 })
 export const ActiveProvider = ActiveContext.Provider

@@ -1,0 +1,138 @@
+.download-trigger {
+  &.show {
+    .download__screen,.download__options {
+      pointer-events:all;
+      opacity:1;
+    }
+  }
+  display:flex;
+  align-items:center;
+  .download__label {
+    @include typeFilterPre;
+    margin-right:em(10,15);
+  }
+  .download__button {
+    &:hover {
+      background:$purple;
+      > svg {
+        path {
+          fill:$light;
+        }
+      }
+    }
+    background:$light;
+    border-radius:10px;
+    padding:em(2);
+    display:inline-block;
+    cursor:pointer;
+    position:relative;
+    z-index:10;
+    &,svg {
+      transition:all .3s ease;
+    }
+    > svg {
+      height:em(30);
+      width:em(36);
+      path {
+        fill:$purple;
+      }
+    }
+  }
+  .download__screen {
+    position:fixed;
+    width:100%;
+    height:100%;
+    top:0;
+    left:0;
+    background:rgba($dark,.5);
+    z-index:8;
+    opacity:0;
+    pointer-events:none;
+  }
+  .download__options {
+    position:fixed;
+    top:50%;
+    left:50%;
+    transform:translate(-50%, -50%);
+    background:$light;
+    opacity:0;
+    pointer-events:none;
+    transition:opacity .3s ease;
+    border-radius:10px;
+    box-shadow:5px 5px 25px #00000029;
+    width:auto;
+    padding:em(29) em(28);
+    z-index:9;
+    color:$dark;
+    h4 {
+      text-transform:uppercase;
+      margin-top:0;
+      letter-spacing:1px;
+      color:$dark;
+      margin-bottom:1em;
+    }
+  }
+  .download__option {
+    &:last-child {
+      margin-bottom:0;
+    }
+    &:hover {
+      text-decoration:underline;
+    }
+    color:$dark;
+    line-height:1em;
+    text-align:center;
+    display:flex;
+    margin-bottom:1em;
+    justify-content:left;
+    align-items:center;
+    align-content:center;
+    cursor:pointer;
+    label {
+      cursor:pointer;
+    }
+    svg {
+      width:2em;
+      height:auto;
+      margin-right:1em;
+      path {
+        fill:#939393;
+      }
+    }
+  }
+  .download__close {
+    position:absolute;
+    top:10px;
+    right:10px;
+    cursor:pointer;
+    svg {
+      height:24px;
+      width:24px;
+      path {
+        fill:#939393;
+      }
+    }
+  }
+  @media screen and (max-width:$breakpoint-lg) {
+    .download__label {
+      margin-bottom:.5em;
+    }
+    .download__button {
+      > svg {
+        width:1.9em;
+        height:1.7em;
+      }
+    }
+  }
+  @media screen and (max-width:$breakpoint-md) {
+    .download__label {
+      margin-bottom:.5em;
+    }
+    .download__button {
+      > svg {
+        width:1.6em;
+        height:1.4em;
+      }
+    }
+  }
+}

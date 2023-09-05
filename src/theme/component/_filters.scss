@@ -1,17 +1,15 @@
 .component-filters {
-  width:100%;
-  .filters__wrapper {
-    @extend %container;
-  }
   .filters__filters {
     display:flex;
     list-style:none;
     align-items:center;
     justify-content:center;
+    margin:0;
+    padding:0;
     &:before {
       @include typeFilterPre;
-      margin-right:em(20,15);
-      content:"Filters:";
+      margin-right:em(10,15);
+      content:"Filters";
     }
   }
   .filters__filter {
@@ -22,12 +20,53 @@
     padding:em(8,17) em(12,17);
     cursor:grab;
     transition:all .33s ease;
-    &:hover,&:active {
+    &:hover,&:active,&.active {
       background:$light;
       color:$blueDark;
+      &.filters__filter-agency {
+        background:$greenDark;
+        border-color:$greenDark;
+        color:$light;
+      }
+      &.filters__filter-sector {
+        background:$teal;
+        border-color:$teal;
+        color:$dark;
+      }
+      &.filters__filter-solution {
+        background:$yellow;
+        border-color:$yellow;
+        color:$dark;
+      }
+      &.filters__filter-stage {
+        background:$blueLight;
+        border-color:$blueLight;
+        color:$light;
+      }
     }
     &:active {
       cursor:grabbing;
+    }
+  }
+  .download-trigger {
+    margin-left:3em;
+  }
+  @media screen and (max-width: $breakpoint-lg) {
+    .filters__filters {
+      flex-wrap: wrap;
+      justify-content: flex-start;
+      &:before {
+        flex:none;
+        width:100%;
+        display:block;
+        margin-bottom:.5em;
+      }
+    }
+  }
+  @media screen and (max-width: $breakpoint-md) {
+    .filters__filter {
+      padding:em(4,16) em(6,16);
+      margin-bottom:.5em;
     }
   }
 }

@@ -1,0 +1,129 @@
+.component-tray {
+  position:absolute;
+  right:0;
+  top:0;
+  width:25%;
+  height:100%;
+  background:#f8f6fa;
+  font-size:14px;
+  z-index:2;
+  .tray__trigger {
+    font-size:.825em;
+    position: absolute;
+    top: 50%;
+    right: 100%;
+    background:$purpleLight;
+    color:$purple;
+    padding:.5em 1.5em;
+    cursor:pointer;
+    transform-origin:100% 100%;
+    transform:rotate(-90deg) translateX(100%);
+    display:none;
+    @media screen and (max-width:$breakpoint-lg) {
+      display:block;
+    }
+  }
+  .tray__content {
+    padding:em(21) em(29);
+    height:100%;
+    overflow:auto;
+  }
+  .tray__entry {
+    padding-top:1.2em;
+    margin-top:1.2em;
+    border-top:1px solid $dark;
+    &:first-child {
+      margin-top:0;
+      border-top:none;
+    }
+    small {
+      display:block;
+      color:#777;
+      font-size:.9em;
+    }
+  }
+  .tray__entry__header {
+    h3 {
+      font-size:1em;
+      margin:0;
+      color:$dark;
+    }
+  }
+  .tray__entry__content {
+    h4 {
+      margin-top:1.2em;
+      margin-bottom:.5em;
+      font-weight:600;
+      font-style:italic;
+      display:inline-block;
+      color:#939393;
+      font-size:em(13);
+    }
+  }
+  .breakdown {
+    list-style:none;
+    margin:0;
+    li,& {
+      padding-left:0;
+      margin-left:0;
+    }
+    li {
+      display:flex;
+      margin-bottom:.5em;
+    }
+    .value {
+      width:em(70);
+      flex:none;
+    }
+    label {
+      flex:auto;
+      padding-left:5%;
+    }
+  }
+  @media screen and (max-width:$breakpoint-lg) {
+    background:$purpleLight;
+    right:22px;
+    transition:right .5s ease-in-out;
+    &,.tray__trigger {
+      transition:all .5s ease-in-out;
+    }
+    .show-tray & {
+      right:0;
+      &,.tray__trigger {
+        background:#f8f6fa;
+      }
+    }
+  }
+  @media screen and (max-width:$breakpoint-md) {
+    position:absolute;
+    bottom:0;
+    top:auto;
+    height:40vh;
+    width:calc(100% - 40px);
+    right:auto;
+    left:calc(100% - 22px);
+    z-index:15;
+    .show-tray & {
+      right:auto;
+      left:40px;
+      &,.tray__trigger {
+        background:$purpleLight;
+      }
+    }
+    .component-sankey {
+      &.mini {
+        background:$light;
+        width:50%;
+        padding-top:33.333%;
+      }
+    }
+  }
+  @media screen and (max-width:$breakpoint-sm) {
+    .component-sankey {
+      &.mini {
+        width:100%;
+        padding-top:66.666%;
+      }
+    }
+  }
+}

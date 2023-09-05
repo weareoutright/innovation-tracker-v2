@@ -1,0 +1,109 @@
+.helper {
+  position:absolute;
+  top:50%;
+  left:em(220);
+  max-width:330px;
+  transform:translateY(-50%);
+  svg {
+    display: inline-block;
+    height: 1em;
+    position:relative;
+    top:.1em;
+    margin-right: 0.5em;
+    fill: $dark;
+  }
+  small,strong {
+    display:block;
+  }
+  small {
+    text-transform:uppercase;
+    font-weight:bold;
+    margin-bottom:1em;
+    letter-spacing:1px;
+    em {
+      color:#939393;
+      font-weight:400;
+      font-style:italic;
+      text-decoration:underline;
+      margin-left:1em;
+      text-transform:none;
+      cursor:pointer;
+    }
+  }
+  strong {
+    color:$blueDark;
+    font-size:40px;
+    line-height:1.2em;
+  }
+  &.helper-primary {
+    left:calc(50% + #{em(44)});
+  }
+  &.helper-secondary {
+    text-align:right;
+    left:auto;
+    right:em(220);
+    transform:none;
+  }
+  &.helper-tertiary {
+    text-align:center;
+    left:50%;
+    right:auto;
+    transform:translate(-50%,-50%);
+    z-index:100;
+    max-width:none;
+  }
+  .has_ready-3 & {
+    max-width:200px;
+    strong {
+      font-size:32px;
+    }
+    &.helper-secondary {
+      left:em(220);
+      right:auto;
+    }
+  }
+  .btn {
+    @include typeFilter;
+    border-radius:em(37,17);
+    padding:em(8,17) em(12,17);
+    background:$light;
+    cursor:pointer;
+    margin-top:1em;
+    display:inline-block;
+    color:$blueDark;
+    transition:all .3s ease;
+    &:hover {
+      background:$blueDark;
+      color:$light;
+    }
+  }
+  .component-filters {
+    .download-trigger {
+      display:none;
+    }
+    .filters__wrapper {
+      padding:0;
+    }
+    .filters__filters {
+      flex-wrap:wrap;
+      position:relative;
+      width:100%;
+      justify-content:left;
+      margin-top:1.2em;
+      &:before {
+        content:none;
+      }
+    }
+    .filters__filter {
+      color:$blueDark;
+      border-color:$blueDark;
+      margin:0 em(7,17) em(7,17) 0;
+    }
+  }
+  @media screen and (max-width:$breakpoint-md) {
+    max-width:260px;
+    &.helper-primary {
+      left:calc(50%);
+    }
+  }
+}
