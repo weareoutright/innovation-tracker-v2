@@ -36,9 +36,6 @@ const Header = ({ shortYear }) => {
   return (
     <header className="app-header">
       <div className="component-well-headers">
-        <div className="header-text">
-          <h3>SELECTED FY{shortYear} CLIMATE INNOVATION FUNDING </h3>
-        </div>
         <div className="well__headers">
           {active.map((well, w) => {
             return (
@@ -75,8 +72,8 @@ const Header = ({ shortYear }) => {
                     <div className="well__header well__header-active well__header-main">
                       <h2>
                         {anySelected
-                          ? "Selected FY21 Climate Innovation Funding"
-                          : "FY21 Climate Innovation Funding"}
+                          ? `Selected FY${shortYear} Climate Innovation Funding`
+                          : `FY${shortYear} Climate Innovation Funding`}
                         <em>
                           {amount} ({percentage})
                         </em>

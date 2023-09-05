@@ -5,7 +5,6 @@ import {
   Route,
   useSearchParams,
 } from "react-router-dom";
-import ReactDOM from "react-dom";
 import { createRoot } from "react-dom/client";
 
 import * as Papa from "papaparse";
@@ -41,7 +40,7 @@ import "./theme/styles.scss";
 
 function App() {
   const currentYear = new Date().getFullYear().toString();
-  const [data, setData] = useState(null);
+  const [data, setData] = useState([]);
   const [inputYear, setInputYear] = useState(currentYear);
   const [shortYear, setShortYear] = useState(generateTwoDigitYear(currentYear));
   const [dataYears, setDataYears] = useState([inputYear]);
@@ -55,7 +54,7 @@ function App() {
   const [showTray, setShowTray] = useState(false);
 
   useEffect(() => {
-    setData(getInitialData());
+    setData(Array(getInitialData()));
   }, []);
 
   useEffect(() => {
@@ -85,8 +84,8 @@ function App() {
     );
   };
 
-  const updateDataByYear = () => {
-    fetch("/data/master.csv").then((res) =>
+  const updateDataByYear = async () => {
+    await fetch("/data/master.csv").then((res) =>
       res.text().then((txt) => {
         Papa.parse(txt, {
           header: true,
@@ -125,7 +124,9 @@ function App() {
         <GraphProvider value={{ graph, setGraph }}>
           <SelectedProvider value={{ selected, setSelected }}>
             <AgencyLevelProvider value={{ agencyLevel, setAgencyLevel }}>
-              {data !== null && <GraphGenerator data={data} />}
+              {data !== null && (
+                <GraphGenerator data={data} inputYear={inputYear} />
+              )}
               <ReadyProvider value={{ ready, setReady }}>
                 <div
                   className={`App${

@@ -7,7 +7,7 @@ $breakpoint-sm:730px;
   box-sizing:border-box;
 }
 
-body,html {
+body, html {
   min-height:100%;
   width:100%;
   margin:0;
@@ -132,9 +132,9 @@ body {
     display:flex;
     flex-direction:column;
   }
-  .app__bottom {
+  // .app__bottom {
 
-  }
+  // }
 }
 
 @media screen and (max-width: $breakpoint-sm) {
