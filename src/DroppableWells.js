@@ -69,7 +69,7 @@ const DroppableWells = props => {
   return (
     <div ref={drop} className={`component-wells ${isOver ? ' drop-hover' : ''}`}>
       <div className="wells__wrapper">
-        <BudgetChart />
+        <BudgetChart shortYear={props.shortYear} />
         <div className="wells__wells">
           {[0,1].map(well => <DroppableWell key={well} well={well} />)}
         </div>

@@ -7,7 +7,7 @@ import utils from "./utils"
 
 const nodeIsNode = node => node.sourceLinks != undefined;
 
-const TrayEntry = props => {
+const TrayEntry = (props) => {
 
   const {graph, setGraph} = useContext(GraphContext);
 
@@ -78,14 +78,14 @@ const TrayEntry = props => {
               {total === trueTotal 
                 ? (
                   <React.Fragment>
-                  <br />{percentage} of FY21 climate innovation funding
+                  <br />{percentage} of FY{props.shortYear} climate innovation funding
                   </React.Fragment>
                 )
                 : (
                   <React.Fragment>
                     <br />{percentage} of selected climate innovation funding
-                    <small>{truePercentage} of all FY21 climate innovation funding</small>
-                    {agency && (<small>{agencyPercentage} of all {agency} FY21 climate innovation funding</small>)}
+                    <small>{truePercentage} of all FY${props.shortYear} climate innovation funding</small>
+                    {agency && (<small>{agencyPercentage} of all {agency} FY{props.shortYear} climate innovation funding</small>)}
                   </React.Fragment>
                 )
               }

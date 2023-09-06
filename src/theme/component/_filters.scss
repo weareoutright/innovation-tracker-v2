@@ -43,6 +43,16 @@
         border-color:$blueLight;
         color:$light;
       }
+      &.filters__filter-funding_type {
+        background:$limeGreen;
+        border-color:$limeGreen;
+        color:$dark;
+      }
+      &.filters__filter-funding_source {
+        background:$purpleFilter;
+        border-color:$purpleFilter;
+        color:$light;
+      }
     }
     &:active {
       cursor:grabbing;

@@ -151,16 +151,17 @@ function App() {
                               value={{ highlighted, setHighlighted }}
                             >
                               <main className="app-main">
-                                <AppCore />
+                                <AppCore shortYear={shortYear}/>
                               </main>
                               <TrayProvider value={{ showTray, setShowTray }}>
-                                <Tray data={data} />
+                                <Tray data={data} shortYear={shortYear} />
                               </TrayProvider>
                             </HighlightedProvider>
                           </div>
                           <Footer
                             handleYearChange={handleYearChange}
                             dataYears={dataYears}
+                            shortYear={shortYear}
                           />
                           <Router>
                             <ParamsController />
@@ -185,7 +186,7 @@ function App() {
                                 value={{ highlighted, setHighlighted }}
                               >
                                 <main className="app-main">
-                                  <AppCore />
+                                  <AppCore shortYear={shortYear} />
                                 </main>
                               </HighlightedProvider>
                             </div>

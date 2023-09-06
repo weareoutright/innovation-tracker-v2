@@ -46,8 +46,8 @@
         color:darken($grayLight,10%);
       }
     }
-    &.wells__well-0 {
-    }
+    // &.wells__well-0 {
+    // }
     &.wells__well-available {
       ~ .wells__well {
         opacity:.2;
@@ -127,16 +127,16 @@
       &:after {
         right:0;
       }
-      &:nth-child(1) {
-        &:after {
-          //border-width:1px 0 0 0;
-        }
-      }
-      &:nth-child(3) {
-        &:before {
-          //border-width:1px 0 0 0;
-        }
-      }
+      // &:nth-child(1) {
+      //   &:after {
+      //     border-width:1px 0 0 0;
+      //   }
+      // }
+      // &:nth-child(3) {
+      //   &:before {
+      //     border-width:1px 0 0 0;
+      //   }
+      // }
     }
     &.well__header-main {
       flex:auto;

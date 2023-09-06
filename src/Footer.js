@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState } from "react";
+import React from "react";
 import groups from "./constants/groups";
 
 import DraggableFilters from "./DraggableFilters";
@@ -6,7 +6,7 @@ import DownloadTrigger from "./DownloadTrigger";
 import Stickies from "./Stickies";
 import DataYearSelect from "./DataYearSelect";
 
-const Footer = ({ handleYearChange, dataYears }) => {
+const Footer = ({ handleYearChange, dataYears, shortYear }) => {
   return (
     <footer className="app-footer">
       <div className="footer__wrapper">
@@ -16,7 +16,7 @@ const Footer = ({ handleYearChange, dataYears }) => {
         />
         <DraggableFilters filters={groups} />
         <DownloadTrigger />
-        <Stickies />
+        <Stickies shortYear={shortYear} />
       </div>
     </footer>
   );

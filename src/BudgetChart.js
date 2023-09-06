@@ -23,7 +23,7 @@ const BudgetChart = props => {
           </g>
         </g>
         <circle className="st5" cx="290.3" cy="567.5" r="137.8"/>
-        <text transform="matrix(1 0 0 1 244.9233 505.508)"><tspan x="0" y="0" className="st6 st7">FY21 </tspan><tspan x="-21.6" y="42" className="st6 st7">Budget</tspan></text>
+        <text transform="matrix(1 0 0 1 244.9233 505.508)"><tspan x="0" y="0" className="st6 st7">FY{props.shortYear} </tspan><tspan x="-21.6" y="42" className="st6 st7">Budget</tspan></text>
         <text transform="matrix(1 0 0 1 210.6974 591.0551)"><tspan x="0" y="0" className="st8 st9">of considered </tspan><tspan x="-9.2" y="30" className="st8 st9">agencies (DOE, </tspan><tspan x="8.7" y="60" className="st8 st9">DOT, USDA)</tspan></text>
       </g>
     </svg>

@@ -31,6 +31,7 @@ const labels = {
     loan: "Loan",
     funding_type: "Funding Type",
     funding_source: "Funding Source",
+    annual_appropriations: "Annual Appropriations"
   },
   getLabel: function (label) {
     return this.labels[label] ? this.labels[label] : label;

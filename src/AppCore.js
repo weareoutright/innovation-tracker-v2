@@ -22,7 +22,7 @@ const AppCore = props => {
     <div ref={drop} className={`app-main-content${ isOver ? ' drop-hover' : ''}`}>
       <div className="sankey-spacer"></div>
       <Tutorial />
-      <DroppableWells />
+      <DroppableWells shortYear={props.shortYear}/>
       <Sankey mini={false} />
     </div>
   )

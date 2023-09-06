@@ -45,6 +45,7 @@ const Header = ({ shortYear }) => {
                     well !== null ? " well__header-active" : ""
                   }`}
                   key={w}
+                  onClick={() => closeHeader(w)}
                 >
                   {well !== null && (
                     <h3>

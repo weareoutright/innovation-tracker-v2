@@ -75,7 +75,7 @@ const Stickies = props => {
 
     const stickies = [{
       type:'info',
-      content:'In FY21, DOE contributed twice as much funding for climate innovation as the other two agencies ($7.36B).',
+      content:`In FY${props.shortYear}, DOE contributed twice as much funding for climate innovation as the other two agencies ($7.36B).`,
       position:() => {
         const ref = document.querySelector('.wells__well-0');
         if (ref) {

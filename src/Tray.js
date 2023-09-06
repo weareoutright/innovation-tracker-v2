@@ -127,14 +127,14 @@ const Tray = props => {
         {!showTray ? "Details" : "Hide"}
       </div>
       <div className="tray__content">
-        {primary && <TrayEntry node={summaries[0].node} summaries={summaries[0]} truncated={true}></TrayEntry>}
-        {!primary && grouped && <TrayEntry node={grouped.node} summaries={grouped}></TrayEntry>}
+        {primary && <TrayEntry node={summaries[0].node} summaries={summaries[0]} truncated={true} shortYear={props.shortYear}></TrayEntry>}
+        {!primary && grouped && <TrayEntry node={grouped.node} summaries={grouped} shortYear={props.shortYear}></TrayEntry>}
         {(selected[0] || selected[1]) && 
           <Sankey mini={true} />
         }
         {!primary && summaries.map((summary,s) => {
           return (
-            <TrayEntry node={summary.node} summaries={summary} key={s}></TrayEntry>
+            <TrayEntry node={summary.node} summaries={summary} key={s} shortYear={props.shortYear}></TrayEntry>
           )
         })}
       </div>
