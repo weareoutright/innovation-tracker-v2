@@ -288,6 +288,16 @@ const Sankey = props => {
 
   const colors = (name) => {
     let colorGroup = undefined;
+
+    const filterColors = {
+      stage: '#029EDA',
+      sector: '#8BD2C1',
+      solution: '#EBB700',
+      funding_type: '#C8DA2C',
+      funding_source: '#9C5FB5',
+      default: '#1D5C42',
+    }
+
     for (let key in mappedGroups) {
       const group = mappedGroups[key];
       const match = group.find(label => label === name);
@@ -296,16 +306,22 @@ const Sankey = props => {
     let color;
     switch (colorGroup) {
       case "stage":
-        color = '#029EDA';
+        color = filterColors.stage;
       break;
       case "sector":
-        color = '#8BD2C1';
+        color = filterColors.sector;
       break;
       case "solution":
-        color = '#EBB700';
+        color = filterColors.solution;
+      break;
+      case "funding_type":
+        color = filterColors.funding_type;
+      break;
+      case "funding_source":
+        color = filterColors.funding_source;
       break;
       default:
-        color = '#1D5C42';
+        color = filterColors.default;
       break;
     }
     return color;
@@ -321,6 +337,7 @@ const Sankey = props => {
     switch (colorGroup) {
       case "solution":
       case "sector":
+      case "funding_type":
         color = '#000';
       break;
       default:
