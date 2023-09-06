@@ -30,3 +30,9 @@
 
     background-repeat: no-repeat;
   }
+
+  .data-year:hover {
+    cursor: pointer;
+    background-color: #A0A1C2;
+    transition: all .2s ease-out;
+  }

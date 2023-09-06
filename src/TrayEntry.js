@@ -122,7 +122,7 @@ const TrayEntry = (props) => {
       {isLink != false && 
         <div className="tray__entry__content">
           <div className="tray__entry__header">
-            <p>In FY 2021, {linkPercentage} of {percentage === truePercentage ? '' : 'selected '}<strong>{labels.getLabel(node.target.name)}</strong> climate innovation funding came from <strong>{labels.getLabel(node.source.name)}</strong>.</p>
+            <p>In FY 20{props.shortYear}, {linkPercentage} of {percentage === truePercentage ? '' : 'selected '}<strong>{labels.getLabel(node.target.name)}</strong> climate innovation funding came from <strong>{labels.getLabel(node.source.name)}</strong>.</p>
             <p>{linkReversePercentage} of {percentage === truePercentage ? '' : 'selected '}<strong>{labels.getLabel(node.source.name)}</strong> climate innovation funding went to <strong>{labels.getLabel(node.target.name)}</strong>.</p>
           </div>
         </div>

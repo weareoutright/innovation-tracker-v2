@@ -28,7 +28,7 @@ const organizeTooltipData = summary => {
   return summary;
 }
 
-const Tooltip = ({opts}) => {
+const Tooltip = ({opts, shortYear}) => {
   const {highlighted,setHighlighted} = useContext(HighlightedContext);
   const {active,setActive} = useContext(ActiveContext);
   const {graph, setGraph} = useContext(GraphContext);
@@ -88,7 +88,7 @@ const Tooltip = ({opts}) => {
             <div className="tooltip__content">
               <div className="primary">
                 <div className="header-primary">
-                  In FY 2021, <strong>{labels.getLabel(primary.name)}</strong> climate innovation funding <strong>({percentage})</strong> 
+                  In FY 20{shortYear}, <strong>{labels.getLabel(primary.name)}</strong> climate innovation funding <strong>({percentage})</strong> 
                   {primary.targetLinks.length != 0 && 
                     ' came from:'
                   }
@@ -130,7 +130,7 @@ const Tooltip = ({opts}) => {
             <div className="tooltip__content">
               <div className="primary">
                 <div className="header-primary">
-                  In FY 2021, {utils.toPercentage(primary.value/primary.target.value)} of <strong>{labels.getLabel(primary.target.name)}</strong> climate innovation funding came from <strong>{labels.getLabel(primary.source.name)}</strong>.
+                  In FY 20{shortYear}, {utils.toPercentage(primary.value/primary.target.value)} of <strong>{labels.getLabel(primary.target.name)}</strong> climate innovation funding came from <strong>{labels.getLabel(primary.source.name)}</strong>.
                 </div>
               </div>
             </div>
