@@ -1,9 +1,6 @@
-import React, { useState, useEffect, useContext } from "react";
+import React, { useState, useEffect } from "react";
 import {
   BrowserRouter as Router,
-  Routes,
-  Route,
-  useSearchParams,
 } from "react-router-dom";
 import { createRoot } from "react-dom/client";
 
@@ -11,11 +8,6 @@ import * as Papa from "papaparse";
 import { DndProvider } from "react-dnd";
 import { TouchBackend } from "react-dnd-touch-backend";
 import { HTML5Backend } from "react-dnd-html5-backend";
-import {
-  FaChevronCircleRight,
-  FaChevronCircleLeft,
-  FaTimes,
-} from "react-icons/fa";
 
 import Header from "./Header";
 import Footer from "./Footer";
@@ -33,8 +25,6 @@ import { AgencyLevelProvider } from "./context/AgencyLevelContext";
 import { HelpersProvider } from "./context/HelpersContext";
 import { TrayProvider } from "./context/TrayContext";
 import { generateTwoDigitYear } from "./helperFuncs/generateTwoDigitYear";
-
-import sources from "./constants/sources";
 
 import "./theme/styles.scss";
 

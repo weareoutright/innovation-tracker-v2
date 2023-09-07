@@ -11,8 +11,6 @@ import { mappedGroups as cols } from "./constants/groups";
 const agencyHierarchy = ["agency", "administration", "suboffice", "program"];
 
 const GraphGenerator = ({ data, inputYear }) => {
-  console.log(data, inputYear);
-
   const { agencyLevel, setAgencyLevel } = useContext(AgencyLevelContext);
   const { selected, setSelected } = useContext(SelectedContext);
   const { active, setActive } = useContext(ActiveContext);

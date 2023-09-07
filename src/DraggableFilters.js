@@ -1,6 +1,5 @@
-import React, { useEffect, useRef, useContext, useState } from "react"
+import React, { useContext } from "react"
 import ActiveContext from './context/ActiveContext'
-import DownloadTrigger from "./DownloadTrigger"
 
 import { useDrag } from 'react-dnd'
 import { ItemTypes } from './constants/dragTypes.js'

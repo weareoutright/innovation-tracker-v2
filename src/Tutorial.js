@@ -1,10 +1,8 @@
-import React, { useEffect, useRef, useState, useContext } from "react"
+import React, { useContext } from "react"
 import ActiveContext from './context/ActiveContext'
 import HelpersContext from './context/HelpersContext'
 
-import groups from "./constants/groups"
-
-import DraggableFilters from "./DraggableFilters"
+// import DraggableFilters from "./DraggableFilters"
 
 const Tutorial = props => {
 

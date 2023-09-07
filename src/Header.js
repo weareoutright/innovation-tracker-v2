@@ -1,11 +1,9 @@
-import React, { useEffect, useRef, useState, useContext } from "react";
+import React, { useContext } from "react";
 import ActiveContext from "./context/ActiveContext";
 import GraphContext from "./context/GraphContext";
 import SelectedContext from "./context/SelectedContext";
 import AgencyLevelContext from "./context/AgencyLevelContext";
 import HelpersContext from "./context/HelpersContext";
-
-import { FaTimes } from "react-icons/fa";
 
 import utils from "./utils";
 import labels from "./constants/labels";

@@ -1,9 +1,8 @@
-import React, { useEffect, useRef, useState, useContext } from "react";
+import React, { useContext } from "react";
 import GraphContext from './context/GraphContext'
 import HighlightedContext from './context/HighlightedContext'
 import ActiveContext from './context/ActiveContext'
 import labels from './constants/labels'
-import {mappedGroups} from './constants/groups'
 
 import utils from "./utils"
 

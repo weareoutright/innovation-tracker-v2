@@ -1,16 +1,14 @@
-import React, { useEffect, useRef, useState, useContext } from "react";
+import React, { useContext } from "react";
 import GraphContext from './context/GraphContext'
 import SelectedContext from './context/SelectedContext'
 import HighlightedContext from './context/HighlightedContext'
 import ActiveContext from './context/ActiveContext'
 import TrayContext from './context/TrayContext'
 import labels from './constants/labels'
-import {mappedGroups} from './constants/groups'
 
 import TrayEntry from './TrayEntry'
 import Sankey from "./Sankey";
 
-import utils from "./utils"
 
 const organizeTooltipData = summary => {
   let summaryList = Object.entries(summary).sort((a,b) => {

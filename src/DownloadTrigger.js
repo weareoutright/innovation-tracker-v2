@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState, useContext } from "react"
+import React, { useState, useContext } from "react"
 import ActiveContext from './context/ActiveContext'
 import sources from "./constants/sources";
 

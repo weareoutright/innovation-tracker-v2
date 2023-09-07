@@ -1,10 +1,8 @@
 import React, { useState, useEffect, useContext } from "react";
 import Switch  from 'react-input-switch'
 
-import GraphContext from './context/GraphContext'
 import HighlightedContext from './context/HighlightedContext'
 import ActiveContext from './context/ActiveContext'
-import ReadyContext from './context/ReadyContext'
 import SelectedContext from './context/SelectedContext'
 import AgencyLevelContext from './context/AgencyLevelContext'
 import HelpersContext from './context/HelpersContext'

@@ -1,5 +1,5 @@
 import { useSearchParams } from "react-router-dom";
-import React, { useEffect, useRef, useState, useContext } from "react"
+import { useEffect, useState, useContext } from "react"
 
 import ActiveContext from './context/ActiveContext'
 import SelectedContext from './context/SelectedContext'
