@@ -47,7 +47,7 @@ const Header = ({ shortYear }) => {
                 >
                   {well !== null && (
                     <h3>
-                      <span onClick={() => closeHeader(w)}>
+                      <span>
                         {labels.getLabel(well)}{" "}
                         <svg
                           xmlns="http://www.w3.org/2000/svg"

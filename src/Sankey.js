@@ -20,6 +20,8 @@ import AgencyLevelContext from './context/AgencyLevelContext'
 
 import labels from './constants/labels';
 import {mappedGroups} from './constants/groups';
+import { filterColors } from "./constants/filterColors";
+import { agencyHierarchy } from "./constants/agencyHierarchy";
 
 import { useDrop } from 'react-dnd'
 import { ItemTypes } from './constants/dragTypes.js'
@@ -28,13 +30,6 @@ import { ItemTypes } from './constants/dragTypes.js'
 import Tooltip from './Tooltip';
 
 let tooltip = false;
-
-const agencyHierarchy = [
-  'agency',
-  'administration',
-  'suboffice',
-  'program'
-];
 
 const isMobile = window.innerWidth < 840;
 
@@ -288,15 +283,6 @@ const Sankey = props => {
 
   const colors = (name) => {
     let colorGroup = undefined;
-
-    const filterColors = {
-      stage: '#029EDA',
-      sector: '#8BD2C1',
-      solution: '#EBB700',
-      funding_type: '#C8DA2C',
-      funding_source: '#9C5FB5',
-      default: '#1D5C42',
-    }
 
     for (let key in mappedGroups) {
       const group = mappedGroups[key];
