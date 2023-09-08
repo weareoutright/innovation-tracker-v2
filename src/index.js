@@ -48,6 +48,8 @@ function App() {
   const pageTitle = document.querySelector("#page-title");
   pageTitle.text = `FY${shortYear} Climate Innovation Funding`
 
+  const dataSource = sources.data_dev; // prod: sources.data_prod
+
   useEffect(() => {
     setData(Array(getInitialData()));
   }, []);
@@ -57,7 +59,7 @@ function App() {
   }, [inputYear]);
 
   const getInitialData = async () => {
-    await fetch(sources.data).then((res) =>
+    await fetch(dataSource).then((res) =>
       res.text().then((txt) => {
         Papa.parse(txt, {
           header: true,
@@ -80,7 +82,7 @@ function App() {
   };
 
   const updateDataByYear = async () => {
-    await fetch(sources.data).then((res) =>
+    await fetch(dataSource).then((res) =>
       res.text().then((txt) => {
         Papa.parse(txt, {
           header: true,

@@ -11,9 +11,9 @@ export const mappedGroups = {
   agency: ["agency"],
   sector: [
     "power",
-    "transportation",
+    "transportation_sector",
     "industry",
-    "agriculture",
+    "agriculture_sector",
     "buildings",
     "forestry",
   ],
@@ -29,7 +29,7 @@ export const mappedGroups = {
   ],
   stage: ["rd", "piloting", "deployment"],
   funding_type: ["approps", "one_time"],
-  funding_source: ["energy_water", "transportation", "agriculture", "interior_environment", "iija", "ira"],
+  funding_source: ["energy_water", "transportation_fs", "agriculture_fs", "interior_environment", "iija", "ira"],
 };
 
 export default groups;
