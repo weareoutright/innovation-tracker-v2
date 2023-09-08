@@ -28,8 +28,8 @@ export const mappedGroups = {
     "other",
   ],
   stage: ["rd", "piloting", "deployment"],
-  funding_type: ["appropriations", "bill", "tax_credit", "loan"],
-  funding_source: ["annual_appropriations", "IRA", "IIJA"],
+  funding_type: ["approps", "one_time"],
+  funding_source: ["energy_water", "transportation", "agriculture", "interior_environment", "iija", "ira"],
 };
 
 export default groups;

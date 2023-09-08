@@ -26,6 +26,8 @@ import { HelpersProvider } from "./context/HelpersContext";
 import { TrayProvider } from "./context/TrayContext";
 import { generateTwoDigitYear } from "./helperFuncs/generateTwoDigitYear";
 
+import sources from './constants/sources';
+
 import "./theme/styles.scss";
 
 function App() {
@@ -55,7 +57,7 @@ function App() {
   }, [inputYear]);
 
   const getInitialData = async () => {
-    await fetch("/data/master.csv").then((res) =>
+    await fetch(sources.data).then((res) =>
       res.text().then((txt) => {
         Papa.parse(txt, {
           header: true,
@@ -78,7 +80,7 @@ function App() {
   };
 
   const updateDataByYear = async () => {
-    await fetch("/data/master.csv").then((res) =>
+    await fetch(sources.data).then((res) =>
       res.text().then((txt) => {
         Papa.parse(txt, {
           header: true,

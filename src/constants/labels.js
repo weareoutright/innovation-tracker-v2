@@ -8,6 +8,7 @@ const labels = {
     DOT: "DOT",
     DOE: "DOE",
     USDA: "USDA",
+    DOI: "DOI",
     power: "Power",
     transportation: "Transportation",
     industry: "Industry",
@@ -25,13 +26,18 @@ const labels = {
     rd: "R&D",
     piloting: "Piloting & Demos",
     deployment: "Deployment",
-    appropriations: "Appropriations",
-    bill: "Bill",
-    tax_credit: "Tax Credit",
-    loan: "Loan",
+    energy_water: "Energy & Water",
+    transportation: "Transportation-HUD",
+    agriculture: "Agriculture",
+    interior_environment: "Interior & Environment",
+    iija: "IIJA",
+    ira: "IRA",
+    approps: "Annual Appropriations",
+    one_time: "One-Time Appropriations",
     funding_type: "Funding Type",
     funding_source: "Funding Source",
-    annual_appropriations: "Annual Appropriations"
+    annual_appropriations: "Annual Appropriations",
+
   },
   getLabel: function (label) {
     return this.labels[label] ? this.labels[label] : label;
