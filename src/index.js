@@ -45,7 +45,7 @@ function App() {
   const [showHelpers, setShowHelpers] = useState(true);
   const [showTray, setShowTray] = useState(false);
 
-  const pageTitle = document.querySelector("#page-title");
+  const pageTitle = document.getElementById("page-title");
   pageTitle.text = `FY${shortYear} Climate Innovation Funding`
 
   const dataSource = sources.data_dev; // prod: sources.data_prod
