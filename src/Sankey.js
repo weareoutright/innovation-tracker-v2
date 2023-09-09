@@ -398,6 +398,7 @@ const Sankey = props => {
           <g className="links">
             {links.map((d, i) => (
               <Link
+                key={i}
                 data={d}
                 index={d.index}
                 width={d.width}
@@ -427,6 +428,7 @@ const Sankey = props => {
                 colors={colors}
                 textColors={textColors}
                 mini={mini}
+                key={i}
               />
             ))}
           </g>
@@ -458,6 +460,7 @@ const Sankey = props => {
                           if (label && label.length > labelLimit - 1) label = label.slice(0,labelLimit > 1 ? labelLimit - 1 : 0) + (labelLimit > 1 ? "..." : "");
                           return (
                             <g className="agency-grouping"
+                              key={j}
                               index={j}
                               node={last.agencyHierarchy[j]}
                               parent={last.agencyHierarchy[j-1]}
