@@ -439,7 +439,7 @@ const Sankey = props => {
                 if (d.type === 'agency' && (well === 0 || active[1])) {
                   const diff = updateAgencyHierarchy(d,activeAgencyHierarchy);
                   return (
-                    <React.Fragment>
+                    <React.Fragment key={i}>
                       {activeAgencyHierarchy.map((h,j) => {
                         if (diff[j] && d.agencyHierarchy[j]) {
                           const hierarchyNodes = nodes.filter(n => n.well === well 
