@@ -33,6 +33,7 @@ import "./theme/styles.scss";
 function App() {
   const currentYear = new Date().getFullYear().toString();
   const [data, setData] = useState([]);
+  const [allData, setAllData] = useState([])
   const [inputYear, setInputYear] = useState(currentYear);
   const [shortYear, setShortYear] = useState(generateTwoDigitYear(currentYear));
   const [dataYears, setDataYears] = useState([inputYear]);
@@ -44,19 +45,26 @@ function App() {
   const [agencyLevel, setAgencyLevel] = useState(0);
   const [showHelpers, setShowHelpers] = useState(true);
   const [showTray, setShowTray] = useState(false);
-
-  // const pageTitle = document.getElementById("page-title");
-  // pageTitle.text = `FY${shortYear} Climate Innovation Funding`
-
+  
   const dataSource = sources.data_dev; // prod: sources.data_prod
 
+  // console.group()
+  // console.log('all', allData)
+  // console.log('filtered', data)
+  // console.log('year', inputYear)
+  // console.groupEnd()
+
   useEffect(() => {
-    setData(Array(getInitialData()));
+    getInitialData()
   }, []);
 
   useEffect(() => {
-    updateDataByYear();
-  }, [inputYear]);
+    filterDataByYear()
+  }, [allData])
+
+  useEffect(() => {
+    filterDataByYear()
+  }, [inputYear])
 
   const getInitialData = async () => {
     await fetch(dataSource).then((res) =>
@@ -65,37 +73,26 @@ function App() {
           header: true,
           skipEmptyLines: true,
           complete: (parsed) => {
-            const yearCol = new Set();
 
-            parsed.data.map((row) => yearCol.add(row["fy"]));
+            const yearCol = new Set();
+            parsed.data.map((row) => yearCol.add(row.fy));
+
             const availableYears = [...yearCol].sort((a, b) => b - a);
             setDataYears(availableYears);
 
-            const currentData = parsed.data.filter(
-              (row) => row["fy"] === inputYear
-            );
-            return currentData;
+            setAllData(parsed.data)
           },
         });
       })
     );
   };
 
-  const updateDataByYear = async () => {
-    await fetch(dataSource).then((res) =>
-      res.text().then((txt) => {
-        Papa.parse(txt, {
-          header: true,
-          skipEmptyLines: true,
-          complete: (parsed) => {
-            const yearMatch = parsed.data.filter(
-              (row) => row["fy"] === inputYear
-            );
-            setData(yearMatch);
-          },
-        });
-      })
+  const filterDataByYear = () => {
+    const yearMatch = allData.filter(
+      (row) => row.fy === inputYear
     );
+
+    setData(yearMatch)
   };
 
   const handleYearChange = (e) => {
