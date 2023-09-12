@@ -1,6 +1,7 @@
 .component-filters {
   .filters__filters {
     display:flex;
+    text-wrap: nowrap;
     list-style:none;
     align-items:center;
     justify-content:center;
@@ -63,7 +64,7 @@
   }
   @media screen and (max-width: $breakpoint-lg) {
     .filters__filters {
-      flex-wrap: wrap;
+      flex-wrap:wrap;
       justify-content: flex-start;
       &:before {
         flex:none;
