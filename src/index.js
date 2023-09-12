@@ -1,7 +1,5 @@
 import React, { useState, useEffect } from "react";
-import {
-  BrowserRouter as Router,
-} from "react-router-dom";
+import { BrowserRouter as Router } from "react-router-dom";
 import { createRoot } from "react-dom/client";
 
 import * as Papa from "papaparse";
@@ -26,14 +24,14 @@ import { HelpersProvider } from "./context/HelpersContext";
 import { TrayProvider } from "./context/TrayContext";
 import { generateTwoDigitYear } from "./helperFuncs/generateTwoDigitYear";
 
-import sources from './constants/sources';
+import sources from "./constants/sources";
 
 import "./theme/styles.scss";
 
 function App() {
   const currentYear = new Date().getFullYear().toString();
   const [data, setData] = useState([]);
-  const [dataCache, setDataCache] = useState([])
+  const [dataCache, setDataCache] = useState([]);
   const [inputYear, setInputYear] = useState(currentYear);
   const [shortYear, setShortYear] = useState(generateTwoDigitYear(currentYear));
   const [dataYears, setDataYears] = useState([inputYear]);
@@ -45,16 +43,16 @@ function App() {
   const [agencyLevel, setAgencyLevel] = useState(0);
   const [showHelpers, setShowHelpers] = useState(true);
   const [showTray, setShowTray] = useState(false);
-  
+
   const dataSource = sources.data_dev; // prod: sources.data_prod
 
   useEffect(() => {
-    getInitialData()
+    getInitialData();
   }, []);
 
   useEffect(() => {
-    filterDataByYear()
-  }, [inputYear])
+    filterDataByYear();
+  }, [inputYear]);
 
   const getInitialData = async () => {
     await fetch(dataSource).then((res) =>
@@ -69,14 +67,15 @@ function App() {
             const availableYears = [...yearCol].sort((a, b) => b - a);
             setDataYears(availableYears);
 
-            const parsedPromise = Promise.resolve(parsed)
+            const parsedPromise = Promise.resolve(parsed);
 
             parsedPromise.then((value) => {
-              const currentData = value.data.filter((row) => row.fy === inputYear)
-              setDataCache(value.data)
-              setData(currentData)
-            }
-            )
+              const currentData = value.data.filter(
+                (row) => row.fy === inputYear
+              );
+              setDataCache(value.data);
+              setData(currentData);
+            });
           },
         });
       })
@@ -84,8 +83,8 @@ function App() {
   };
 
   const filterDataByYear = () => {
-    const filteredData = dataCache.filter((row) => row.fy === inputYear)
-    setData(filteredData)
+    const filteredData = dataCache.filter((row) => row.fy === inputYear);
+    setData(filteredData);
   };
 
   const handleYearChange = (e) => {
@@ -138,7 +137,7 @@ function App() {
                               value={{ highlighted, setHighlighted }}
                             >
                               <main className="app-main">
-                                <AppCore shortYear={shortYear}/>
+                                <AppCore shortYear={shortYear} />
                               </main>
                               <TrayProvider value={{ showTray, setShowTray }}>
                                 <Tray data={data} shortYear={shortYear} />
@@ -185,7 +184,7 @@ function App() {
                             opts={{ enableMouseEvents: true }}
                           >
                             <TrayProvider value={{ showTray, setShowTray }}>
-                              <Tray data={data} shortYear={shortYear}/>
+                              <Tray data={data} shortYear={shortYear} />
                             </TrayProvider>
                             <Footer
                               handleYearChange={handleYearChange}
