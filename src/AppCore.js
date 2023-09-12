@@ -23,7 +23,7 @@ const AppCore = props => {
       <div className="sankey-spacer"></div>
       <Tutorial />
       <DroppableWells shortYear={props.shortYear}/>
-      <Sankey mini={false} />
+      <Sankey mini={false}/>
     </div>
   )
 

@@ -231,7 +231,11 @@ const GraphGenerator = ({ data, inputYear }) => {
     localGraph.links = getLinks(data, primaryNodes, secondaryNodes);
   }
 
-  const maybeUpdateGraph = () => {
+  useEffect(() => {
+    setGraph(localGraph)
+  }, [data])
+
+  useEffect(() => {
     localGraph.trueTotal = localGraph.links.reduce((a, b) => a + b.value, 0);
     localGraph.agencyTotals = localGraph.links.reduce((a, b) => {
       const source = localGraph.nodes[b.source];
@@ -267,14 +271,6 @@ const GraphGenerator = ({ data, inputYear }) => {
     );
     localGraph.total = localGraph.links.reduce((a, b) => a + b.value, 0);
     localGraph.valid = graphIsValid(localGraph);
-  }
-
-  // useEffect(() => {
-  //   maybeUpdateGraph();
-  // }, [inputYear])
-
-  useEffect(() => {
-    maybeUpdateGraph();
 
     if (
       !graph ||

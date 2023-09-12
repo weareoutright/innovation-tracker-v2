@@ -33,7 +33,7 @@ import "./theme/styles.scss";
 function App() {
   const currentYear = new Date().getFullYear().toString();
   const [data, setData] = useState([]);
-  const [allData, setAllData] = useState([])
+  const [dataCache, setDataCache] = useState([])
   const [inputYear, setInputYear] = useState(currentYear);
   const [shortYear, setShortYear] = useState(generateTwoDigitYear(currentYear));
   const [dataYears, setDataYears] = useState([inputYear]);
@@ -48,19 +48,9 @@ function App() {
   
   const dataSource = sources.data_dev; // prod: sources.data_prod
 
-  // console.group()
-  // console.log('all', allData)
-  // console.log('filtered', data)
-  // console.log('year', inputYear)
-  // console.groupEnd()
-
   useEffect(() => {
     getInitialData()
   }, []);
-
-  useEffect(() => {
-    filterDataByYear()
-  }, [allData])
 
   useEffect(() => {
     filterDataByYear()
@@ -73,14 +63,20 @@ function App() {
           header: true,
           skipEmptyLines: true,
           complete: (parsed) => {
-
             const yearCol = new Set();
             parsed.data.map((row) => yearCol.add(row.fy));
 
             const availableYears = [...yearCol].sort((a, b) => b - a);
             setDataYears(availableYears);
 
-            setAllData(parsed.data)
+            const parsedPromise = Promise.resolve(parsed)
+
+            parsedPromise.then((value) => {
+              const currentData = value.data.filter((row) => row.fy === inputYear)
+              setDataCache(value.data)
+              setData(currentData)
+            }
+            )
           },
         });
       })
@@ -88,11 +84,8 @@ function App() {
   };
 
   const filterDataByYear = () => {
-    const yearMatch = allData.filter(
-      (row) => row.fy === inputYear
-    );
-
-    setData(yearMatch)
+    const filteredData = dataCache.filter((row) => row.fy === inputYear)
+    setData(filteredData)
   };
 
   const handleYearChange = (e) => {
@@ -192,11 +185,12 @@ function App() {
                             opts={{ enableMouseEvents: true }}
                           >
                             <TrayProvider value={{ showTray, setShowTray }}>
-                              <Tray data={data} />
+                              <Tray data={data} shortYear={shortYear}/>
                             </TrayProvider>
                             <Footer
                               handleYearChange={handleYearChange}
                               dataYears={dataYears}
+                              shortYear={shortYear}
                             />
                             <Router>
                               <ParamsController />

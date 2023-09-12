@@ -11,8 +11,10 @@ const labels = {
     DOI: "DOI",
     power: "Power",
     transportation_sector: "Transportation",
+    transportation: "Transportation",
     industry: "Industry",
     agriculture_sector: "Agriculture",
+    agriculture: "Agriculture",
     buildings: "Buildings",
     forestry: "Forestry",
     efficiency: "Efficiency",
@@ -37,7 +39,6 @@ const labels = {
     funding_type: "Funding Type",
     funding_source: "Funding Source",
     annual_appropriations: "Annual Appropriations",
-
   },
   getLabel: function (label) {
     return this.labels[label] ? this.labels[label] : label;

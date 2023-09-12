@@ -5,9 +5,9 @@ const DataYearSelect = ({ handleYearChange, dataYears }) => {
     <div className="container">
       <form className="DataYearSelect" onChange={handleYearChange}>
         <select className="data-year" name="data-year">
-          {dataYears.map((year) => {
+          {dataYears.map((year, i) => {
             return (
-              <option key={year} value={year}>
+              <option key={i} value={year}>
                 FY {year}
               </option>
             );
