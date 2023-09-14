@@ -1,11 +1,7 @@
-import {
-  fy2021ModSvg,
-  fy2022ModSvg,
-  fy2023ModSvg,
-} from "./constants/budgetPieCharts";
+import { getPieChart } from "./constants/budgetPieCharts";
 
 const BudgetChart = ({ shortYear }) => {
-  return <>{fy2023ModSvg}</>;
+  return <>{getPieChart(shortYear)}</>;
 };
 
 export default BudgetChart;

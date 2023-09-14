@@ -263,8 +263,8 @@ export const fy2022ModSvg = (
         y2="566.41"
         gradientUnits="userSpaceOnUse"
       >
-        <stop offset=".19" stop-color="#253d86" />
-        <stop offset=".88" stop-color="#9c5fb5" />
+        <stop offset=".19" stopColor="#253d86" />
+        <stop offset=".88" stopColor="#9c5fb5" />
       </linearGradient>
     </defs>
 
@@ -712,3 +712,13 @@ export const fy2023ModSvg = (
     />
   </svg>
 );
+
+const PieChartsByYear = {
+  ["21"]: fy2021ModSvg,
+  ["22"]: fy2022ModSvg,
+  ["23"]: fy2023ModSvg,
+};
+
+export const getPieChart = (shortYear) => {
+  return PieChartsByYear[shortYear];
+};
