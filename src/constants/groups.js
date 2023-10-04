@@ -30,7 +30,7 @@ export const mappedGroups = {
     "other",
   ],
   stage: ["rd", "piloting", "deployment"],
-  funding_type: ["approps", "one_time"],
+  funding_type: ["approps", "one_time", "tax_credit"],
   funding_source: [
     "energy_water",
     "transportation_fs",

@@ -44,10 +44,10 @@ function App() {
   const [showHelpers, setShowHelpers] = useState(true);
   const [showTray, setShowTray] = useState(false);
 
-  const dataSource = sources.data_dev_v2;
+  const dataSource = sources.data_dev;
   /* 
-  prod: sources.data_prod_v2
-  dev: sources.data_dev_v2
+  prod: sources.data_prod
+  dev: sources.data_dev
   */
 
   useEffect(() => {
@@ -68,7 +68,9 @@ function App() {
             const yearCol = new Set();
             parsed.data.map((row) => yearCol.add(row.fy));
 
-            const availableYears = [...yearCol].sort((a, b) => b - a);
+            const availableYears = [...yearCol]
+              .filter((year) => year <= currentYear)
+              .sort((a, b) => b - a);
             setDataYears(availableYears);
 
             const parsedPromise = Promise.resolve(parsed);

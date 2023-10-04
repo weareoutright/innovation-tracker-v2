@@ -36,6 +36,7 @@ const labels = {
     ira: "IRA",
     approps: "Annual Appropriations",
     one_time: "One-Time Appropriations",
+    tax_credit: "Tax Credits",
     funding_type: "Funding Type",
     funding_source: "Funding Source",
     annual_appropriations: "Annual Appropriations",
