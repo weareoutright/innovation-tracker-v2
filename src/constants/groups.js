@@ -12,10 +12,8 @@ export const mappedGroups = {
   sector: [
     "power",
     "transportation_sector",
-    "transportation",
     "industry",
     "agriculture_sector",
-    "agriculture",
     "buildings",
     "forestry",
   ],

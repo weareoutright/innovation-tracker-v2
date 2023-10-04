@@ -5,10 +5,9 @@ import ActiveContext from "./context/ActiveContext";
 import GraphContext from "./context/GraphContext";
 import SelectedContext from "./context/SelectedContext";
 import AgencyLevelContext from "./context/AgencyLevelContext";
+import { agencyHierarchy } from "./constants/agencyHierarchy";
 
 import { mappedGroups as cols } from "./constants/groups";
-
-const agencyHierarchy = ["agency", "administration", "suboffice", "program"];
 
 const GraphGenerator = ({ data, inputYear }) => {
   const { agencyLevel, setAgencyLevel } = useContext(AgencyLevelContext);
@@ -232,8 +231,8 @@ const GraphGenerator = ({ data, inputYear }) => {
   }
 
   useEffect(() => {
-    setGraph(localGraph)
-  }, [data])
+    setGraph(localGraph);
+  }, [data]);
 
   useEffect(() => {
     localGraph.trueTotal = localGraph.links.reduce((a, b) => a + b.value, 0);
@@ -264,7 +263,7 @@ const GraphGenerator = ({ data, inputYear }) => {
       localGraph.raw.nodes
     );
     localGraph.raw.valid = graphIsValid(localGraph.raw);
-  
+
     [localGraph.links, localGraph.nodes] = maybeFilterSelected(
       localGraph.links,
       localGraph.nodes
