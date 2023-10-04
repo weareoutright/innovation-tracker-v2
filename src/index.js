@@ -44,7 +44,7 @@ function App() {
   const [showHelpers, setShowHelpers] = useState(true);
   const [showTray, setShowTray] = useState(false);
 
-  const dataSource = sources.data_prod;
+  const dataSource = sources.data_dev;
   /* 
   prod: sources.data_prod
   dev: sources.data_dev
