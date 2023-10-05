@@ -28,8 +28,6 @@ import sources from "./constants/sources";
 
 import "./theme/styles.scss";
 
-console.log(process.env.REACT_APP_DATA);
-
 function App() {
   const currentYear = new Date().getFullYear().toString();
   const [data, setData] = useState([]);
@@ -47,10 +45,6 @@ function App() {
   const [showTray, setShowTray] = useState(false);
 
   const dataSource = sources[process.env.REACT_APP_DATA];
-  /* 
-  prod: sources.data_prod
-  dev: sources.data_dev
-  */
 
   useEffect(() => {
     getInitialData();
