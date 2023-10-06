@@ -7,6 +7,11 @@ const groups = [
   "funding_source",
 ];
 
+/*
+ * * mappedGroups must be exact matches to columns present in spreadsheet data, otherwise
+ * * app will crash
+ */
+
 export const mappedGroups = {
   agency: ["agency"],
   sector: [
