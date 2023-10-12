@@ -65,13 +65,11 @@ body {
 
 %container {
   @extend %offsetPanelRight;
-  width:50%;
-  max-width:em(1100);
+  width:100%;
+  max-width:em(1400);
   margin-left:auto;
   margin-right:auto;
   position:relative;
-  padding-left: 0;
-  padding-right: 0;
   @media screen and (max-width:$breakpoint-md) {
     padding-right:30px;
   }
