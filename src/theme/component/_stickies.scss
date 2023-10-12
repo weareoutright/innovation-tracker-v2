@@ -26,7 +26,7 @@ $control-h: em(52);
       &:last-child {
         width:$control-w-inner;
         border-radius:$control-w-inner;
-        left: calc(100% - 0.4em - 2px);
+        left: calc(100% - .99em - 2px);
         right: auto;
         &:after {
           content:"ON";
