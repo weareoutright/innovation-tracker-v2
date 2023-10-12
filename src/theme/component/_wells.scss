@@ -155,12 +155,14 @@
     text-align: center;
     em {
       display:block;
+      font-size: .9em !important;
     }
   }
   h2 {
     @include typeHeaderWell;
     padding:0 1em;
     margin-top:-.1em;
+    font-size: 1.2em !important;
   }
   h3 {
     @include typeHeaderWellSecondary;

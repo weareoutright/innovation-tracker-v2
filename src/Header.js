@@ -71,8 +71,8 @@ const Header = ({ shortYear }) => {
                     <div className="well__header well__header-active well__header-main">
                       <h2>
                         {anySelected
-                          ? `Selected FY${shortYear} Climate Innovation Funding`
-                          : `FY${shortYear} Climate Innovation Funding`}
+                          ? `Selected FY${shortYear} Climate Innovation Funding: Mitigation`
+                          : `FY${shortYear} Climate Innovation Funding: Mitigation`}
                         <em>
                           {amount} ({percentage})
                         </em>
