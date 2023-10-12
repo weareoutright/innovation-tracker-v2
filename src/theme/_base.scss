@@ -102,8 +102,10 @@ body {
   .app-main-content {
     max-height:em(700);
     height:100%;
+    width: 100%;
     position:relative;
     pointer-events:all;
+    margin-left: 7.5em;
   }
   .sankey-spacer {
     height:100%;
