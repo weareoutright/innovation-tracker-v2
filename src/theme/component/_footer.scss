@@ -10,12 +10,13 @@
   width:100%;
   background:transparent linear-gradient(50deg, $blueDark 0%, $purple 100%) 0% 0% no-repeat padding-box;
   .footer__wrapper {
-    padding:0 em(78);
+    padding:0 em(75);
     display:flex;
     justify-content:center;
     width:100%;
     > * {
-      margin-left:em(85);
+
+      margin-left:em(80);
       &:first-child {
         margin-left:0;
       }
@@ -24,7 +25,7 @@
   @media screen and (max-width:$breakpoint-xl) {
     .footer__wrapper {
       > * {
-        margin-left:em(40);
+        margin-left:em(75);
         display:block;
       }
     }

@@ -20,10 +20,14 @@ $control-h: em(52);
         background:transparent;
         border:1px solid $light;
         border-radius:$control-w;
+        inset: 0;
+        width: 3.75em;
       }
       &:last-child {
         width:$control-w-inner;
         border-radius:$control-w-inner;
+        left: calc(100% - 0.4em - 2px);
+        right: auto;
         &:after {
           content:"ON";
           position:absolute;
