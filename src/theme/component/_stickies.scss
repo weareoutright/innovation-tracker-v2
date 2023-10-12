@@ -26,8 +26,6 @@ $control-h: em(52);
       &:last-child {
         width:$control-w-inner;
         border-radius:$control-w-inner;
-        left: calc(100% - .99em - 2px);
-        right: auto;
         &:after {
           content:"ON";
           position:absolute;
@@ -53,7 +51,7 @@ $control-h: em(52);
     }
     input[value="1"] {
       ~ span:last-child {
-        left:calc(100% - #{$control-w-inner} - 2px);
+        left:calc(100% - 0.99em - 2px);
         right:auto;
         &:after {
           content:"ON";
