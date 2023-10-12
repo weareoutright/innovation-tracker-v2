@@ -15,10 +15,9 @@
     justify-content:center;
     width:100%;
     > * {
-
       margin-left:em(60);
       &:first-child {
-        margin-left:0;
+        margin-left:-.25em;
       }
     }
   }
