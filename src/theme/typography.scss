@@ -27,7 +27,7 @@ $fontBase: "Basier Circle", "Arial", sans-serif;
   @include typeContrast;
   font-size: em(20);
   font-weight: 900;
-  text-transform:uppercase;
+  // text-transform:uppercase;
   em {
     display:block;
     font-size: em(15,20);
