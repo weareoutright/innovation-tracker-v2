@@ -54,7 +54,9 @@ const GraphGenerator = ({ data, inputYear }) => {
       return l;
     });
     let newNodes = nodes.filter((n, i) => {
-      if (!selected[n.well] || n.selected) {
+      const otherWell = n.well === 0 ? 1 : 0;
+      const wellHasSelected = selected[n.well] || (!active[n.well] && !selected[n.well] && selected[otherWell]);
+      if (!wellHasSelected || n.selected) {
         n.originalIndex = i;
         return true;
       }
@@ -95,6 +97,8 @@ const GraphGenerator = ({ data, inputYear }) => {
     } else {
       nodes = col;
     }
+    const otherWell = index === 0 ? 1 : 0;
+    const selectedVal = (!active[index] && !selected[index]) ? selected[otherWell] : selected[index];
     nodes = nodes
       .filter((n) => n !== null && n.value !== 0)
       .map((n) => {
@@ -102,13 +106,12 @@ const GraphGenerator = ({ data, inputYear }) => {
         let node = {
           type: type,
           name: name,
-          selected: selected[index] === name,
+          selected: selectedVal === name,
           well: index,
         };
         if (type === "agency") {
           node.agencyHierarchy = getNodeAgencyHierarchy(node);
-          if (node.agencyHierarchy.indexOf(selected[index]) !== -1)
-            node.selected = true;
+          if (node.agencyHierarchy.indexOf(selectedVal) !== -1) node.selected = true;
         }
         return node;
       });
