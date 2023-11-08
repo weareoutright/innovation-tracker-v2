@@ -9,7 +9,7 @@
   z-index:1;
   transition:left .5s ease-in-out;
   .tutorial-active:not(.has_active-1):not(.has_active-2) & {
-    left:calc(50% - #{em(200)});
+    left:calc(50% - #{em(280)});
 
   }
   .drop-hover & {
