@@ -161,6 +161,7 @@ const GraphGenerator = ({ data, inputYear }) => {
         target_val = parseInt(datum[tertiaryValidity.target].replace(",", ""));
         filter_val = parseInt(datum[primaryValidity.target].replace(",", ""));
       } else {
+        console.log(primaryValidity);
         source_val = parseInt(datum[primaryValidity.target].replace(",", ""));
         target_val = parseInt(datum[secondaryValidity.target].replace(",", ""));
         filter_val = total;

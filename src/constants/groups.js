@@ -35,10 +35,9 @@ export const mappedGroups = {
   stage: ["rd", "piloting", "deployment"],
   funding_type: ["approps", "one_time", "tax_credit"],
   funding_source: [
-    "energy_water",
-    "transportation_fs",
-    "agriculture_fs",
-    "interior_environment",
+    "fy21_omni",
+    "fy22_omni",
+    "fy23_omni",
     "iija",
     "ira",
   ],
