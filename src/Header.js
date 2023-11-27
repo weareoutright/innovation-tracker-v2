@@ -4,6 +4,8 @@ import GraphContext from "./context/GraphContext";
 import SelectedContext from "./context/SelectedContext";
 import AgencyLevelContext from "./context/AgencyLevelContext";
 import HelpersContext from "./context/HelpersContext";
+import { filterColors } from "./constants/filterColors.js";
+import { mappedGroups } from "./constants/groups.js";
 
 import utils from "./utils";
 import labels from "./constants/labels";
@@ -47,7 +49,16 @@ const Header = ({ shortYear }) => {
                 >
                   {well !== null && (
                     <h3>
-                      <span>
+                      <span
+                        style={{
+                          border: `1px solid ${filterColors[well]}`,
+                          backgroundColor: `${filterColors[well]}`,
+                          color:
+                            well === "agency" || well === "solution"
+                              ? "#fff"
+                              : "#000",
+                        }}
+                      >
                         {labels.getLabel(well)}{" "}
                         <svg
                           xmlns="http://www.w3.org/2000/svg"
@@ -76,6 +87,12 @@ const Header = ({ shortYear }) => {
                         <em>
                           {amount} ({percentage})
                         </em>
+                        {/* need to look into which subgroups to map here -- how to access?
+                        <em>
+                          {mappedGroups[well].map((group) =>
+                            labels.getLabel(group)
+                          )}
+                        </em> */}
                       </h2>
                     </div>
                   )}

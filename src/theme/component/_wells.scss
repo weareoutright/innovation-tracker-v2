@@ -146,6 +146,9 @@
         text-transform: uppercase;
         color: $brandAlmostBlack;
         max-width:none;
+        em {
+          font-family: $secondaryFont !important;
+        }
       }
       &:before,&:after {
         //border-width:1px 0 0 0;
@@ -172,7 +175,7 @@
     display:inline-block;
     span {
       border-radius:2em;
-      border:1px solid $light;
+      // border:1px solid $light;
       padding:.33em .5em;
       white-space:nowrap;
       display:block;

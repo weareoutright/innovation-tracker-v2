@@ -384,9 +384,10 @@ const Sankey = (props) => {
     }
     let color;
     switch (colorGroup) {
-      case "solution":
       case "sector":
       case "funding_type":
+      case "funding_source":
+      case "stage":
         color = "#000";
         break;
       default:
