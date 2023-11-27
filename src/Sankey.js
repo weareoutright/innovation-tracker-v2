@@ -352,6 +352,8 @@ const Sankey = (props) => {
     }
     let color;
     switch (colorGroup) {
+      case "agency":
+        color = filterColors.agency;
       case "stage":
         color = filterColors.stage;
         break;

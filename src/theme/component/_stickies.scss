@@ -17,13 +17,14 @@ $control-h: em(52);
     width:$control-h;
     span {
       &:first-of-type {
-        background:transparent;
-        border:1px solid $light;
+        background: transparent;
+        border:1px solid $brandBlue;
         border-radius:$control-w;
         inset: 0;
         width: 3.25em;
       }
       &:last-child {
+        background-color: $brandBlue;
         width:$control-w-inner;
         border-radius:$control-w-inner;
         &:after {
@@ -32,20 +33,24 @@ $control-h: em(52);
           top:50%;
           left:50%;
           transform:translate(-50%,-50%);
-          font-size:em(9);
-          color:$purple;
+          font-size:em(14);
+          font-weight: 600;
+          color: $light;
+          background-color: $brandBlue;
         }
       }
     }
     input[value="0"] {
       + span:first-of-type {
-        //background:rgba($light,.5);
+        color: $brandBlue;
       }
       ~ span:last-child {
         left:2px;
         right:auto;
         &:after {
-          content:"OFF";
+          content:"Off";
+          background-color: $brandBlue;
+          color: $light;
         }
       }
     }
@@ -54,7 +59,7 @@ $control-h: em(52);
         left:calc(100% - 0.99em - 2px);
         right:auto;
         &:after {
-          content:"ON";
+          content:"On";
         }
       }
     }

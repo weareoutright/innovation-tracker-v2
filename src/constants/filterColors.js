@@ -8,6 +8,7 @@
 */
 
 export const filterColors = {
+  agency: "#0033CC",
   stage: "#A1E214",
   sector: "#009933",
   solution: "#B76CD9",

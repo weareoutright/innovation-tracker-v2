@@ -7,11 +7,13 @@
   }
   display:flex;
   align-items:center;
-  .download__label {
-    @include typeFilterPre;
-    margin-right:em(10,15);
-  }
+
   .download__button {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
     border-radius: $borderRadius;
     font-family: $secondaryFont;
     color: $brandBlue;
@@ -20,13 +22,11 @@
     font-style: normal;
     font-weight: 900;
     display: inline-flex;
-    padding: 0.45rem 2rem 0.45rem 1.25rem;
+    padding: $padding;
+    padding-left: 1.5em;
     align-items: center;
-    gap: 0.5rem;
     appearance: none;
-    span {
-      display: inline-block;
-    }
+    border: 1px solid $brandBlue;
     &:hover {
       background:$light;
       > svg {
@@ -35,7 +35,6 @@
         }
       }
     }
-    display:inline-block;
     cursor:pointer;
     position:relative;
     z-index:10;
@@ -43,7 +42,7 @@
       transition:all .3s ease;
     }
     > svg {
-      height:em(30);
+      height:em(20);
       width:em(36);
       path {
         fill:$brandLightGray;

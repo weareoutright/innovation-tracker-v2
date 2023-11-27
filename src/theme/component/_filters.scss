@@ -1,4 +1,10 @@
 .component-filters {
+  .active-filter {
+    border: 1px solid $grayLight !important;
+    color: $grayLight !important;
+    background-color: transparent !important;
+  }
+
   .filters__filters {
     display:flex;
     text-wrap: nowrap;
@@ -10,20 +16,21 @@
     &:before {
       @include typeFilterPre;
       margin-right:em(10,15);
-      content:"Filters";
+      content:"Filters:";
     }
   }
   .filters__filter {
     @include typeFilter;
     margin-right:em(7,17);
-    border: 1px solid $light;
+    border: 1px solid $brandAlmostBlack;
+    color: $brandAlmostBlack;
     border-radius:em(37,17);
     padding:em(8,17) em(12,17);
     cursor:grab;
     transition:all .33s ease;
-    &:hover,&:active,&.active {
-      background:$light;
-      color:$blueDark;
+    // &:hover,&:active,&.active {
+    //   background:$light;
+    //   color:$blueDark;
       &.filters__filter-agency {
         background:$brandBlue;
         border-color:$brandBlue;
@@ -52,11 +59,12 @@
       &.filters__filter-funding_source {
         background:$brandYellow;
         border-color:$brandYellow;
-        color:$light;
+        color:$dark;
       }
-    }
+    // }
     &:active {
       cursor:grabbing;
+      
     }
   }
   .download-trigger {

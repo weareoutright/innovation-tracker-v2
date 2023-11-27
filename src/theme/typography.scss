@@ -65,9 +65,9 @@ $fontBase: 'Franklin Gothic Medium', 'Arial', Arial, sans-serif;
 @mixin typeFilterPre {
   @include typeHeader;
   @include typeContrast;
-  font-size: em(15);
-  text-transform:uppercase;
-  font-weight:600;
+  color: $brandAlmostBlack;
+  font-size: em(23);
+  font-weight:400;
   @media screen and (max-width:$breakpoint-lg) {
     font-size:em(14);
   }
