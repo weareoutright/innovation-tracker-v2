@@ -16,7 +16,7 @@
   .filters__filter {
     @include typeFilter;
     margin-right:em(7,17);
-    border:1px solid $light;
+    border: 1px solid $light;
     border-radius:em(37,17);
     padding:em(8,17) em(12,17);
     cursor:grab;
@@ -25,33 +25,33 @@
       background:$light;
       color:$blueDark;
       &.filters__filter-agency {
-        background:$greenDark;
-        border-color:$greenDark;
+        background:$brandBlue;
+        border-color:$brandBlue;
         color:$light;
       }
       &.filters__filter-sector {
-        background:$teal;
-        border-color:$teal;
+        background:$brandGreen;
+        border-color:$brandGreen;
         color:$dark;
       }
       &.filters__filter-solution {
-        background:$yellow;
-        border-color:$yellow;
+        background:$brandLavender;
+        border-color:$brandLavender;
         color:$dark;
       }
       &.filters__filter-stage {
-        background:$blueLight;
-        border-color:$blueLight;
-        color:$light;
+        background:$brandYellowGreen;
+        border-color:$brandYellowGreen;
+        color:$brandAlmostBlack;
       }
       &.filters__filter-funding_type {
-        background:$limeGreen;
-        border-color:$limeGreen;
+        background:$brandCyan;
+        border-color:$brandCyan;
         color:$dark;
       }
       &.filters__filter-funding_source {
-        background:$purpleFilter;
-        border-color:$purpleFilter;
+        background:$brandYellow;
+        border-color:$brandYellow;
         color:$light;
       }
     }

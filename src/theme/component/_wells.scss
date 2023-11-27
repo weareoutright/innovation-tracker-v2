@@ -142,6 +142,9 @@
     &.well__header-main {
       flex:auto;
       h2 {
+        font-family: $mainFont;
+        text-transform: uppercase;
+        color: $brandAlmostBlack;
         max-width:none;
       }
       &:before,&:after {

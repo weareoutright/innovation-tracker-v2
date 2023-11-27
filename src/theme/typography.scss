@@ -1,5 +1,5 @@
 $typeBase: 14px;
-$fontBase: "Basier Circle", "Arial", sans-serif;
+$fontBase: 'Franklin Gothic Medium', 'Arial', Arial, sans-serif;
 
 @function em($px, $base: 16) {
   @return math.div($px,$base) * 1em;
@@ -7,7 +7,7 @@ $fontBase: "Basier Circle", "Arial", sans-serif;
 
 @mixin typeDefault {
   color: $dark;
-  font-family: $fontBase;
+  font-family: $secondaryFont;
   font-size: $typeBase;
   font-weight: normal;
   line-height: 1.2em;
