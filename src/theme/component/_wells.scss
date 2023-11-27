@@ -142,7 +142,15 @@
     &.well__header-main {
       flex:auto;
       h2 {
+        font-family: $mainFont;
+        text-transform: uppercase;
+        color: $brandAlmostBlack;
         max-width:none;
+        font-size: 1.65em !important;
+        em {
+          font-family: $secondaryFont !important;
+          font-size: .75em !important;
+        }
       }
       &:before,&:after {
         //border-width:1px 0 0 0;
@@ -169,7 +177,7 @@
     display:inline-block;
     span {
       border-radius:2em;
-      border:1px solid $light;
+      // border:1px solid $light;
       padding:.33em .5em;
       white-space:nowrap;
       display:block;

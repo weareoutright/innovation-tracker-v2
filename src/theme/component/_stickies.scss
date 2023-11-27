@@ -17,13 +17,14 @@ $control-h: em(52);
     width:$control-h;
     span {
       &:first-of-type {
-        background:transparent;
-        border:1px solid $light;
+        background: transparent;
+        border:1px solid $brandBlue;
         border-radius:$control-w;
         inset: 0;
         width: 3.25em;
       }
       &:last-child {
+        background-color: $brandBlue;
         width:$control-w-inner;
         border-radius:$control-w-inner;
         &:after {
@@ -32,20 +33,24 @@ $control-h: em(52);
           top:50%;
           left:50%;
           transform:translate(-50%,-50%);
-          font-size:em(9);
-          color:$purple;
+          font-size:em(14);
+          font-weight: 600;
+          color: $light;
+          background-color: $brandBlue;
         }
       }
     }
     input[value="0"] {
       + span:first-of-type {
-        //background:rgba($light,.5);
+        color: $brandBlue;
       }
       ~ span:last-child {
         left:2px;
         right:auto;
         &:after {
-          content:"OFF";
+          content:"Off";
+          background-color: $brandBlue;
+          color: $light;
         }
       }
     }
@@ -54,7 +59,7 @@ $control-h: em(52);
         left:calc(100% - 0.99em - 2px);
         right:auto;
         &:after {
-          content:"ON";
+          content:"On";
         }
       }
     }
@@ -70,14 +75,15 @@ $control-h: em(52);
   }
   .sticky {
     position:absolute;
+    border: 1px solid $brandCyan;
     border-radius:em(8);
     padding:em(13);
-    background:$purpleLight;
+    background:$light;
     display:none;
-    width:em(224,13);
-    color:$dark;
+    width:em(230,10);
+    color:$brandAlmostBlack;
     pointer-events:all;
-    padding-right:em(40);
+    padding:em(40);
     box-shadow: 5px 5px 25px #00000029;
     font-size:em(13);
     line-height:1.35em;
@@ -85,7 +91,7 @@ $control-h: em(52);
       display:block;
     }
     &.sticky-info {
-      background:$yellowLight;
+      background:$brandCyan;
       padding-right:em(13);
       .sticky__close {
         svg {
@@ -104,13 +110,13 @@ $control-h: em(52);
         height:24px;
         width:24px;
         path {
-          fill:#9C5FB5;
+          fill:$brandCyan;
         }
       }
     }
     .sticky__content {
       .info {
-        border:1px solid #939393;
+        border:1px solid $brandCyan;
         padding:1px;
         display:inline-block;
         border-radius:24px;

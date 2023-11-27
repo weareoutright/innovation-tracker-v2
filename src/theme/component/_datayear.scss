@@ -2,41 +2,50 @@
     width: 50%;
 }
 
-.data-year {
-    border: 1px solid $light;
-    border-radius: $borderRadius;
-    font-family: $font;
-    color: $light;
-    background-color: transparent;
-    font-size: .95rem;
-    font-style: normal;
-    font-weight: 900;
-    display: inline-flex;
-    padding: 0.45rem 2rem 0.45rem 1.25rem;
+.data-year-container {
+    display: flex;
+    flex-direction: row;
     align-items: center;
-    gap: 0.5rem;
-    appearance: none;
-
-    background-image:
-        linear-gradient(45deg, transparent 50%, $light 50%),
-        linear-gradient(135deg, $light 50%, transparent 50%);
-
-    background-position:
-        calc(100% - 20px) calc(1em),
-        calc(100% - 15px) calc(1em),
-        calc(100% - 15px);
-
-    background-position-y: center;
-        
-    background-size:
-        5px 5px,
-        5px 5px;
-
-    background-repeat: no-repeat;
-  }
-
-  .data-year:hover {
-    cursor: pointer;
-    background-color: #A0A1C2;
-    transition: all .2s ease-out;
-  }
+    label {
+        @include typeFilterPre;
+    }
+    .data-year {
+        border: 1px solid $brandBlue;
+        border-radius: $borderRadius;
+        font-family: $secondaryFont;
+        color: $brandBlue;
+        background-color: transparent;
+        font-size: .95rem;
+        font-style: normal;
+        font-weight: 900;
+        display: inline-flex;
+        padding: 0.45rem 2rem 0.45rem 1.25rem;
+        align-items: center;
+        gap: 0.5rem;
+        appearance: none;
+        margin: 0em 1em;
+    
+        background-image:
+            linear-gradient(45deg, transparent 50%, $brandBlue 50%),
+            linear-gradient(135deg, $brandBlue 50%, transparent 50%);
+    
+        background-position:
+            calc(100% - 20px) calc(1em),
+            calc(100% - 15px) calc(1em),
+            calc(100% - 15px);
+    
+        background-position-y: center;
+            
+        background-size:
+            5px 5px,
+            5px 5px;
+    
+        background-repeat: no-repeat;
+      }
+    
+      .data-year:hover {
+        cursor: pointer;
+        background-color: #A0A1C2;
+        transition: all .2s ease-out;
+      }
+}

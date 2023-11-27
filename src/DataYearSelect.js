@@ -2,8 +2,13 @@ import React from "react";
 
 const DataYearSelect = ({ handleYearChange, dataYears }) => {
   return (
-    <div className="container">
-      <form className="DataYearSelect" onChange={handleYearChange}>
+    <div className="container data-year-container">
+      <label htmlFor="data-year-select">Year:</label>
+      <form
+        name="data-year-select"
+        className="DataYearSelect"
+        onChange={handleYearChange}
+      >
         <select className="data-year" name="data-year">
           {dataYears.map((year, i) => {
             return (
