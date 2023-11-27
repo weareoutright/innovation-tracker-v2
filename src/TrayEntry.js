@@ -3,6 +3,7 @@ import GraphContext from "./context/GraphContext";
 import labels from "./constants/labels";
 
 import utils from "./utils";
+import { filterColors } from "./constants/filterColors";
 
 const nodeIsNode = (node) => node.sourceLinks != undefined;
 
@@ -57,13 +58,20 @@ const TrayEntry = (props) => {
       activeSummaries["Other"] = other;
     }
   }
-
   return (
     <div className="tray__entry">
       {isNode != false && (
         <div className="tray__entry__content">
           <div className="tray__entry__header">
-            <h3>
+            <h3
+              style={{
+                backgroundColor: `${filterColors[node.type]}`,
+                color:
+                  node.type === "agency" || node.type === "solution"
+                    ? "#fff"
+                    : "#000",
+              }}
+            >
               {node.type === "agency" ? (
                 <React.Fragment>
                   {node.agencyHierarchy.map((a) => `${a} > `)}
@@ -73,32 +81,37 @@ const TrayEntry = (props) => {
                 <React.Fragment>{labels.getLabel(node.name)}</React.Fragment>
               )}
             </h3>
-            {node.type === "agency" && (
-              <React.Fragment>{amount}</React.Fragment>
-            )}
-            <React.Fragment>
-              {total === trueTotal ? (
-                <React.Fragment>
-                  <br />
-                  {percentage} of FY{props.shortYear} climate innovation funding
-                </React.Fragment>
-              ) : (
-                <React.Fragment>
-                  <br />
-                  {percentage} of selected climate innovation funding
-                  <small>
-                    {truePercentage} of all FY{props.shortYear} climate
-                    innovation funding
-                  </small>
-                  {agency && (
-                    <small>
-                      {agencyPercentage} of all {agency} FY{props.shortYear}{" "}
-                      climate innovation funding
-                    </small>
-                  )}
-                </React.Fragment>
+            <strong>
+              {node.type === "agency" && (
+                <React.Fragment>{amount}</React.Fragment>
               )}
-            </React.Fragment>
+            </strong>
+            <strong>
+              <React.Fragment>
+                {total === trueTotal ? (
+                  <React.Fragment>
+                    <br />
+                    {percentage} of FY{props.shortYear} climate innovation
+                    funding
+                  </React.Fragment>
+                ) : (
+                  <React.Fragment>
+                    <br />
+                    {percentage} of selected climate innovation funding
+                    <small>
+                      {truePercentage} of all FY{props.shortYear} climate
+                      innovation funding
+                    </small>
+                    {agency && (
+                      <small>
+                        {agencyPercentage} of all {agency} FY{props.shortYear}{" "}
+                        climate innovation funding
+                      </small>
+                    )}
+                  </React.Fragment>
+                )}
+              </React.Fragment>
+            </strong>
           </div>
           {node.targetLinks.length != 0 &&
             summaries.source &&
