@@ -75,14 +75,15 @@ $control-h: em(52);
   }
   .sticky {
     position:absolute;
+    border: 1px solid $brandCyan;
     border-radius:em(8);
     padding:em(13);
-    background:$purpleLight;
+    background:$light;
     display:none;
-    width:em(224,13);
-    color:$dark;
+    width:em(230,10);
+    color:$brandAlmostBlack;
     pointer-events:all;
-    padding-right:em(40);
+    padding:em(40);
     box-shadow: 5px 5px 25px #00000029;
     font-size:em(13);
     line-height:1.35em;
@@ -90,7 +91,7 @@ $control-h: em(52);
       display:block;
     }
     &.sticky-info {
-      background:$yellowLight;
+      background:$brandCyan;
       padding-right:em(13);
       .sticky__close {
         svg {
@@ -109,13 +110,13 @@ $control-h: em(52);
         height:24px;
         width:24px;
         path {
-          fill:#9C5FB5;
+          fill:$brandCyan;
         }
       }
     }
     .sticky__content {
       .info {
-        border:1px solid #939393;
+        border:1px solid $brandCyan;
         padding:1px;
         display:inline-block;
         border-radius:24px;

@@ -1,5 +1,6 @@
 .helper {
   position:absolute;
+  font-family: $sankeyFont;
   top:50%;
   left:em(220);
   max-width:330px;
@@ -10,7 +11,7 @@
     position:relative;
     top:.1em;
     margin-right: 0.5em;
-    fill: $dark;
+    fill: $brandAlmostBlack;
   }
   small,strong {
     display:block;
@@ -31,7 +32,7 @@
     }
   }
   strong {
-    color:$blueDark;
+    color:$brandBlue;
     font-size:40px;
     line-height:1.2em;
   }
@@ -70,10 +71,10 @@
     cursor:pointer;
     margin-top:1em;
     display:inline-block;
-    color:$blueDark;
+    color:$brandBlue;
     transition:all .3s ease;
     &:hover {
-      background:$blueDark;
+      background:$brandBlue;
       color:$light;
     }
   }
@@ -95,8 +96,8 @@
       }
     }
     .filters__filter {
-      color:$blueDark;
-      border-color:$blueDark;
+      color:$brandBlue;
+      border-color:$brandBlue;
       margin:0 em(7,17) em(7,17) 0;
     }
   }

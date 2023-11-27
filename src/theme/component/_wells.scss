@@ -146,8 +146,10 @@
         text-transform: uppercase;
         color: $brandAlmostBlack;
         max-width:none;
+        font-size: 1.65em !important;
         em {
           font-family: $secondaryFont !important;
+          font-size: .75em !important;
         }
       }
       &:before,&:after {
