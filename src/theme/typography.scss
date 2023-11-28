@@ -1,5 +1,4 @@
 $typeBase: 14px;
-$fontBase: 'Franklin Gothic Medium', 'Arial', Arial, sans-serif;
 
 @function em($px, $base: 16) {
   @return math.div($px,$base) * 1em;
