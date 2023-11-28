@@ -33,8 +33,6 @@ const Header = ({ shortYear }) => {
     setShowHelpers(false);
   };
 
-  console.log(active);
-
   return (
     <header
       className="app-header"
