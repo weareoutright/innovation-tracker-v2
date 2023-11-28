@@ -45,7 +45,11 @@
     
       .data-year:hover {
         cursor: pointer;
-        background-color: #A0A1C2;
-        transition: all .2s ease-out;
+        transition: all 220ms ease-out;
+        color: $light;
+        background-color: $brandBlue;
+        background-image:
+        linear-gradient(45deg, transparent 50%, $light 50%),
+        linear-gradient(135deg, $light 50%, transparent 50%);
       }
 }

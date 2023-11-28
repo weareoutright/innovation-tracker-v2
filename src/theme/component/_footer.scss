@@ -6,7 +6,7 @@
   flex:none;
   display: flex;
   align-items: center;
-  justify-content: space-evenly;
+  justify-content: center;
   width:100%;
   background: $light;
   border-top: 1px solid $brandCyan;
@@ -16,7 +16,7 @@
     justify-content:center;
     align-items: center;
     flex-direction: row;
-    width:100%;
+    width:90%;
     > * {
       margin-left:em(60);
       &:first-child {

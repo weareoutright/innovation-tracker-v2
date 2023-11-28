@@ -55,7 +55,9 @@ const GraphGenerator = ({ data, inputYear }) => {
     });
     let newNodes = nodes.filter((n, i) => {
       const otherWell = n.well === 0 ? 1 : 0;
-      const wellHasSelected = selected[n.well] || (!active[n.well] && !selected[n.well] && selected[otherWell]);
+      const wellHasSelected =
+        selected[n.well] ||
+        (!active[n.well] && !selected[n.well] && selected[otherWell]);
       if (!wellHasSelected || n.selected) {
         n.originalIndex = i;
         return true;
@@ -98,7 +100,10 @@ const GraphGenerator = ({ data, inputYear }) => {
       nodes = col;
     }
     const otherWell = index === 0 ? 1 : 0;
-    const selectedVal = (!active[index] && !selected[index]) ? selected[otherWell] : selected[index];
+    const selectedVal =
+      !active[index] && !selected[index]
+        ? selected[otherWell]
+        : selected[index];
     nodes = nodes
       .filter((n) => n !== null && n.value !== 0)
       .map((n) => {
@@ -111,7 +116,8 @@ const GraphGenerator = ({ data, inputYear }) => {
         };
         if (type === "agency") {
           node.agencyHierarchy = getNodeAgencyHierarchy(node);
-          if (node.agencyHierarchy.indexOf(selectedVal) !== -1) node.selected = true;
+          if (node.agencyHierarchy.indexOf(selectedVal) !== -1)
+            node.selected = true;
         }
         return node;
       });
@@ -161,7 +167,6 @@ const GraphGenerator = ({ data, inputYear }) => {
         target_val = parseInt(datum[tertiaryValidity.target].replace(",", ""));
         filter_val = parseInt(datum[primaryValidity.target].replace(",", ""));
       } else {
-        console.log(primaryValidity);
         source_val = parseInt(datum[primaryValidity.target].replace(",", ""));
         target_val = parseInt(datum[secondaryValidity.target].replace(",", ""));
         filter_val = total;
