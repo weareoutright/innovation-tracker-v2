@@ -49,7 +49,6 @@ $control-h: em(52);
         right:auto;
         &:after {
           content:"Off";
-          background-color: $brandBlue;
           color: $light;
         }
       }
