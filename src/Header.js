@@ -33,8 +33,13 @@ const Header = ({ shortYear }) => {
     setShowHelpers(false);
   };
 
+  console.log(active);
+
   return (
-    <header className="app-header">
+    <header
+      className="app-header"
+      style={{ borderBottom: active[0] !== null ? "" : "1px solid #fff" }}
+    >
       <div className="component-well-headers">
         <div className="well__headers">
           {active.map((well, w) => {
