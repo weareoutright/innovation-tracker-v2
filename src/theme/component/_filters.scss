@@ -11,7 +11,7 @@
     list-style:none;
     align-items:center;
     justify-content:center;
-    margin:0;
+    margin:0 2em;
     padding:0;
     &:before {
       @include typeFilterPre;
@@ -39,12 +39,12 @@
       &.filters__filter-sector {
         background:$brandGreen;
         border-color:$brandGreen;
-        color:$dark;
+        color:$light;
       }
       &.filters__filter-solution {
         background:$brandLavender;
         border-color:$brandLavender;
-        color:$dark;
+        color:$light;
       }
       &.filters__filter-stage {
         background:$brandYellowGreen;
@@ -54,12 +54,12 @@
       &.filters__filter-funding_type {
         background:$brandCyan;
         border-color:$brandCyan;
-        color:$dark;
+        color:$brandAlmostBlack;
       }
       &.filters__filter-funding_source {
         background:$brandYellow;
         border-color:$brandYellow;
-        color:$dark;
+        color:$brandAlmostBlack;
       }
     // }
     &:active {

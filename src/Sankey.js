@@ -388,7 +388,7 @@ const Sankey = (props) => {
       case "funding_type":
       case "funding_source":
       case "stage":
-        color = "#000";
+        color = "#242424";
         break;
       default:
         color = "#fff";

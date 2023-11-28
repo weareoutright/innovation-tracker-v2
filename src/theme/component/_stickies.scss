@@ -7,6 +7,7 @@ $control-h: em(52);
     display:flex;
     align-items:center;
     height:100%;
+    margin: 0 2em;
   }
   .stickies__label {
     @include typeFilterPre;
@@ -21,7 +22,7 @@ $control-h: em(52);
         border:1px solid $brandBlue;
         border-radius:$control-w;
         inset: 0;
-        width: 3.25em;
+        width: 4em;
       }
       &:last-child {
         background-color: $brandBlue;
@@ -36,7 +37,6 @@ $control-h: em(52);
           font-size:em(14);
           font-weight: 600;
           color: $light;
-          background-color: $brandBlue;
         }
       }
     }
@@ -56,7 +56,7 @@ $control-h: em(52);
     }
     input[value="1"] {
       ~ span:last-child {
-        left:calc(100% - 0.99em - 2px);
+        left:calc(100% - 1em - 2px);
         right:auto;
         &:after {
           content:"On";

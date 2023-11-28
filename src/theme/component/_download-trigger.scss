@@ -28,7 +28,9 @@
     appearance: none;
     border: 1px solid $brandBlue;
     &:hover {
-      background:$light;
+      background:$brandBlue;
+      color: $light;
+
       > svg {
         path {
           fill:$brandLightGray;
