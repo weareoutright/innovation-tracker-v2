@@ -36,7 +36,10 @@ const Header = ({ shortYear }) => {
   return (
     <header
       className="app-header"
-      style={{ borderBottom: active[0] !== null ? "" : "1px solid #fff" }}
+      style={{
+        borderBottom:
+          active[0] === null && active[0] === null ? "1px solid #fff" : "",
+      }}
     >
       <div className="component-well-headers">
         <div className="well__headers">
