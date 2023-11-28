@@ -54,7 +54,9 @@ const Header = ({ shortYear }) => {
                           border: `1px solid ${filterColors[well]}`,
                           backgroundColor: `${filterColors[well]}`,
                           color:
-                            well === "agency" || well === "solution"
+                            well === "agency" ||
+                            well === "solution" ||
+                            well === "sector"
                               ? "#fff"
                               : "#000",
                         }}

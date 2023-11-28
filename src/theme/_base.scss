@@ -159,7 +159,8 @@ body {
 }
 
 @media screen and (max-width: 400px) {
-  .app-wrapper {
-    width:200%;
+  .component-sankey {
+    width: 75%;
+    margin: 0 auto;
   }
 }
