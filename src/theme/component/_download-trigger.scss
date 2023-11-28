@@ -27,6 +27,10 @@
     align-items: center;
     appearance: none;
     border: 1px solid $brandBlue;
+
+    .download__label {
+      font-weight: 900;
+    }
     &:hover {
       background:$brandBlue;
       color: $light;

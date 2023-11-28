@@ -6,10 +6,11 @@
   flex:none;
   display: flex;
   align-items: center;
-  justify-content: center;
+  justify-content: center !important;
   width:100svw;
   background: $light;
   border-top: 1px solid $brandCyan;
+  margin: 0 auto;
   .footer__wrapper {
     padding:0 em(75);
     display:flex;
