@@ -150,4 +150,16 @@ $control-h: em(52);
       margin-top:2px;
     }
   }
+
+  @media screen and (max-width:$breakpoint-md) {
+    .stickies__control {
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+    }
+
+    .stickies__label {
+      margin: 0 .5em 0 0;
+    }
+  }
 }

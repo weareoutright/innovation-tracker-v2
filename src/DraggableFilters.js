@@ -42,7 +42,10 @@ const DraggableFilter = ({ isDragging, text }) => {
 const DraggableFilters = (props) => {
   return (
     <div className="component-filters">
-      <ul className={`filters__filters list-unstyled`}>
+      <ul name="filter__pills" className={`filters__filters list-unstyled`}>
+        <label htmlFor="filter__pills" className="filters__label">
+          Filters:{" "}
+        </label>
         {props.filters.map((filter) => (
           <DraggableFilter key={filter} text={filter} />
         ))}

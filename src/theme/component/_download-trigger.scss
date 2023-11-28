@@ -143,7 +143,7 @@
   }
   @media screen and (max-width:$breakpoint-md) {
     .download__label {
-      margin-bottom:.5em;
+      margin: 0;
     }
     .download__button {
       > svg {
