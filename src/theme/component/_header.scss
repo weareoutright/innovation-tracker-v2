@@ -9,6 +9,8 @@
   border-bottom: 1px solid $brandCyan;
   padding-top: 3.25em;
   padding-bottom: 2.5em;
+  font-weight: 400 !important;
+  font-style: normal;
   @media screen and (max-width:$breakpoint-lg) {
     height:em(148);
   }

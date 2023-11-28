@@ -25,12 +25,13 @@ $typeBase: 14px;
   @include typeHeader;
   @include typeContrast;
   font-size: em(20);
-  font-weight: 900;
+  font-weight: 400;
   // text-transform:uppercase;
   em {
     display:block;
     font-size: em(15,20);
     font-style:normal;
+    font-weight: 850;
   }
   @media screen and (max-width:769px) {
     font-size: em(18);
