@@ -68,12 +68,12 @@
 
   @media screen and (min-width:300px) and (max-width: 400px) {
       height: 50svh !important;
-      padding: 1em;
+      padding-top: 1em;
 
     .footer__wrapper {
       font-size: 1em;
       margin-top: -5em;
-      margin-bottom: 2em;
+      padding: 0;
     }
 
     .footer-second-row-md-breakpoint {
