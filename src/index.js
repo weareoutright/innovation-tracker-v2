@@ -165,6 +165,8 @@ function App() {
                             shortYear={shortYear}
                             data={data}
                           />
+                        </div>
+                        <div className="app__middle">
                           <DndProvider
                             backend={TouchBackend}
                             opts={{ enableMouseEvents: true }}

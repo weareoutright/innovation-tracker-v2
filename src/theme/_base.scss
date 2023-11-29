@@ -164,8 +164,17 @@ body {
   //   min-width: 10em;
   // }
 
+  .app__top {
+    overflow-x: hidden;
+  }
+
+  .app__middle {
+    overflow-x: auto;
+  }
+
   .app-main {
     width: 100%;
+    overflow-x: auto;
   }
 
   .app-header {
