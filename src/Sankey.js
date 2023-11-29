@@ -299,24 +299,31 @@ const Link = ({ data, index, width, length, colors, textColors, mini }) => {
             <stop offset="100%" stopColor={colors(data.target.name)} />
           </linearGradient>
 
-          <pattern id={`pattern-dotted-${id}`} 
+          <pattern id={`pattern-source-${id}`} 
             x="0" 
             y="0" 
-            width="24" 
-            height="24" 
+            width="4" 
+            height="4" 
             patternUnits="userSpaceOnUse">
-            <circle cx="3" cy="3" r="3" fill={`url(#gradient-${id})`} />
-            <circle cx="15" cy="3" r="3" fill={`url(#gradient-${id})`} />
-            <circle cx="3" cy="15" r="3" fill={`url(#gradient-${id})`} />
-            <circle cx="15" cy="15" r="3" fill={`url(#gradient-${id})`} />
+            <circle cx="1.5" cy="1.5" r="1.5" fill="#fff" />
           </pattern>
+
+          <mask id={`pattern-${id}`} 
+            x="0"
+            y="0"
+            width="100%" 
+            height="100%"
+            maskUnits="userSpaceOnUse" maskContentUnits="userSpaceOnUse" transform="scale(1)">
+           <rect x="0" y="0" width="200%" height="200%" fill={`url(#pattern-source-${id})`}/>
+          </mask>
 
         </defs>
         <path
           d={link(data)}
           fill={"none"}
-          stroke={`url(#${isProjected ? 'pattern-dotted' : 'gradient'}-${id})`}
-          strokeOpacity={0.5}
+          mask={isProjected ? `url(#pattern-${id})` : "none"}
+          stroke={`url(#gradient-${id})`}
+          strokeOpacity={isProjected ? .8 : .5}
           strokeWidth={width}
         />
       </g>
