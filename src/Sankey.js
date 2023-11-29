@@ -274,6 +274,11 @@ const Link = ({ data, index, width, length, colors, textColors, mini }) => {
 
   const id = (mini ? "mini" : "") + data.index;
 
+  let isProjected = false;
+  ["source","target"].forEach(node => {
+    if (data[node].type === "funding_type" && data[node].name === "tax_credit") isProjected = true;
+  });
+
   return (
     <>
       <g
@@ -293,11 +298,24 @@ const Link = ({ data, index, width, length, colors, textColors, mini }) => {
             <stop offset="0" stopColor={colors(data.source.name)} />
             <stop offset="100%" stopColor={colors(data.target.name)} />
           </linearGradient>
+
+          <pattern id={`pattern-dotted-${id}`} 
+            x="0" 
+            y="0" 
+            width="24" 
+            height="24" 
+            patternUnits="userSpaceOnUse">
+            <circle cx="3" cy="3" r="3" fill={`url(#gradient-${id})`} />
+            <circle cx="15" cy="3" r="3" fill={`url(#gradient-${id})`} />
+            <circle cx="3" cy="15" r="3" fill={`url(#gradient-${id})`} />
+            <circle cx="15" cy="15" r="3" fill={`url(#gradient-${id})`} />
+          </pattern>
+
         </defs>
         <path
           d={link(data)}
           fill={"none"}
-          stroke={`url(#gradient-${id})`}
+          stroke={`url(#${isProjected ? 'pattern-dotted' : 'gradient'}-${id})`}
           strokeOpacity={0.5}
           strokeWidth={width}
         />

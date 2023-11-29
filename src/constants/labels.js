@@ -9,6 +9,8 @@ const labels = {
     DOE: "DOE",
     USDA: "USDA",
     DOI: "DOI",
+    Interior: "DOI",
+    EPA: "EPA",
     power: "Power",
     transportation_sector: "Transportation",
     transportation: "Transportation",
