@@ -159,8 +159,21 @@ body {
 }
 
 @media screen and (max-width: 400px) {
-  .component-sankey {
-    width: 75%;
-    margin: 0 auto;
+  // .app-wrapper {
+  //   width: 100%;
+  //   min-width: 10em;
+  // }
+
+  .app-main {
+    width: 100%;
+  }
+
+  .app-header {
+    width: 100svw;
+    overflow: hidden;
+  }
+
+  .app__inner {
+    display: block;
   }
 }

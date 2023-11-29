@@ -14,15 +14,40 @@
   @media screen and (max-width:$breakpoint-lg) {
     height:em(148);
   }
-  // @media screen and (max-width: $breakpoint-sm) {
-  //   width:120%;
-  //   min-width:740px;
-  // }
-  // @media screen and (max-width: 600px) {
-  //   width:150%;
-  // }
-  @media screen and (max-width: 400px) {
-    // width:200%;
+  @media screen and (max-width: $breakpoint-sm) {
+    width:120%;
     // min-width:740px;
+  }
+  @media screen and (max-width: 600px) {
+    width:150%;
+  }
+  @media screen and (min-width: 300px) and (max-width: 400px) {
+    width:100% !important;
+    height: 25svh !important;
+    padding-bottom: 0;
+    padding-top: 2em;
+    .well__headers {
+      display: flex;
+      flex-direction: column;
+      .well__header-main {
+        width: 100svw;
+        font-size: 1em;
+        padding-bottom: 1em;
+        h2 {
+          text-align: left;
+        }
+      }
+      .second-header-row-sm {
+        display: flex;
+        flex-direction: row;
+        padding-bottom: 0;
+      }
+
+      .well__header {
+        span {
+          padding: .5em 1em;
+        }
+      }
+    }
   }
 }
