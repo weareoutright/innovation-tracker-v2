@@ -27,7 +27,7 @@
   }
   .wells__well {
     height:100%;
-    width:em(200);
+    width:em(200,14);
     border:2px dashed $grayLight;
     pointer-events:all;
     transition:all .2s ease-out;

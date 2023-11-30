@@ -84,25 +84,25 @@ const Stickies = (props) => {
     };
 
     const stickies = [
-      {
-        type: "info",
-        content: `In FY${props.shortYear}, DOE contributed twice as much funding for climate innovation as the other two agencies ($7.36B).`,
-        position: () => {
-          const ref = document.querySelector(".wells__well-0");
-          if (ref) {
-            const box = ref.getBoundingClientRect();
-            return pxToPercentage({
-              x: box.x + box.width - 10,
-              y: box.y + 40,
-            });
-          }
-        },
-        showWhen: () => {
-          return (
-            active[0] === "agency" && !selected[0] && !active[1] && !showHelpers
-          );
-        },
-      },
+      // {
+      //   type: "info",
+      //   content: `In FY${props.shortYear}, DOE contributed twice as much funding for climate innovation as the other two agencies ($7.36B).`,
+      //   position: () => {
+      //     const ref = document.querySelector(".wells__well-0");
+      //     if (ref) {
+      //       const box = ref.getBoundingClientRect();
+      //       return pxToPercentage({
+      //         x: box.x + box.width - 10,
+      //         y: box.y + 40,
+      //       });
+      //     }
+      //   },
+      //   showWhen: () => {
+      //     return (
+      //       active[0] === "agency" && !selected[0] && !active[1] && !showHelpers
+      //     );
+      //   },
+      // },
       {
         type: "help",
         content:
@@ -219,8 +219,8 @@ const Stickies = (props) => {
           if (ref) {
             const box = ref.getBoundingClientRect();
             return pxToPercentage({
-              x: box.x - 20,
-              y: box.y + 0.2 * box.height,
+              x: box.x - 30,
+              y: box.y - 110,
             });
           }
         },
@@ -242,144 +242,416 @@ const Stickies = (props) => {
           if (ref) {
             const box = ref.getBoundingClientRect();
             return pxToPercentage({
-              x: box.x + box.width - 10,
-              y: box.y + box.height / 2,
+              x: box.x - 30,
+              y: box.y - 110,
             });
           }
         },
-        showWhen: () => {
-          return active[0] === "agency" && !selected[0] && !showHelpers;
-        },
+        showWhen: () => active[0] === "agency" && !selected[0] && !showHelpers,
       },
       {
         type: "info",
-        content:
-          "DOE funds the greatest diversity of sectors in climate innovation, compared to DOT (which dedicates nearly 100% of its climate innovation funding to transportation) and USDA (divided nearly half-half between Agriculture and Forestry)",
+        content: "Due to the sizable Greenhouse Gas Reduction Fund, EPA received 38.8% of total funding in FY23, surpassing DOE, the leader in previous years.",
         position: () => {
-          const ref = document.querySelector(".wells__well-0 ");
+          const well0 = active[0] === 'agency';
+          const ref = document.querySelector(well0 ? ".wells__well-0" : ".wells__well-1");
           if (ref) {
             const box = ref.getBoundingClientRect();
             return pxToPercentage({
-              x: box.x + box.width - 100,
-              y: box.y - 90,
+              x: well0 ? box.x + box.width - 10 : box.x - 250,
+              y: box.y + (box.height * .5) + 20,
             });
           }
         },
         showWhen: () => {
           return (
-            active[0] === "agency" &&
-            !selected[0] &&
-            !showHelpers &&
-            active[1] === "sector"
+            parseInt(props.shortYear) === 23 &&
+            ((active[0] === 'agency' && !selected[0]) || (active[1] === 'agency' && !selected[1])) &&
+            !showHelpers
           );
         },
       },
       {
         type: "info",
-        content:
-          "If you cross-reference Agencies with Sectors, you can see that Power and Transportation receive the main bulk of climate innovation funding.",
+        content: "The power sector received the most investment of any sector, making it the only sector to come close to matching its funding with its relative contribution to GHG emissions. ",
         position: () => {
-          const ref = document.querySelector(".wells__well-1 ");
+          const well0 = active[0] === 'sector';
+          const ref = document.querySelector(well0 ? ".wells__well-0" : ".wells__well-1");
           if (ref) {
             const box = ref.getBoundingClientRect();
             return pxToPercentage({
-              x: box.x - 200,
-              y: box.y - 50,
+              x: well0 ? box.x + box.width - 10 : box.x - 250,
+              y: box.y + box.height * .2 - 80,
             });
           }
         },
         showWhen: () => {
           return (
-            active[0] === "agency" &&
-            !selected[0] &&
-            !showHelpers &&
-            active[1] === "sector"
+            parseInt(props.shortYear) === 23 &&
+            ((active[0] === 'sector' && !selected[0]) || (active[1] === 'sector' && !selected[1])) &&
+            !showHelpers
           );
         },
       },
       {
         type: "info",
-        content:
-          "The smallest share of climate innovation funding goes toward Industry and Buildings",
+        content: "The smallest shares of funding went toward buildings (15.4%), industry (7.1%), agriculture (3.4%), and forestry (2.8%)",
         position: () => {
-          const ref = document.querySelector(".wells__well-1");
+          const well0 = active[0] === 'sector';
+          const ref = document.querySelector(well0 ? ".wells__well-0" : ".wells__well-1");
           if (ref) {
             const box = ref.getBoundingClientRect();
             return pxToPercentage({
-              x: box.x + box.width - 10,
-              y: box.y + box.height - 0.3 * box.height,
-            });
-          }
-        },
-        showWhen: () => {
-          return !showHelpers && active[1] === "sector" && !selected[1];
-        },
-      },
-      {
-        type: "info",
-        content:
-          "The smallest share of climate innovation funding goes toward Industry and Buildings",
-        position: () => {
-          const ref = document.querySelector(".wells__well-0");
-          if (ref) {
-            const box = ref.getBoundingClientRect();
-            return pxToPercentage({
-              x: box.x + box.width - 10,
-              y: box.y + box.height - 0.3 * box.height,
-            });
-          }
-        },
-        showWhen: () => {
-          return !showHelpers && active[0] === "sector" && !selected[0];
-        },
-      },
-      {
-        type: "info",
-        content:
-          "Approximately 70% of transportation funding is from the DOT; 30% from DOE",
-        position: () => {
-          const ref = document.querySelector(".wells__well-1");
-          if (ref) {
-            const box = ref.getBoundingClientRect();
-            return pxToPercentage({
-              x: box.x + box.width - 10,
-              y: box.y + box.height / 2 - 100,
+              x: well0 ? box.x + box.width - 10 : box.x - 250,
+              y: box.y + box.height - 150,
             });
           }
         },
         showWhen: () => {
           return (
-            active[0] === "agency" &&
-            !selected[0] &&
-            !showHelpers &&
-            active[1] === "sector" &&
-            !selected[1]
+            parseInt(props.shortYear) === 23 &&
+            ((active[0] === 'sector' && !selected[0]) || (active[1] === 'sector' && !selected[1])) &&
+            !showHelpers
           );
         },
       },
       {
         type: "info",
-        content:
-          "The main DOE offices with piloting and demo programs are EERE, Nuclear, Fossil Energy and Carbon Management, and ARPA-E",
+        content: "Clean electricity and electrification received half of total funding in FY23",
         position: () => {
-          const ref = document.querySelector(".wells__well-1 ");
+          const well0 = active[0] === 'solution';
+          const ref = document.querySelector(well0 ? ".wells__well-0" : ".wells__well-1");
           if (ref) {
             const box = ref.getBoundingClientRect();
             return pxToPercentage({
-              x: box.x + box.width - 10,
-              y: box.y + box.height * 0.8 - 100,
+              x: well0 ? box.x + box.width - 10 : box.x - 250,
+              y: box.y + box.height * .5 - 45,
             });
           }
         },
         showWhen: () => {
           return (
-            active[0] === "agency" &&
-            selected[0] == "DOE" &&
-            !showHelpers &&
-            active[1] === "stage"
+            parseInt(props.shortYear) === 23 &&
+            ((active[0] === 'solution' && !selected[0]) || (active[1] === 'solution' && !selected[1])) &&
+            !showHelpers
           );
         },
       },
+      {
+        type: "info",
+        content: "The IIJA and IRA shifted focus to deployment, which received nearly three-quarters of total climate innovation investments in FY23",
+        position: () => {
+          const well0 = active[0] === 'stage';
+          const ref = document.querySelector(well0 ? ".wells__well-0" : ".wells__well-1");
+          if (ref) {
+            const box = ref.getBoundingClientRect();
+            return pxToPercentage({
+              x: box.x - 30,
+              y: box.y + box.height * .5 - 90,
+            });
+          }
+        },
+        showWhen: () => {
+          return (
+            parseInt(props.shortYear) === 23 &&
+            ((active[0] === 'stage' && !selected[0]) || (active[1] === 'stage' && !selected[1])) &&
+            !showHelpers
+          );
+        },
+      },
+      {
+        type: "info",
+        content: "Nearly two-thirds of total funding was delivered as one-time appropriations in FY23",
+        position: () => {
+          const well0 = active[0] === 'funding_type';
+          const ref = document.querySelector(well0 ? ".wells__well-0" : ".wells__well-1");
+          if (ref) {
+            const box = ref.getBoundingClientRect();
+            return pxToPercentage({
+              x: box.x - 30,
+              y: box.y + box.height * .2,
+            });
+          }
+        },
+        showWhen: () => {
+          return (
+            parseInt(props.shortYear) === 23 &&
+            ((active[0] === 'funding_type' && !selected[0]) || (active[1] === 'funding_type' && !selected[1])) &&
+            !showHelpers
+          );
+        },
+      },
+      {
+        type: "info",
+        content: "The vast majority of total funding was delivered by the IIJA and IRA, rather than annual appropriations in FY23.",
+        position: () => {
+          const well0 = active[0] === 'funding_source';
+          const ref = document.querySelector(well0 ? ".wells__well-0" : ".wells__well-1");
+          if (ref) {
+            const box = ref.getBoundingClientRect();
+            return pxToPercentage({
+              x: well0 ? box.x - 30 : box.x - 250,
+              y: box.y + box.height * .27,
+            });
+          }
+        },
+        showWhen: () => {
+          return (
+            parseInt(props.shortYear) === 23 &&
+            ((active[0] === 'funding_source' && !selected[0]) || (active[1] === 'funding_source' && !selected[1])) &&
+            !showHelpers
+          );
+        },
+      },
+      {
+        type: "info",
+        content: "Most agencies fund a diversity of sectors. The exception is DOT, which dedicates nearly all of its climate innovation funding to transportation.",
+        position: () => {
+          const ref = document.querySelector(".app-main .component-sankey");
+          if (ref) {
+            const box = ref.getBoundingClientRect();
+            return pxToPercentage({
+              x: box.x + box.width / 2 - 130,
+              y: box.y - 120,
+            });
+          }
+        },
+        showWhen: () => {
+          return (
+            parseInt(props.shortYear) === 23 &&
+            (
+              (active[0] === 'agency' && !selected[0] && active[1] === 'sector' && !selected[1]) || 
+              (active[1] === 'agency' && !selected[1] && active[0] === 'sector' && !selected[0])
+            ) &&
+            !showHelpers
+          );
+        },
+      },
+      {
+        type: "info",
+        content: "Every agency funds a variety of solutions.",
+        position: () => {
+          const ref = document.querySelector(".app-main .component-sankey");
+          if (ref) {
+            const box = ref.getBoundingClientRect();
+            return pxToPercentage({
+              x: box.x + box.width / 2 - 130,
+              y: box.y - 70,
+            });
+          }
+        },
+        showWhen: () => {
+          return (
+            parseInt(props.shortYear) === 23 &&
+            (
+              (active[0] === 'agency' && !selected[0] && active[1] === 'solution' && !selected[1]) || 
+              (active[1] === 'agency' && !selected[1] && active[0] === 'solution' && !selected[0])
+            ) &&
+            !showHelpers
+          );
+        },
+      },
+      {
+        type: "info",
+        content: "The IIJA and IRA drove increases in funding for solutions that are ready to be deployed today, such as efficiency, clean electricity, and electrification. ",
+        position: () => {
+          const ref = document.querySelector(".app-main .component-sankey");
+          if (ref) {
+            const box = ref.getBoundingClientRect();
+            return pxToPercentage({
+              x: box.x + box.width / 2 - 130,
+              y: box.y + box.height - 120,
+            });
+          }
+        },
+        showWhen: () => {
+          return (
+            parseInt(props.shortYear) === 23 &&
+            (
+              (active[0] === 'funding_source' && !selected[0] && active[1] === 'solution' && !selected[1]) || 
+              (active[1] === 'funding_source' && !selected[1] && active[0] === 'solution' && !selected[0])
+            ) &&
+            !showHelpers
+          );
+        },
+      },
+      {
+        type: "info",
+        content: "The vast majority of funding for pilots and demonstrations goes to a single agency—DOE.",
+        position: () => {
+          const ref = document.querySelector(".app-main .component-sankey");
+          if (ref) {
+            const box = ref.getBoundingClientRect();
+            return pxToPercentage({
+              x: box.x + box.width / 2 - 130,
+              y: box.y - 10,
+            });
+          }
+        },
+        showWhen: () => {
+          return (
+            parseInt(props.shortYear) === 23 &&
+            (
+              (active[0] === 'agency' && !selected[0] && active[1] === 'stage' && !selected[1]) || 
+              (active[1] === 'agency' && !selected[1] && active[0] === 'stage' && !selected[0])
+            ) &&
+            !showHelpers
+          );
+        },
+      },
+      {
+        type: "info",
+        content: "FY23 appropriations for EPA and DOI are not yet included here, only funding from IIJA and IRA. Coming soon! ",
+        position: () => {
+          const ref = document.querySelector(".app-main .component-sankey");
+          if (ref) {
+            const box = ref.getBoundingClientRect();
+            return pxToPercentage({
+              x: box.x + box.width / 2 - 130,
+              y: box.y - 10,
+            });
+          }
+        },
+        showWhen: () => {
+          return (
+            parseInt(props.shortYear) === 23 &&
+            (
+              (active[0] === 'agency' && !selected[0] && active[1] === 'funding_source' && !selected[1]) || 
+              (active[1] === 'agency' && !selected[1] && active[0] === 'funding_source' && !selected[0])
+            ) &&
+            !showHelpers
+          );
+        },
+      },
+      // {
+      //   type: "info",
+      //   content:
+      //     "DOE funds the greatest diversity of sectors in climate innovation, compared to DOT (which dedicates nearly 100% of its climate innovation funding to transportation) and USDA (divided nearly half-half between Agriculture and Forestry)",
+      //   position: () => {
+      //     const ref = document.querySelector(".wells__well-0 ");
+      //     if (ref) {
+      //       const box = ref.getBoundingClientRect();
+      //       return pxToPercentage({
+      //         x: box.x + box.width - 100,
+      //         y: box.y - 90,
+      //       });
+      //     }
+      //   },
+      //   showWhen: () => {
+      //     return (
+      //       active[0] === "agency" &&
+      //       !selected[0] &&
+      //       !showHelpers &&
+      //       active[1] === "sector"
+      //     );
+      //   },
+      // },
+      // {
+      //   type: "info",
+      //   content:
+      //     "If you cross-reference Agencies with Sectors, you can see that Power and Transportation receive the main bulk of climate innovation funding.",
+      //   position: () => {
+      //     const ref = document.querySelector(".wells__well-1 ");
+      //     if (ref) {
+      //       const box = ref.getBoundingClientRect();
+      //       return pxToPercentage({
+      //         x: box.x - 200,
+      //         y: box.y - 50,
+      //       });
+      //     }
+      //   },
+      //   showWhen: () => {
+      //     return (
+      //       active[0] === "agency" &&
+      //       !selected[0] &&
+      //       !showHelpers &&
+      //       active[1] === "sector"
+      //     );
+      //   },
+      // },
+      // {
+      //   type: "info",
+      //   content:
+      //     "The smallest share of climate innovation funding goes toward Industry and Buildings",
+      //   position: () => {
+      //     const ref = document.querySelector(".wells__well-1");
+      //     if (ref) {
+      //       const box = ref.getBoundingClientRect();
+      //       return pxToPercentage({
+      //         x: box.x + box.width - 10,
+      //         y: box.y + box.height - 0.3 * box.height,
+      //       });
+      //     }
+      //   },
+      //   showWhen: () => {
+      //     return !showHelpers && active[1] === "sector" && !selected[1];
+      //   },
+      // },
+      // {
+      //   type: "info",
+      //   content:
+      //     "The smallest share of climate innovation funding goes toward Industry and Buildings",
+      //   position: () => {
+      //     const ref = document.querySelector(".wells__well-0");
+      //     if (ref) {
+      //       const box = ref.getBoundingClientRect();
+      //       return pxToPercentage({
+      //         x: box.x + box.width - 10,
+      //         y: box.y + box.height - 0.3 * box.height,
+      //       });
+      //     }
+      //   },
+      //   showWhen: () => {
+      //     return !showHelpers && active[0] === "sector" && !selected[0];
+      //   },
+      // },
+      // {
+      //   type: "info",
+      //   content:
+      //     "Approximately 70% of transportation funding is from the DOT; 30% from DOE",
+      //   position: () => {
+      //     const ref = document.querySelector(".wells__well-1");
+      //     if (ref) {
+      //       const box = ref.getBoundingClientRect();
+      //       return pxToPercentage({
+      //         x: box.x + box.width - 10,
+      //         y: box.y + box.height / 2 - 100,
+      //       });
+      //     }
+      //   },
+      //   showWhen: () => {
+      //     return (
+      //       active[0] === "agency" &&
+      //       !selected[0] &&
+      //       !showHelpers &&
+      //       active[1] === "sector" &&
+      //       !selected[1]
+      //     );
+      //   },
+      // },
+      // {
+      //   type: "info",
+      //   content:
+      //     "The main DOE offices with piloting and demo programs are EERE, Nuclear, Fossil Energy and Carbon Management, and ARPA-E",
+      //   position: () => {
+      //     const ref = document.querySelector(".wells__well-1 ");
+      //     if (ref) {
+      //       const box = ref.getBoundingClientRect();
+      //       return pxToPercentage({
+      //         x: box.x + box.width - 10,
+      //         y: box.y + box.height * 0.8 - 100,
+      //       });
+      //     }
+      //   },
+      //   showWhen: () => {
+      //     return (
+      //       active[0] === "agency" &&
+      //       selected[0] == "DOE" &&
+      //       !showHelpers &&
+      //       active[1] === "stage"
+      //     );
+      //   },
+      // },
     ];
 
     return (
