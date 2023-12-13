@@ -203,11 +203,25 @@ const GraphGenerator = ({ data, inputYear }) => {
             source: pIndex,
             target: sIndex,
             value: 0,
+            isProjected:false,
           };
+          let linkProjected = {
+            source: pIndex,
+            target: sIndex,
+            value: 0,
+            isProjected:true,
+          }
           data.forEach((datum, d) => {
             const value = getDatumValue(datum, p, s);
-            if (value) link.value += value;
+            if (value) {
+              if (datum['tax_credit'] && +datum['tax_credit'] > 0) {
+                linkProjected.value += value;
+              } else {
+                link.value += value;
+              }
+            }
           });
+          if (linkProjected.value) links.push(linkProjected);
           if (link.value) links.push(link);
         }
       });

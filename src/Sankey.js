@@ -274,11 +274,6 @@ const Link = ({ data, index, width, length, colors, textColors, mini }) => {
 
   const id = (mini ? "mini" : "") + data.index;
 
-  let isProjected = false;
-  ["source","target"].forEach(node => {
-    if (data[node].type === "funding_type" && data[node].name === "tax_credit") isProjected = true;
-  });
-
   return (
     <>
       <g
@@ -321,9 +316,9 @@ const Link = ({ data, index, width, length, colors, textColors, mini }) => {
         <path
           d={link(data)}
           fill={"none"}
-          mask={isProjected ? `url(#pattern-${id})` : "none"}
+          mask={data.isProjected ? `url(#pattern-${id})` : "none"}
           stroke={`url(#gradient-${id})`}
-          strokeOpacity={isProjected ? .8 : .5}
+          strokeOpacity={data.isProjected ? .8 : .5}
           strokeWidth={width}
         />
       </g>
