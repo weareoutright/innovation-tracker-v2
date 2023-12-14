@@ -5,7 +5,7 @@
   top:0;
   width:25%;
   height:100%;
-  background:#f8f6fa;
+  background:$brandGray;
   font-size:14px;
   z-index:2;
   .tray__trigger {
@@ -13,8 +13,8 @@
     position: absolute;
     top: 50%;
     right: 100%;
-    background:$purpleLight;
-    color:$purple;
+    background: $brandGray;
+    color:$brandAlmostBlack;
     padding:.5em 1.5em;
     cursor:pointer;
     transform-origin:100% 100%;
@@ -28,6 +28,7 @@
     padding:em(21) em(29);
     height:100%;
     overflow:auto;
+    background-color: $brandGray;
   }
   .tray__entry {
     padding-top:1.2em;
@@ -59,7 +60,7 @@
       font-weight:600;
       font-style:italic;
       display:inline-block;
-      color:#939393;
+      color: $brandGray;
       font-size:em(13);
     }
   }
