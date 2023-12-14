@@ -72,6 +72,10 @@ const TrayEntry = (props) => {
                   node.type === "sector"
                     ? "#fff"
                     : "#000",
+                width:
+                  labels.getLabel(node.name).length > 30
+                    ? "100%"
+                    : "fit-content",
               }}
             >
               {node.type === "agency" ? (
