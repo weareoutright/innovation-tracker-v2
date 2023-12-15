@@ -21,7 +21,7 @@
   @media screen and (max-width: 600px) {
     width:150%;
   }
-  @media screen and (min-width: 250px) and (max-width: 320px) {
+  @media only screen and (max-width: 767px) {
     width:100% !important;
     height: 25svh !important;
     padding-bottom: 1em;
