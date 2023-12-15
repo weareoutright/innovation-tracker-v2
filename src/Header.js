@@ -36,7 +36,7 @@ const Header = ({ shortYear }) => {
     setShowHelpers(false);
   };
 
-  if (width > BREAKPOINTS.md) {
+  if (width > BREAKPOINTS.sm) {
     return (
       <header
         className="app-header"
@@ -116,7 +116,7 @@ const Header = ({ shortYear }) => {
         </div>
       </header>
     );
-  } else if (width <= 400) {
+  } else if (width <= 767) {
     return (
       <header
         className="app-header"
@@ -135,7 +135,8 @@ const Header = ({ shortYear }) => {
                     ? `Selected FY${shortYear} Climate Innovation Funding: Mitigation`
                     : `FY${shortYear} Climate Innovation Funding: Mitigation`}
                   <em>
-                    {amount} ({percentage})
+                    {console.log(percentage)}
+                    {amount} ({percentage !== "NaN%" ? percentage : " __%"})
                   </em>
                   {/* need to look into which subgroups to map here -- how to access?
                         <em>
