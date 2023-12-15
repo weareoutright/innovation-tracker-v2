@@ -8,6 +8,32 @@
   background:$brandGray;
   font-size:14px;
   z-index:2;
+  .tray__entry__legend {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-start;
+    position: fixed;
+    width: 100%;
+    background-color: $brandGray;
+    opacity: 1;
+    z-index: 3;
+    padding: 1em 1.7em;
+    border-bottom: 1px solid lightgray;
+
+    .legend-item {
+      margin-right: 2em;
+      display: flex;
+      justify-content: row;
+      align-items: center;
+
+      svg {
+        display: block;
+        margin-right: .5em;
+      }
+    }
+  } 
+
   .tray__trigger {
     font-size:.825em;
     position: absolute;
@@ -27,11 +53,12 @@
   .tray__content {
     padding:em(21) em(29);
     height:100%;
+    margin-top: 0em;
     overflow:auto;
     background-color: $brandGray;
   }
   .tray__entry {
-    padding-top:1.2em;
+    padding-top:4em;
     margin-top:1.2em;
     border-top:1px solid $dark;
     &:first-child {

@@ -150,49 +150,47 @@ const Header = ({ shortYear }) => {
             <div className="second-header-row-sm">
               {active.map((well, w) => {
                 return (
-                  <>
-                    <React.Fragment key={w}>
-                      <div
-                        className={`well__header${
-                          well !== null ? " well__header-active" : ""
-                        }`}
-                        key={w}
-                        onClick={() => closeHeader(w)}
-                      >
-                        {well !== null && (
-                          <h3>
-                            <span
-                              style={{
-                                border: `1px solid ${filterColors[well]}`,
-                                backgroundColor: `${filterColors[well]}`,
-                                color:
-                                  well === "agency" ||
-                                  well === "solution" ||
-                                  well === "sector"
-                                    ? "#fff"
-                                    : "#000",
-                              }}
+                  <React.Fragment key={w}>
+                    <div
+                      className={`well__header${
+                        well !== null ? " well__header-active" : ""
+                      }`}
+                      key={w}
+                      onClick={() => closeHeader(w)}
+                    >
+                      {well !== null && (
+                        <h3>
+                          <span
+                            style={{
+                              border: `1px solid ${filterColors[well]}`,
+                              backgroundColor: `${filterColors[well]}`,
+                              color:
+                                well === "agency" ||
+                                well === "solution" ||
+                                well === "sector"
+                                  ? "#fff"
+                                  : "#000",
+                            }}
+                          >
+                            {labels.getLabel(well)}{" "}
+                            <svg
+                              xmlns="http://www.w3.org/2000/svg"
+                              viewBox="0 0 48 48"
                             >
-                              {labels.getLabel(well)}{" "}
-                              <svg
-                                xmlns="http://www.w3.org/2000/svg"
-                                viewBox="0 0 48 48"
-                              >
-                                <path d="m12.45 37.65-2.1-2.1L21.9 24 10.35 12.45l2.1-2.1L24 21.9l11.55-11.55 2.1 2.1L26.1 24l11.55 11.55-2.1 2.1L24 26.1Z" />
-                              </svg>
-                            </span>
-                            <em>
-                              {selected[w]
-                                ? utils.getTruncatedWords(
-                                    labels.getLabel(selected[w])
-                                  )
-                                : "All"}
-                            </em>
-                          </h3>
-                        )}
-                      </div>
-                    </React.Fragment>
-                  </>
+                              <path d="m12.45 37.65-2.1-2.1L21.9 24 10.35 12.45l2.1-2.1L24 21.9l11.55-11.55 2.1 2.1L26.1 24l11.55 11.55-2.1 2.1L24 26.1Z" />
+                            </svg>
+                          </span>
+                          <em>
+                            {selected[w]
+                              ? utils.getTruncatedWords(
+                                  labels.getLabel(selected[w])
+                                )
+                              : "All"}
+                          </em>
+                        </h3>
+                      )}
+                    </div>
+                  </React.Fragment>
                 );
               })}
             </div>

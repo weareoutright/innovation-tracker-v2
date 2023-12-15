@@ -4,6 +4,7 @@ import labels from "./constants/labels";
 
 import utils from "./utils";
 import { filterColors } from "./constants/filterColors";
+import TrayEntryLegend from "./TrayEntryLegend";
 
 const nodeIsNode = (node) => node.sourceLinks != undefined;
 
