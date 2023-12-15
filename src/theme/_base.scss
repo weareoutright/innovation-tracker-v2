@@ -2,6 +2,7 @@ $breakpoint-xl:1400px;
 $breakpoint-lg:1100px;
 $breakpoint-md:840px;
 $breakpoint-sm:730px;
+$breakpoint-xs:420px;
 
 * {
   box-sizing:border-box;
@@ -42,13 +43,13 @@ body {
   align-items: center;
   left:0;
   right:auto;
-  @media screen and (max-width:$breakpoint-lg) {
+  @media only screen and (max-width:$breakpoint-lg) {
     width:133.333vw;
     .show-tray & {
       left:-33.3333%;
     }
   }
-  @media screen and (max-width:$breakpoint-md) {
+  @media only screen and (max-width:$breakpoint-md) {
     .show-tray & {
       left:0;
     }
@@ -58,7 +59,7 @@ body {
 %offsetPanelRight {
   padding-right:calc($breakpoint-xl * .25 + 30px);
   padding-left:30px;
-  @media screen and (max-width:$breakpoint-xl) {
+  @media only screen and (max-width:$breakpoint-xl) {
     padding-right:calc(25% + 30px);
   }
 }
@@ -70,7 +71,7 @@ body {
   margin-left:auto;
   margin-right:auto;
   position:relative;
-  @media screen and (max-width:$breakpoint-md) {
+  @media only screen and (max-width:$breakpoint-md) {
     padding-right:30px;
   }
 }
@@ -83,10 +84,10 @@ body {
   align-items:center;
   background:$light;
   height:calc(100vh - #{em(208)});
-  @media screen and (max-width: $breakpoint-lg) {
+  @media only screen and (max-width: $breakpoint-lg) {
     height:calc(100vh - #{em(256)});
   }
-  @media screen and (max-width: $breakpoint-md) {
+  @media only screen and (max-width: $breakpoint-md) {
     height:calc(60vh - #{em(156)});
   }
 }
@@ -114,15 +115,15 @@ body {
   .component-sankey {
     height:100%;
   }
-  @media screen and (max-width: $breakpoint-lg) {
+  @media only screen and (max-width: $breakpoint-lg) {
     padding-right: calc(25% + 78px);
   }
-  @media screen and (max-width: $breakpoint-md) {
+  @media only screen and (max-width: $breakpoint-md) {
     padding-right: 30px;
   }
 }
 
-@media screen and (max-width: $breakpoint-md) {
+@media only screen and (max-width: $breakpoint-md) {
   .app__inner {
     width:100%;
   }
@@ -138,7 +139,7 @@ body {
   // }
 }
 
-@media screen and (max-width: $breakpoint-sm) {
+@media only screen and (max-width: $breakpoint-sm) {
   .app-wrapper {
     width:120%;
     min-width:740px;
@@ -152,13 +153,13 @@ body {
   }
 }
 
-@media screen and (max-width: 600px) {
+@media only screen and (max-width: 600px) {
   .app-wrapper {
     width:150%;
   }
 }
 
-@media screen and (max-width: 400px) {
+@media only screen and (max-width: 767px) {
   // .app-wrapper {
   //   width: 100%;
   //   min-width: 10em;

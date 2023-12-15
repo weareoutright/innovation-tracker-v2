@@ -138,7 +138,7 @@ $control-h: em(52);
       }
     }
   }
-  @media screen and (max-width:$breakpoint-lg) {
+  @media only screen and (max-width:$breakpoint-lg) {
     .stickies__control {
       display:block;
     }
@@ -151,7 +151,7 @@ $control-h: em(52);
     }
   }
 
-  @media screen and (max-width:$breakpoint-md) {
+  @media only screen and (max-width:$breakpoint-md) {
     .stickies__control {
       display: flex;
       flex-direction: row;

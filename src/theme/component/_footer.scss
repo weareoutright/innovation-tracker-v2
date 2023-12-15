@@ -25,7 +25,7 @@
     //   }
     // }
   }
-  @media screen and (max-width:$breakpoint-xl) {
+  @media only screen and (max-width:$breakpoint-xl) {
     .footer__wrapper {
       > * {
         margin-left:em(75);
@@ -33,12 +33,12 @@
       }
     }
   }
-  @media screen and (max-width:$breakpoint-lg) {
+  @media only screen and (max-width:$breakpoint-lg) {
     .footer__wrapper {
       max-width:75%;
     }
   }
-  @media screen and (max-width:$breakpoint-md) {
+  @media only screen and (max-width:$breakpoint-md) {
     height:25svh;
     margin: 0 auto;
     .footer__wrapper {
@@ -56,17 +56,17 @@
       }
     }
   }
-  @media screen and (max-width:$breakpoint-sm) {
+  @media only screen and (max-width:$breakpoint-sm) {
 
   }
 
-  @media screen and (max-width: 600px) {
+  @media only screen and (max-width: 600px) {
     .footer__wrapper {
       padding:0 30px;
     }
   }
 
-  @media screen and (min-width:300px) and (max-width: 400px) {
+  @media only screen and (min-width:300px) and (max-width: 400px) {
       height: 50svh !important;
       padding-top: 1em;
 

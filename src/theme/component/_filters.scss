@@ -76,7 +76,7 @@
   .download-trigger {
     margin-left:3em;
   }
-  @media screen and (max-width: $breakpoint-lg) {
+  @media only screen and (max-width: $breakpoint-lg) {
     .component-filters {
     display: flex;
     flex-direction: row;
@@ -93,13 +93,13 @@
       }
     }
   }
-  @media screen and (max-width: $breakpoint-md) {
+  @media only screen and (max-width: $breakpoint-md) {
     .filters__filter {
       padding: .5em;
     }
   }
 
-  @media screen and (min-width:300px) and (max-width: 400px) {
+  @media only screen and (min-width:300px) and (max-width: 400px) {
     .filters__filter {
       margin: .5em;
       margin-bottom: 0;

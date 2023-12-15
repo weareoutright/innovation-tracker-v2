@@ -101,7 +101,7 @@
       margin:0 em(7,17) em(7,17) 0;
     }
   }
-  @media screen and (max-width:$breakpoint-md) {
+  @media only screen and (max-width:$breakpoint-md) {
     max-width:260px;
     &.helper-primary {
       left:calc(50%);

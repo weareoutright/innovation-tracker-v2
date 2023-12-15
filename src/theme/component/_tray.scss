@@ -111,7 +111,7 @@
       padding-left:5%;
     }
   }
-  @media screen and (max-width:$breakpoint-lg) {
+  @media only screen and (max-width:$breakpoint-lg) {
     background:$purpleLight;
     right:22px;
     transition:right .5s ease-in-out;
@@ -125,7 +125,7 @@
       }
     }
   }
-  @media screen and (max-width:$breakpoint-md) {
+  @media only screen and (max-width:$breakpoint-md) {
     position:absolute;
     bottom:0;
     top:auto;
@@ -149,7 +149,7 @@
       }
     }
   }
-  @media screen and (max-width:$breakpoint-sm) {
+  @media only screen and (max-width:$breakpoint-sm) {
     .component-sankey {
       &.mini {
         width:100%;
