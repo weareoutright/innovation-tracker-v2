@@ -60,32 +60,33 @@
 
   }
 
-  @media only screen and (max-width: 600px) {
-    .footer__wrapper {
-      padding:0 30px;
-    }
+}
+
+@media only screen and (min-width:300px) and (max-width: 600px) {
+  .app-footer {
+    height: 38svh !important;
+    padding-top: 4em;
+    padding-bottom: 4em;
   }
 
-  @media only screen and (min-width:300px) and (max-width: 400px) {
-      height: 50svh !important;
-      padding-top: 1em;
-
-    .footer__wrapper {
-      font-size: 1em;
-      margin-top: -5em;
-      padding: 0;
-    }
-
-    .footer-second-row-md-breakpoint {
-      padding: .5em;
-    }
-
-    .footer-third-row-sm-breakpoint {
-      margin: .5em;
-      display: flex;
-      flex-direction: row;
-      align-items: center;
-    }
-
+  .footer__wrapper {
+    padding: 0 .25em !important;
   }
+
+  .footer__wrapper {
+    font-size: .85em;
+    padding: 0;
+  }
+
+  .footer-second-row-md-breakpoint {
+    padding: .5em;
+  }
+
+  .footer-third-row-sm-breakpoint {
+    margin: .5em;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+  }
+
 }

@@ -116,7 +116,7 @@ const Header = ({ shortYear }) => {
         </div>
       </header>
     );
-  } else if (width <= 767) {
+  } else if (width <= 500) {
     return (
       <header
         className="app-header"

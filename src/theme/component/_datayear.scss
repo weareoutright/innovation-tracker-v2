@@ -55,3 +55,15 @@
         linear-gradient(135deg, $light 50%, transparent 50%);
       }
 }
+
+@media only screen and (max-width: $breakpoint-md) {
+    .DataYearSelect {
+        .data-year {
+            font-size: .95em;
+        }
+    }
+  }
+  
+  @media only screen and (min-width:300px) and (max-width: 600px) {
+
+  }

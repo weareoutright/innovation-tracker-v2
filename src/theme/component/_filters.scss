@@ -70,7 +70,6 @@
     // }
     &:active {
       cursor:grabbing;
-      
     }
   }
   .download-trigger {
@@ -93,16 +92,19 @@
       }
     }
   }
-  @media only screen and (max-width: $breakpoint-md) {
-    .filters__filter {
-      padding: .5em;
-    }
+}
+@media only screen and (max-width: $breakpoint-md) {
+  .filters__filter {
+    padding: .5em;
   }
+}
 
-  @media only screen and (min-width:300px) and (max-width: 400px) {
+@media only screen and (min-width:300px) and (max-width: 600px) {
+  .component-filters {
     .filters__filter {
       margin: .5em;
       margin-bottom: 0;
+      font-size: 1em !important;
     }
   }
 }

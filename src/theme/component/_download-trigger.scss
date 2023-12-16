@@ -153,3 +153,17 @@
     }
   }
 }
+
+@media only screen and (min-width:300px) and (max-width: 600px) {
+  .download-trigger {
+    .download__label {
+      font-size: .85em !important;
+    }
+    .download__button {
+      > svg {
+        width:1.6em;
+        height:1.4em;
+      }
+    }
+  }
+}

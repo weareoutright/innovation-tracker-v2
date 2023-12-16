@@ -12,7 +12,6 @@ import useWindowSize from "./useWindowSize";
 const Footer = ({ handleYearChange, dataYears, shortYear }) => {
   const { width } = useWindowSize();
 
-  // WORKING ON MOBILE
   if (width > BREAKPOINTS.md) {
     return (
       <footer className="app-footer">
