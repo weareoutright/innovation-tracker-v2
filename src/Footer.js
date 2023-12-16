@@ -12,7 +12,7 @@ import useWindowSize from "./useWindowSize";
 const Footer = ({ handleYearChange, dataYears, shortYear }) => {
   const { width } = useWindowSize();
 
-  if (width > BREAKPOINTS.md) {
+  if (width >= 600) {
     return (
       <footer className="app-footer">
         <div className="footer__wrapper">
@@ -26,7 +26,7 @@ const Footer = ({ handleYearChange, dataYears, shortYear }) => {
         </div>
       </footer>
     );
-  } else if (width <= BREAKPOINTS.md && width > 400) {
+  } else if (width <= BREAKPOINTS.md && width > 699) {
     return (
       <footer className="app-footer">
         <div className="footer__wrapper">

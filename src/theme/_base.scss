@@ -43,8 +43,9 @@ body {
   align-items: center;
   left:0;
   right:auto;
+
   @media only screen and (max-width:$breakpoint-lg) {
-    width:133.333vw;
+    width:133.3333vw;
     .show-tray & {
       left:-33.3333%;
     }
@@ -139,10 +140,14 @@ body {
   // }
 }
 
-@media only screen and (max-width: $breakpoint-sm) {
+@media only screen and (max-width: 600px) {
+  .app__inner {
+    height: 100svh;
+  }
+
   .app-wrapper {
-    width:120%;
-    min-width:740px;
+    width:100vw;
+    min-width:$breakpoint-sm;
   }
   .app-main {
     width:100%;
@@ -155,11 +160,11 @@ body {
 
 @media only screen and (max-width: 600px) {
   .app-wrapper {
-    width:150%;
+    width:100vh;
   }
 }
 
-@media only screen and (max-width: 767px) {
+@media only screen and (max-width: 600px) {
   // .app-wrapper {
   //   width: 100%;
   //   min-width: 10em;
