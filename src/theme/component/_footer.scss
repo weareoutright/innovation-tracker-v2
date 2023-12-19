@@ -6,17 +6,17 @@
   flex:none;
   display: flex;
   align-items: center;
-  justify-content: center !important;
-  width:100vw !important;
+  justify-content: space-around;
+  width:100vw;
   background: $light;
   margin: 0em;
   .footer__wrapper {
-    padding:0 em(75);
+    padding: 0 3em;
     display:flex;
     justify-content:center;
     align-items: center;
     flex-direction: row;
-    width:100%;
+    width:100vw;
     
     // > * {
     //   margin-left:em(60);
@@ -28,14 +28,15 @@
   @media only screen and (max-width:$breakpoint-xl) {
     .footer__wrapper {
       > * {
-        margin-left:em(75);
-        display:block;
+        font-size: .85em;
+        margin: 0 auto;
       }
+      padding-right: 5em;
     }
   }
   @media only screen and (max-width:$breakpoint-lg) {
     .footer__wrapper {
-      width:133%;
+      width:100%;
     }
   }
   @media only screen and (max-width:$breakpoint-md) {
@@ -67,7 +68,7 @@
   }
 
   .footer__wrapper {
-    padding: 0 .25em !important;
+    padding: 0 .25em;
   }
 
   .footer__wrapper {
