@@ -66,28 +66,40 @@ const TrayEntry = (props) => {
           <div className="tray__entry__header">
             <h3
               style={{
-                backgroundColor: `${filterColors[node.type]}`,
                 color:
                   node.type === "agency" ||
                   node.type === "solution" ||
                   node.type === "sector"
                     ? "#fff"
                     : "#000",
-                width:
-                  labels.getLabel(node.name).length > 30
-                    ? "100%"
-                    : "fit-content",
+                borderLeft: `5px solid ${filterColors[node.type]}`,
               }}
             >
               {node.type === "agency" ? (
                 <React.Fragment>
-                  {node.agencyHierarchy.map((a) => `${a} > `)}
-                  {labels.getLabel(node.name)}
+                  <span
+                    className="highlight"
+                    style={{
+                      backgroundColor: `${filterColors[node.type]}`,
+                    }}
+                  >
+                    {` ${node.agencyHierarchy.map((a) => `${a} > `)}`}
+                    {` ${labels.getLabel(node.name)}`}
+                  </span>
                 </React.Fragment>
               ) : (
-                <React.Fragment>{labels.getLabel(node.name)}</React.Fragment>
+                <span
+                  className="highlight"
+                  style={{
+                    backgroundColor: `${filterColors[node.type]}`,
+                  }}
+                >
+                  <React.Fragment>{labels.getLabel(node.name)}</React.Fragment>
+                </span>
               )}
             </h3>
+            <br />
+            <br />
             <strong>
               {node.type === "agency" && (
                 <React.Fragment>{amount}</React.Fragment>

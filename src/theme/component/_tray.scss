@@ -58,7 +58,7 @@
     background-color: $brandGray;
   }
   .tray__entry {
-    padding-top:4em;
+    padding-top:1em;
     margin-top:1.2em;
     border-top:1px solid $dark;
     &:first-child {
@@ -74,21 +74,32 @@
   .tray__entry__header {
     h3 {
       font-size:1em;
-      margin-bottom: .75em;
       font-weight: 700;
-      // width: 100%;
-      padding: .25em .5em;
+      width: fit-content;
+      text-align: left;
+      margin-bottom: 0;
+      margin-top: 0;
+      margin-right: 0;
+      height: fit-content;
+      padding: 0;
+      line-height: 1.7em !important;
+      
+      span.highlight {
+        display: inline;
+        padding: .25em .5em .29em 0em;
+      }
     }
   }
   .tray__entry__content {
     h4 {
-      margin-top:1.2em;
-      margin-bottom:.5em;
+      margin-top:0em;
+      margin-bottom:0em;
       font-weight:600;
       font-style:italic;
       display:inline-block;
       color: $brandGray;
       font-size:em(13);
+      padding-top: 0;
     }
   }
   .breakdown {
