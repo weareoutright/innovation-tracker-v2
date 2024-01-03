@@ -1,6 +1,6 @@
 $breakpoint-xl:1400px;
 $breakpoint-lg:1100px;
-$breakpoint-md:840px;
+$breakpoint-md:924px;
 $breakpoint-sm:730px;
 $breakpoint-xs:420px;
 
@@ -82,7 +82,7 @@ body {
 .app-wrapper {
   position:relative;
   flex:auto;
-  width:100%;
+  width:100vw;
   display:flex;
   align-items:center;
   background:$light;

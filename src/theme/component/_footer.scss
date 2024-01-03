@@ -26,6 +26,7 @@
     // }
   }
   @media only screen and (max-width:$breakpoint-xl) {
+
     .footer__wrapper {
       > * {
         font-size: .85em;
@@ -42,6 +43,7 @@
   @media only screen and (max-width:$breakpoint-md) {
     height:25svh;
     margin: 0 auto;
+    width:40vw !important;
     .footer__wrapper {
       flex-direction:column;
       max-width:100%;
