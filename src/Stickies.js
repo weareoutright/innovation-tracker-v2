@@ -124,19 +124,37 @@ const Stickies = (props) => {
       {
         type: "help",
         content:
+          "To learn more about each sector, visit the Definitions & Methodology page",
+        position: () => {
+          const ref = document.querySelector(".app-main-content");
+          if (ref) {
+            const box = ref.getBoundingClientRect();
+            return pxToPercentage({
+              x: box.x + (box.width * .5) - 100,
+              y: box.y + 20,
+            });
+          }
+        },
+        showWhen: () => {
+          return showHelpers && (active[0] == 'sector' || active[1] == 'sector');
+        },
+      },
+      {
+        type: "help",
+        content:
           "This sidebar summarizes the specifics based on your selection",
         position: () => {
           const ref = document.querySelector(".app-main");
           if (ref) {
             const box = ref.getBoundingClientRect();
             return pxToPercentage({
-              x: box.x + box.width * 0.7,
+              x: box.x + box.width * .7,
               y: box.y + box.height / 2,
             });
           }
         },
         showWhen: () => {
-          return showHelpers && active[0] != null && active[1] == null;
+          return showHelpers && ((active[0] != null && active[1] == null) || (active[0] == null && active[1] != null));
         },
       },
       {
@@ -147,13 +165,13 @@ const Stickies = (props) => {
           if (ref) {
             const box = ref.getBoundingClientRect();
             return pxToPercentage({
-              x: box.x + box.width * 0.7,
-              y: box.y + box.height - 40,
+              x: box.x + box.width - 240,
+              y: box.y + box.height - 10,
             });
           }
         },
         showWhen: () => {
-          return showHelpers && active[0] != null && active[1] == null;
+          return showHelpers && ((active[0] != null && active[1] == null) || (active[0] == null && active[1] != null));
         },
       },
       {
@@ -165,7 +183,7 @@ const Stickies = (props) => {
           if (ref) {
             const box = ref.getBoundingClientRect();
             return pxToPercentage({
-              x: box.x - 40,
+              x: box.x - 70,
               y: box.y - 90,
             });
           }
