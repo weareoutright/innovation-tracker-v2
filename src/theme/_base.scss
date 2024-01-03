@@ -1,6 +1,7 @@
+$breakpoint-sxl:2100px;
 $breakpoint-xl:1400px;
 $breakpoint-lg:1100px;
-$breakpoint-md:924px;
+$breakpoint-md:840px;
 $breakpoint-sm:730px;
 $breakpoint-xs:420px;
 
@@ -28,7 +29,7 @@ body {
 
 .App {
   width:100%;
-  height:calc(100vh - em(8));
+  height:100dvh;
   overflow-x:hidden;
   position:relative;
 }
@@ -40,49 +41,43 @@ body {
   position:absolute;
   display:flex;
   flex-direction:column;
-  justify-content: space-between;
-  align-items: center;
   left:0;
   right:auto;
   background-color: #FFF;
-
-  @media only screen and (max-width:$breakpoint-lg) {
-    width:133.3333vw;
-    .show-tray & {
-      left:-33.3333%;
-    }
-  }
-  @media only screen and (max-width:$breakpoint-md) {
-    .show-tray & {
-      left:0;
-    }
-  }
-}
-
-%offsetPanelRight {
-  padding-right:calc($breakpoint-xl * .25 + 30px);
-  padding-left:30px;
-  @media only screen and (max-width:$breakpoint-xl) {
-    padding-right:calc(25% + 30px);
-  }
+  overflow:hidden;
 }
 
 %container {
-  @extend %offsetPanelRight;
   width:100%;
   max-width:em(1400);
   margin-left:auto;
   margin-right:auto;
   position:relative;
-  @media only screen and (max-width:$breakpoint-md) {
-    padding-right:30px;
+  padding-left:30px;
+  padding-right:30px;
+  @media only screen and (max-width: $breakpoint-sxl) {
+    margin-left:0;  
+    margin-right:0;
+    max-width:none;
+  }
+}
+
+%offsetRightPanel {
+  @media only screen and (max-width: $breakpoint-sxl) {
+    margin-right:25%;
+  }
+  @media only screen and (max-width: $breakpoint-lg) {
+    margin-right:calc(25% + 15px);
+  }
+  @media only screen and (max-width: $breakpoint-md) {
+    margin-right:0;
   }
 }
 
 .app-wrapper {
   position:relative;
   flex:auto;
-  width:100vw;
+  width:100%;
   display:flex;
   align-items:center;
   background:$light;
@@ -97,7 +92,6 @@ body {
 }
 
 .app-main {
-  @extend %container;
   max-height:em(760);
   height:100%;
   padding-top:30px;
@@ -110,7 +104,6 @@ body {
     height:100%;
     position:relative;
     pointer-events:all;
-    margin-left: .5em;
   }
   .sankey-spacer {
     height:100%;
@@ -120,79 +113,59 @@ body {
   .component-sankey {
     height:100%;
   }
-  @media only screen and (max-width: $breakpoint-lg) {
-    padding-right: calc(25% + 78px);
+}
+
+.app-main,.component-well-headers,.footer__wrapper {
+  @extend %container;
+}
+
+.app-main,.component-well-headers {
+  @extend %offsetRightPanel;
+}
+
+@media only screen and (max-width: $breakpoint-lg) {
+  .app__inner {
+    width:133.3333vw;
+    .show-tray & {
+      left:-33.3333%;
+    }
   }
-  @media only screen and (max-width: $breakpoint-md) {
-    padding-right: 30px;
+  .app-main,.component-well-headers,.footer__wrapper {
+    width:75%;
   }
 }
 
 @media only screen and (max-width: $breakpoint-md) {
   .app__inner {
     width:100%;
+    .show-tray & {
+      left:0;
+    }
   }
-  .app__top,.app__bottom {
+  .app-main,.component-well-headers,.footer__wrapper {
     width:100%;
   }
-  .app__top {
-    display:flex;
-    flex-direction:column;
+  .app-main {
+    padding:0;
+    .app-main-content {
+      padding:em(30);
+      margin-bottom:em(15);
+      height:calc(100% - #{em(15)});
+    }
   }
-  // .app__bottom {
-
-  // }
 }
 
-@media only screen and (max-width: 600px) {
-  .app__inner {
-    height: 100svh;
-  }
-
+@media only screen and (max-width: $breakpoint-sm) {
   .app-wrapper {
-    width:100vw;
-    min-width:$breakpoint-sm;
+    width:100%;
   }
   .app-main {
     width:100%;
     overflow:hidden;
-  }
-  .app__top {
-    overflow-x:auto;
-  }
-}
-
-@media only screen and (max-width: 600px) {
-  .app-wrapper {
-    width:100vh;
-  }
-}
-
-@media only screen and (max-width: 600px) {
-  // .app-wrapper {
-  //   width: 100%;
-  //   min-width: 10em;
-  // }
-
-  .app__top {
-    overflow-x: hidden;
-  }
-
-  .app__middle {
-    overflow-x: scroll;
-  }
-
-  .app-main {
-    width: 100%;
     overflow-x: auto;
-  }
-
-  .app-header {
-    width: 100svw;
-    overflow: hidden;
-  }
-
-  .app__inner {
-    display: block;
+    .app-main-content {
+      width:100vw;
+      min-width:$breakpoint-sm;
+    }
   }
 }

@@ -137,7 +137,7 @@ function App() {
                   } ${showTray ? "show-tray" : ""}`}
                 >
                   <div className="app__inner">
-                    {window.innerWidth >= 841 && (
+                    {/* {window.innerWidth >= 841 && ( */}
                       <React.Fragment>
                         <Header
                           inputYear={inputYear}
@@ -167,7 +167,7 @@ function App() {
                           </Router>
                         </DndProvider>
                       </React.Fragment>
-                    )}
+                    {/*})}
                     {window.innerWidth < 841 && (
                       <React.Fragment>
                         <div class="app__top">
@@ -198,9 +198,6 @@ function App() {
                             backend={TouchBackend}
                             opts={{ enableMouseEvents: true }}
                           >
-                            <TrayProvider value={{ showTray, setShowTray }}>
-                              <Tray data={data} shortYear={shortYear} />
-                            </TrayProvider>
                             <Footer
                               handleYearChange={handleYearChange}
                               dataYears={dataYears}
@@ -212,7 +209,7 @@ function App() {
                           </DndProvider>
                         </div>
                       </React.Fragment>
-                    )}
+                    )}*/}
                   </div>
                 </div>
               </ReadyProvider>

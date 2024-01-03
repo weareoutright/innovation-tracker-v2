@@ -3,17 +3,19 @@
   font-family: $secondaryFont;
   right:0;
   top:0;
-  width:25%;
+  width:calc((100vw - 1400px) / 2);
   height:100%;
   background:$brandGray;
   font-size:14px;
   z-index:2;
+  display:flex;
+  flex-direction:column;
   .tray__entry__legend {
     display: flex;
     flex-direction: row;
     align-items: center;
     justify-content: flex-start;
-    position: fixed;
+    position: sticky;
     width: 100%;
     background-color: $brandGray;
     opacity: 1;
@@ -122,35 +124,40 @@
       padding-left:5%;
     }
   }
-  @media only screen and (max-width:$breakpoint-lg) {
-    background:$purpleLight;
-    right:22px;
-    transition:right .5s ease-in-out;
-    &,.tray__trigger {
-      transition:all .5s ease-in-out;
-    }
-    .show-tray & {
-      right:0;
-      &,.tray__trigger {
-        background:#f8f6fa;
-      }
-    }
+  @media only screen and (max-width:$breakpoint-sxl) {
+    width:25%;
   }
   @media only screen and (max-width:$breakpoint-md) {
+    left: 0;
+    right: 0;
+    width: 100%;
+    top: auto;
+    height: em(29);
+    bottom: 0;
     position:absolute;
-    bottom:0;
-    top:auto;
-    height:40vh;
-    width:calc(100% - 40px);
-    right:auto;
-    left:calc(100% - 22px);
     z-index:15;
+    transition:height .25s ease-in-out;
+    display:flex;
+    flex-direction:column;
+    justify-content:flex-start;
+    align-items:center;
+    padding:0;
+    background:none;
+    overflow:hidden;
+    > * {
+      width:100%;
+    }
+    .tray__entry__legend,.tray__trigger,.tray__content {
+      position:static;
+      width:100%;
+    }
+    .tray__trigger {
+      width:auto;
+      transform: none;
+      display:inline-block;
+    }
     .show-tray & {
-      right:auto;
-      left:40px;
-      &,.tray__trigger {
-        background:$purpleLight;
-      }
+      height:calc(100% - #{em(77)});
     }
     .component-sankey {
       &.mini {

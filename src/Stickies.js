@@ -67,7 +67,7 @@ const Stickies = (props) => {
   const { agencyLevel, setAgencyLevel } = useContext(AgencyLevelContext);
   const { showHelpers, setShowHelpers } = useContext(HelpersContext);
 
-  const [showTips, setShowTips] = useState(1);
+  const [showTips, setShowTips] = useState(window.innerWidth <= 620 ? 0 : 1);
 
   const container = document.querySelector(".App");
 

@@ -1,7 +1,3 @@
-.DataYearSelect {
-    width: 50%;
-}
-
 .data-year-container {
     display: flex;
     flex-direction: row;
@@ -12,58 +8,45 @@
         @include typeFilterPre;
     }
     .data-year {
+        &:hover,&:focus,& {
+            background-color: transparent;
+        }
+        &:hover {
+            cursor: pointer;
+            transition: all 220ms ease-out;
+            color: $light;
+            background-color: $brandBlue;
+            background-image:
+            linear-gradient(45deg, transparent 50%, $light 50%),
+            linear-gradient(135deg, $light 50%, transparent 50%);
+          }
         border: 1px solid $brandBlue;
         border-radius: $borderRadius;
-        font-family: $secondaryFont;
+        @include typeFilter;
         color: $brandBlue;
-        background-color: transparent;
-        font-size: .95rem;
-        font-style: normal;
-        font-weight: 900;
-        display: inline-flex;
+        
+        display: flex;
         padding: 0.45rem 2rem 0.45rem 1.25rem;
         align-items: center;
         gap: 0.5rem;
         appearance: none;
-        margin: 0em 1em;
-    
+        margin: 0 0 0 1em;
+
         background-image:
             linear-gradient(45deg, transparent 50%, $brandBlue 50%),
             linear-gradient(135deg, $brandBlue 50%, transparent 50%);
-    
+
         background-position:
             calc(100% - 20px) calc(1em),
             calc(100% - 15px) calc(1em),
             calc(100% - 15px);
-    
+
         background-position-y: center;
             
         background-size:
             5px 5px,
             5px 5px;
-    
+
         background-repeat: no-repeat;
       }
-    
-      .data-year:hover {
-        cursor: pointer;
-        transition: all 220ms ease-out;
-        color: $light;
-        background-color: $brandBlue;
-        background-image:
-        linear-gradient(45deg, transparent 50%, $light 50%),
-        linear-gradient(135deg, $light 50%, transparent 50%);
-      }
 }
-
-@media only screen and (max-width: $breakpoint-md) {
-    .DataYearSelect {
-        .data-year {
-            font-size: .95em;
-        }
-    }
-  }
-  
-  @media only screen and (min-width:300px) and (max-width: 600px) {
-
-  }

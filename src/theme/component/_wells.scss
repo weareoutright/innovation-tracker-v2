@@ -8,10 +8,6 @@
   pointer-events:none;
   z-index:1;
   transition:left .5s ease-in-out;
-  .tutorial-active:not(.has_active-1):not(.has_active-2) & {
-    left:calc(50% - #{em(280)});
-
-  }
   .drop-hover & {
     z-index:2;
   }
@@ -91,6 +87,9 @@
       width:28vh;
     }
   }
+  @media only screen and (max-width:$breakpoint-md) {
+    padding:em(30);
+  }
 }
 
 .component-well-headers {
@@ -141,21 +140,13 @@
     }
     &.well__header-main {
       flex:auto;
-      h2 {
-        font-family: $mainFont;
-        text-transform: uppercase;
-        color: $brandAlmostBlack;
-        max-width:none;
-        font-size: 1.5em !important;
-        em {
-          font-family: $secondaryFont !important;
-          font-size: .75em !important;
-        }
-      }
       &:before,&:after {
         //border-width:1px 0 0 0;
         width:em(80);
       }
+    }
+    @media only screen and (max-width:$breakpoint-md) {
+      width:em(175,14);
     }
   }
   h2,h3 {
@@ -163,20 +154,19 @@
     text-align: center;
     em {
       display:block;
-      font-size: .9em !important;
     }
   }
   h2 {
     @include typeHeaderWell;
-    padding:0 1em;
-    margin-top:-.1em;
-    font-size: 1.2em !important;
+    @media only screen and (max-width:$breakpoint-sm) {
+      padding:0;
+      margin-bottom:em(14,30);
+    }
   }
   h3 {
     @include typeHeaderWellSecondary;
     display:inline-block;
     span {
-      font-weight: 600 !important;
       border-radius:2em;
       // border:1px solid $light;
       padding:.33em .5em;
@@ -201,5 +191,30 @@
       }
     }
   }
+  @media only screen and (max-width:$breakpoint-sm) {
+    .well__headers {
+      display: flex;
+      flex-direction: column;
+    }
+    .well__header {
+      width:auto;
+    }
+    .well__header-main {
+      width: 100%;
+      h2 {
+        text-align: left;
+      }
+    }
+    .second-header-row-sm {
+      display: flex;
+      width:100%;
+      justify-content:space-between;
+    }
 
+    .well__header {
+      span {
+        padding: .5em 1em;
+      }
+    }
+  }
 }

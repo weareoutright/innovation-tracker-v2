@@ -15,12 +15,9 @@
     justify-content: center;
     text-align: center;
     border-radius: $borderRadius;
-    font-family: $secondaryFont;
+    @include typeFilter;
     color: $brandBlue;
     background-color: transparent;
-    font-size: .95rem;
-    font-style: normal;
-    font-weight: 900;
     display: inline-flex;
     padding: $padding;
     padding-left: 1.5em;
@@ -131,10 +128,8 @@
     }
   }
   @media only screen and (max-width:$breakpoint-lg) {
-    .download__label {
-      margin-bottom:.5em;
-    }
     .download__button {
+      padding: .25em .5em .25em 1em;
       > svg {
         width:1.9em;
         height:1.7em;
@@ -142,9 +137,6 @@
     }
   }
   @media only screen and (max-width:$breakpoint-md) {
-    .download__label {
-      margin: 0;
-    }
     .download__button {
       > svg {
         width:1.6em;
@@ -156,9 +148,6 @@
 
 @media only screen and (min-width:300px) and (max-width: 600px) {
   .download-trigger {
-    .download__label {
-      font-size: .85em !important;
-    }
     .download__button {
       > svg {
         width:1.6em;

@@ -17,9 +17,9 @@
     list-style:none;
     align-items:center;
     justify-content:center;
-    margin:0 2em;
-    margin-left: -5em;
+    margin:0;
     padding:0;
+    gap:em(7);
     // &:before {
     //   @include typeFilterPre;
     //   margin-right:em(10,15);
@@ -28,7 +28,6 @@
   }
   .filters__filter {
     @include typeFilter;
-    margin-right:em(7,17);
     border: 1px solid $brandAlmostBlack;
     color: $brandAlmostBlack;
     border-radius:em(37,17);
@@ -72,6 +71,9 @@
     &:active {
       cursor:grabbing;
     }
+    &:last-child {
+      margin-right:0;
+    }
   }
   .download-trigger {
     margin-left:3em;
@@ -97,15 +99,5 @@
 @media only screen and (max-width: $breakpoint-md) {
   .filters__filter {
     padding: .5em;
-  }
-}
-
-@media only screen and (min-width:300px) and (max-width: 600px) {
-  .component-filters {
-    .filters__filter {
-      margin: .5em;
-      margin-bottom: 0;
-      font-size: 1em !important;
-    }
   }
 }

@@ -1,6 +1,6 @@
 $typeBase: 14px;
 
-@function em($px, $base: 16) {
+@function em($px, $base: 14) {
   @return math.div($px,$base) * 1em;
 }
 
@@ -13,6 +13,11 @@ $typeBase: 14px;
   text-transform: none;
 }
 
+@mixin typeReduced {
+  @include typeDefault;
+  font-size:em(13);
+}
+
 @mixin typeContrast {
   color: $light;
 }
@@ -23,39 +28,40 @@ $typeBase: 14px;
 
 @mixin typeHeaderWell {
   @include typeHeader;
-  @include typeContrast;
-  font-size: em(20);
-  font-weight: 400;
+  font-family:$mainFont;
+  text-transform:uppercase;
+  font-size: em(30);
+  font-weight: 300;
   // text-transform:uppercase;
   em {
+    font-family: $secondaryFont;
     display:block;
-    font-size: em(15,20);
+    font-size: em(16,30);
     font-style:normal;
     font-weight: 850;
-  }
-  @media screen and (max-width:769px) {
-    font-size: em(18);
+    text-transform:none;
   }
 }
 
 @mixin typeHeaderWellSecondary {
   @include typeHeader;
   @include typeContrast;
-  font-size: em(18);
+  font-size: em(16);
   font-weight: 600;
   em {
+    color:$dark;
     display:block;
     font-weight: 400;
-    font-size: em(14,20);
+    font-style:normal;
+    font-size: em(12,16);
     line-height:1.2em;
-    margin-top:.3em;
   }
 }
 
 @mixin typeFilter {
   @include typeHeader;
   @include typeContrast;
-  font-size: em(17);
+  font-size: em(16);
   font-weight:600;
   @media screen and (max-width:$breakpoint-lg) {
     font-size:1em;
@@ -66,7 +72,7 @@ $typeBase: 14px;
   @include typeHeader;
   @include typeContrast;
   color: $brandAlmostBlack;
-  font-size: em(23);
+  font-size: em(20);
   font-weight:400;
   @media screen and (max-width:$breakpoint-lg) {
     font-size:em(14);

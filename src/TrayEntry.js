@@ -98,8 +98,6 @@ const TrayEntry = (props) => {
                 </span>
               )}
             </h3>
-            <br />
-            <br />
             <strong>
               {node.type === "agency" && (
                 <React.Fragment>{amount}</React.Fragment>

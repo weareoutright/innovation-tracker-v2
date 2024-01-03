@@ -116,7 +116,7 @@ const Header = ({ shortYear }) => {
         </div>
       </header>
     );
-  } else if (width <= 500) {
+  } else {
     return (
       <header
         className="app-header"
@@ -128,24 +128,24 @@ const Header = ({ shortYear }) => {
         <div className="component-well-headers">
           <div className="well__headers">
             <React.Fragment>
-              {/* {w == 0 && anyActive && ( */}
-              <div className="well__header well__header-active well__header-main">
-                <h2>
-                  {anySelected
-                    ? `Selected FY${shortYear} Climate Innovation Funding: Mitigation`
-                    : `FY${shortYear} Climate Innovation Funding: Mitigation`}
-                  <em>
-                    {amount} ({percentage !== "NaN%" ? percentage : " __%"})
-                  </em>
-                  {/* need to look into which subgroups to map here -- how to access?
-                        <em>
-                          {mappedGroups[well].map((group) =>
-                            labels.getLabel(group)
-                          )}
-                        </em> */}
-                </h2>
-              </div>
-              {/* )} */}
+              {anyActive && (
+                <div className="well__header well__header-active well__header-main">
+                  <h2>
+                    {anySelected
+                      ? `Selected FY${shortYear} Climate Innovation Funding: Mitigation`
+                      : `FY${shortYear} Climate Innovation Funding: Mitigation`}
+                    <em>
+                      {amount} ({percentage !== "NaN%" ? percentage : " __%"})
+                    </em>
+                    {/* need to look into which subgroups to map here -- how to access?
+                          <em>
+                            {mappedGroups[well].map((group) =>
+                              labels.getLabel(group)
+                            )}
+                          </em> */}
+                  </h2>
+                </div>
+              )}
             </React.Fragment>
             <div className="second-header-row-sm">
               {active.map((well, w) => {

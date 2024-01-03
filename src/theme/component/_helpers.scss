@@ -36,9 +36,6 @@
     font-size:40px;
     line-height:1.2em;
   }
-  &.helper-primary {
-    left:calc(50% + #{em(15)});
-  }
   &.helper-secondary {
     text-align:right;
     left:auto;
@@ -102,9 +99,7 @@
     }
   }
   @media only screen and (max-width:$breakpoint-md) {
+    left:em(225);
     max-width:260px;
-    &.helper-primary {
-      left:calc(50%);
-    }
   }
 }

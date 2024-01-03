@@ -7,7 +7,6 @@ $control-h: em(52);
     display:flex;
     align-items:center;
     height:100%;
-    margin: 0 2em;
   }
   .stickies__label {
     @include typeFilterPre;
@@ -55,7 +54,7 @@ $control-h: em(52);
     }
     input[value="1"] {
       ~ span:last-child {
-        left:calc(100% - 1em - 2px);
+        left:calc(100% - 2em + 2px);
         right:auto;
         &:after {
           content:"On";
@@ -136,30 +135,6 @@ $control-h: em(52);
           }
         }
       }
-    }
-  }
-  @media only screen and (max-width:$breakpoint-lg) {
-    .stickies__control {
-      display:block;
-    }
-    .stickies__label {
-      margin-bottom:.5em;
-      white-space:nowrap;
-    }
-    .stickies__toggle {
-      margin-top:2px;
-    }
-  }
-
-  @media only screen and (max-width:$breakpoint-md) {
-    .stickies__control {
-      display: flex;
-      flex-direction: row;
-      align-items: center;
-    }
-
-    .stickies__label {
-      margin: 0 .5em 0 0;
     }
   }
 }

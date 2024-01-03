@@ -1,92 +1,57 @@
 .app-footer {
   @extend %component-contrast;
-  height:em(100);
+  width:100%;
   padding-top:em(30);
   padding-bottom:em(30);
   flex:none;
   display: flex;
   align-items: center;
-  justify-content: space-around;
-  width:100vw;
+  justify-content: flex-start;
   background: $light;
   margin: 0em;
   .footer__wrapper {
-    padding: 0 3em;
     display:flex;
-    justify-content:center;
+    justify-content:space-between;
     align-items: center;
     flex-direction: row;
-    width:100vw;
-    
-    // > * {
-    //   margin-left:em(60);
-    //   &:first-child {
-    //     margin-left:-8.25em;
-    //   }
-    // }
+    position:static;
+    gap:em(14) em(30);
   }
-  @media only screen and (max-width:$breakpoint-xl) {
-
+  @media only screen and (max-width:1300px) {
+    padding-top:em(24);
+    padding-bottom:em(14);
     .footer__wrapper {
-      > * {
-        font-size: .85em;
-        margin: 0 auto;
-      }
-      padding-right: 5em;
+      flex-wrap:wrap;
+      justify-content:center;
+    }
+    .component-filters {
+      order:0;
+      flex:100%;
+    }
+    .data-year-container {
+      order:1;
+    }
+    .download-trigger {
+      order:2;
+    }
+    .component-stickies {
+      order:3;
     }
   }
   @media only screen and (max-width:$breakpoint-lg) {
     .footer__wrapper {
-      width:100%;
+      margin-right:calc(25% + 15px);
     }
   }
   @media only screen and (max-width:$breakpoint-md) {
-    height:25svh;
-    margin: 0 auto;
-    width:40vw !important;
     .footer__wrapper {
-      flex-direction:column;
-      max-width:100%;
-      .footer-second-row-md-breakpoint {
-        display: flex;
-        flex-direction: row;
-        align-items: center;
-      }
-      > * {
-        &:last-child {
-          margin-bottom:0;
-        }
-      }
+      margin: 0;
     }
   }
-
-}
-
-@media only screen and (min-width:300px) and (max-width: 600px) {
-  .app-footer {
-    height: 38svh !important;
-    padding-top: 4em;
-    padding-bottom: 4em;
-  }
-
-  .footer__wrapper {
-    padding: 0 .25em;
-  }
-
-  .footer__wrapper {
-    font-size: .85em;
-    padding: 0;
-  }
-
-  .footer-second-row-md-breakpoint {
-    padding: .5em;
-  }
-
-  .footer-third-row-sm-breakpoint {
-    margin: .5em;
-    display: flex;
-    flex-direction: row;
-    align-items: center;
+  @media only screen and (max-width:620px) {
+    .component-stickies {
+      display:none;
+    }
   }
 
 }
