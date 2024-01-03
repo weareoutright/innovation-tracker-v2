@@ -151,7 +151,7 @@ const GraphGenerator = ({ data, inputYear }) => {
     };
   };
 
-  const getDatumValue = (datum, primary, secondary, tertiary = null) => {
+  const getDatumValue = (datum, primary, secondary) => {
     let primaryValidity = getDatumValidityForColumn(datum, primary);
     let secondaryValidity = getDatumValidityForColumn(datum, secondary);
     if (primaryValidity.valid && secondaryValidity.valid) {
@@ -160,17 +160,9 @@ const GraphGenerator = ({ data, inputYear }) => {
       //TODO: Update to correctly calculate adaptation and science funding
       let total = parseInt(datum.mitigation);
       let source_val, target_val, filter_val;
-      if (tertiary) {
-        const tertiaryValidity = getDatumValidityForColumn(datum, tertiary);
-        if (!tertiaryValidity.valid) return null;
-        source_val = parseInt(datum[secondaryValidity.target].replace(",", ""));
-        target_val = parseInt(datum[tertiaryValidity.target].replace(",", ""));
-        filter_val = parseInt(datum[primaryValidity.target].replace(",", ""));
-      } else {
-        source_val = parseInt(datum[primaryValidity.target].replace(",", ""));
-        target_val = parseInt(datum[secondaryValidity.target].replace(",", ""));
-        filter_val = total;
-      }
+      source_val = parseInt(datum[primaryValidity.target].replace(",", ""));
+      target_val = parseInt(datum[secondaryValidity.target].replace(",", ""));
+      filter_val = total;
       const valid = total && source_val && target_val;
       if (valid) {
         return (source_val / total) * (filter_val / total) * target_val;
@@ -179,51 +171,35 @@ const GraphGenerator = ({ data, inputYear }) => {
     return null;
   };
 
-  const getLinks = (data, primary, secondary, tertiary = false) => {
+  const getLinks = (data, primary, secondary) => {
     let links = [];
     primary.forEach((p, pIndex) => {
       secondary.forEach((s, sIndex) => {
         sIndex += primary.length;
-        if (tertiary) {
-          tertiary.forEach((t, tIndex) => {
-            tIndex += primary.length + secondary.length;
-            let link = {
-              source: sIndex,
-              target: tIndex,
-              value: 0,
-            };
-            data.forEach((datum, d) => {
-              const value = getDatumValue(datum, p, s, t);
-              if (value) link.value += value;
-            });
-            if (link.value) links.push(link);
-          });
-        } else {
-          let link = {
-            source: pIndex,
-            target: sIndex,
-            value: 0,
-            isProjected:false,
-          };
-          let linkProjected = {
-            source: pIndex,
-            target: sIndex,
-            value: 0,
-            isProjected:true,
-          }
-          data.forEach((datum, d) => {
-            const value = getDatumValue(datum, p, s);
-            if (value) {
-              if (datum['tax_credit'] && +datum['tax_credit'] > 0) {
-                linkProjected.value += value;
-              } else {
-                link.value += value;
-              }
-            }
-          });
-          if (linkProjected.value) links.push(linkProjected);
-          if (link.value) links.push(link);
+        let link = {
+          source: pIndex,
+          target: sIndex,
+          value: 0,
+          isProjected:false,
+        };
+        let linkProjected = {
+          source: pIndex,
+          target: sIndex,
+          value: 0,
+          isProjected:true,
         }
+        data.forEach((datum, d) => {
+          const value = getDatumValue(datum, p, s);
+          if (value) {
+            if (datum['tax_credit'] && +datum['tax_credit'] > 0) {
+              linkProjected.value += value;
+            } else {
+              link.value += value;
+            }
+          }
+        });
+        if (linkProjected.value) links.push(linkProjected);
+        if (link.value) links.push(link);
       });
     });
     return links;

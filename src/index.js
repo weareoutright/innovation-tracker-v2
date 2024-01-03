@@ -32,8 +32,11 @@ function App() {
   const currentYear = new Date().getFullYear().toString();
   const [data, setData] = useState([]);
   const [dataCache, setDataCache] = useState([]);
-  const [inputYear, setInputYear] = useState(currentYear);
-  const [shortYear, setShortYear] = useState(generateTwoDigitYear(currentYear));
+  //See discussion 69-73 below (.filter((year) => +year <= currentYear))
+  //const [inputYear, setInputYear] = useState(currentYear);
+  //const [shortYear, setShortYear] = useState(generateTwoDigitYear(currentYear));
+  const [inputYear, setInputYear] = useState(undefined);
+  const [shortYear, setShortYear] = useState(undefined);
   const [dataYears, setDataYears] = useState([inputYear]);
   const [graph, setGraph] = useState({});
   const [active, setActive] = useState([null, null]);
@@ -65,9 +68,17 @@ function App() {
             parsed.data.map((row) => yearCol.add(row.fy));
 
             const availableYears = [...yearCol]
-              .filter((year) => year <= currentYear)
+              //Current data process involves filtering data for only the years we want to display, even though the original data includes projections for current/future years
+              //So, by the time we get the data into the app, it should only include past/current data anyway
+              //For now, let's take this filter out because it will make it harder to manage the 2023 -> 2024 year change, as well as future year changes
+              //But, in the future, might want to bring this back in case there's a more complex relationship between the current year and current/future data
+              //.filter((year) => +year <= currentYear)
               .sort((a, b) => b - a);
             setDataYears(availableYears);
+
+            const latestYear = availableYears[0];
+            setInputYear(latestYear);
+            setShortYear(generateTwoDigitYear(latestYear));
 
             const parsedPromise = Promise.resolve(parsed);
 

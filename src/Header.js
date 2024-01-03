@@ -135,7 +135,6 @@ const Header = ({ shortYear }) => {
                     ? `Selected FY${shortYear} Climate Innovation Funding: Mitigation`
                     : `FY${shortYear} Climate Innovation Funding: Mitigation`}
                   <em>
-                    {console.log(percentage)}
                     {amount} ({percentage !== "NaN%" ? percentage : " __%"})
                   </em>
                   {/* need to look into which subgroups to map here -- how to access?
