@@ -72,6 +72,7 @@ const TrayEntry = (props) => {
                   node.type === "sector"
                     ? "#fff"
                     : "#000",
+                borderLeft: `5px solid ${filterColors[node.type]}`
               }}
             >
               {node.type === "agency" ? (
