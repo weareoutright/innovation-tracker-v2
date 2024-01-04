@@ -291,7 +291,7 @@ const Stickies = (props) => {
       },
       {
         type: "info",
-        content: "The power sector received the most investment of any sector, making it the only sector to come close to matching its funding with its relative contribution to GHG emissions. ",
+        content: "The power and transportation sectors received the most investment of any sectors, making them the only sectors in which funding outstrips their relative contribution to GHG emissions.",
         position: () => {
           const well0 = active[0] === 'sector';
           const ref = document.querySelector(well0 ? ".wells__well-0" : ".wells__well-1");
