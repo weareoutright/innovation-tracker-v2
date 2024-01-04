@@ -72,25 +72,23 @@ $control-h: em(52);
     height:100%;
   }
   .sticky {
+    @include typeReduced;
     position:absolute;
     border: 1px solid $brandCyan;
     border-radius:em(8);
-    padding:em(13);
     background:$light;
     display:none;
     width:em(230,10);
     color:$brandAlmostBlack;
     pointer-events:all;
-    padding:em(40);
+    padding:em(14,13);
     box-shadow: 5px 5px 25px #00000029;
-    font-size:em(13);
     line-height:1.35em;
     &.active {
       display:block;
     }
     &.sticky-info {
       background:$light;
-      padding-right:em(13);
       .sticky__close {
         svg {
           path {

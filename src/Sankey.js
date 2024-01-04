@@ -31,7 +31,7 @@ import Tooltip from "./Tooltip";
 
 let tooltip = false;
 
-const isMobile = window.innerWidth < 840;
+const isMobile = window.innerWidth <= 840;
 
 const nodeWidth = isMobile ? 175 : 200;
 

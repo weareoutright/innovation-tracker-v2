@@ -79,16 +79,15 @@
       font-weight: 700;
       width: fit-content;
       text-align: left;
-      margin-bottom: 0;
+      margin-bottom: 1em;
       margin-top: 0;
       margin-right: 0;
       height: fit-content;
-      padding: 0;
       line-height: 1.7em !important;
       
       span.highlight {
-        display: inline;
-        padding: .25em .5em .29em 0em;
+        display: inline-block;
+        padding: .25em .5em .29em;
       }
     }
   }
@@ -173,6 +172,11 @@
         width:100%;
         padding-top:66.666%;
       }
+    }
+  }
+  @media only screen and (max-width:$breakpoint-md) and (max-height:$breakpoint-sm) {
+    .show-tray & {
+      height:calc(100% - #{em(29)});
     }
   }
 }

@@ -40,7 +40,6 @@
     text-align:right;
     left:auto;
     right:em(220);
-    transform:none;
   }
   &.helper-tertiary {
     text-align:center;
@@ -99,7 +98,15 @@
     }
   }
   @media only screen and (max-width:$breakpoint-md) {
-    left:em(225);
+    left:em(195);
     max-width:260px;
+    strong {
+      font-size:32px;
+    }
+    .has_ready-3,.has-ready-2 & {
+      strong {
+        font-size:24px;
+      }
+    }
   }
 }

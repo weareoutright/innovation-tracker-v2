@@ -30,7 +30,7 @@ const TrayEntryLegend = () => {
             </defs>
           </svg>
         </span>
-        <label>Recorded</label>
+        <label>Enacted</label>
       </div>
       <div className="legend-item">
         <span>

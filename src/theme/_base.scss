@@ -28,8 +28,9 @@ body {
 }
 
 .App {
+  @include typeDefault;
   width:100%;
-  height:100dvh;
+  height:calc(100dvh - 8px);
   overflow-x:hidden;
   position:relative;
 }
@@ -81,14 +82,8 @@ body {
   display:flex;
   align-items:center;
   background:$light;
-  height:calc(100vh - #{em(208)});
+  height:auto;
   border-bottom: 1px solid $brandCyan;
-  @media only screen and (max-width: $breakpoint-lg) {
-    height:calc(100vh - #{em(256)});
-  }
-  @media only screen and (max-width: $breakpoint-md) {
-    height:calc(60vh - #{em(156)});
-  }
 }
 
 .app-main {
@@ -146,9 +141,7 @@ body {
     width:100%;
   }
   .app-main {
-    padding:0;
     .app-main-content {
-      padding:em(30);
       margin-bottom:em(15);
       height:calc(100% - #{em(15)});
     }

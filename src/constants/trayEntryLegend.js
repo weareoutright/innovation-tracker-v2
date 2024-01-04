@@ -1,7 +1,7 @@
 export const TRAY_ENTRY_LEGEND_ITEMS = [
   {
     key: "tray__entry__legend-0",
-    label: "Recorded",
+    label: "Enacted",
     svg: (
       <svg
         width="30"

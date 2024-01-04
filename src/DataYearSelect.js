@@ -2,7 +2,7 @@ import React from "react";
 
 const DataYearSelect = ({ handleYearChange, dataYears }) => {
   return (
-    <div className="container data-year-container">
+    <div className="data-year-container">
       <label htmlFor="data-year-select">Year:</label>
       <form
         name="data-year-select"
